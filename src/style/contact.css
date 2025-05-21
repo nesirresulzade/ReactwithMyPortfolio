@@ -1,0 +1,129 @@
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    /* 100 idi*/
+    gap: 1.5rem;
+}
+
+.contact {
+    min-height: 35vh;
+    /* Daha kiçik ölçü */
+    padding: 2rem 12%;
+    /* Üst və alt boşluğu azaltdım */
+    margin-bottom: 0.5rem;
+    /* Footer ilə olan məsafəni azaldır */
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.input-box input {
+    border-radius: 3rem;
+    border: 2px solid black;
+    padding: 2rem 5.9rem;
+    font-size: 2rem;
+    text-align: left;
+    width: 100%;
+}
+
+.input-box input::placeholder {
+    font-size: 2rem;
+}
+
+.input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input i {
+    position: absolute;
+    font-size: 3rem;
+    top: 50%;
+    left: 25px;
+    margin-right: 25px;
+    transform: translateY(-50%);
+}
+
+.input-box .btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid transparent;
+    box-shadow: 0 0 10px 2px rgba(0, 157, 255, 0.8), 0 0 20px 5px rgba(255, 0, 255, 0.8);
+    /* Radiusa uyğun gradient-like effekti */
+    border-radius: 3rem;
+}
+
+
+@media(max-width:1280px) {
+    .input-box input {
+        padding: 2rem 5rem;
+        font-size: 2.5rem;
+    }
+
+    .input input::placeholder {
+        font-size: 2.5rem;
+    }
+
+    .info-box i {
+        font-size: 2.5rem;
+    }
+}
+
+@media(max-width:768px) {
+    .input-box input {
+        padding: 1rem 2rem;
+        font-size: 1.8rem;
+    }
+
+    .input-box input::placeholder {
+        font-size: 1.5rem;
+    }
+
+    .input-box i {
+        display: none;
+    }
+}
+
+@media(max-width:600px) {
+    .input-box input {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .input-box input::placeholder {
+        font-size: 1.5rem;
+    }
+
+    .contact .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+  .input-box input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .input-box input::placeholder {
+    font-size: 1rem;
+  }
+
+  .contact .section-title{
+    font-size: 2rem;
+    text-align: center;
+  }
+}

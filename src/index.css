@@ -1,0 +1,207 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins";
+  text-decoration: none;
+  scroll-behavior: smooth;
+  list-style: none;
+}
+
+body {
+  background: linear-gradient(to right, #ffffff, #d6eaf8);
+}
+
+section {
+  min-height: 100vh;
+  padding: 8rem 12%;
+  width: 100%;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 3rem;
+}
+
+.btn a {
+  color: white;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+
+/* a tagının hover vəziyyəti */
+.btn a:hover {
+  color: black;
+  /* Hover zamanı rəngi qara edirik */
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: rgb(219, 219, 219);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #009dff, #ff00ff);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* @media(max-width:1280px) {
+  header {
+    width: auto;
+    padding: 1rem 2rem;
+    gap: 2rem;
+  }
+
+  .about .about-container {
+    gap: 3rem;
+  }
+
+  .experience-info {
+    flex-direction: column;
+  }
+
+  .input-box input {
+    padding: 2rem 5rem;
+    font-size: 2.5rem;
+  }
+
+  .input input::placeholder {
+    font-size: 2.5rem;
+  }
+
+  .info-box i {
+    font-size: 2.5rem;
+  }
+}
+
+@media(max-width:768px) {
+  header {
+    width: auto;
+    gap: 1rem;
+    padding: 1rem 1rem;
+  }
+
+  header .logo {
+    font-size: 1rem;
+  }
+
+  header .visit-btn {
+    display: none;
+  }
+
+  .about-container {
+    flex-direction: column;
+  }
+
+  .input-box input {
+    padding: 1rem 2rem;
+    font-size: 1.8rem;
+  }
+
+  .input-box input::placeholder {
+    font-size: 1.5rem;
+  }
+
+  .input-box i {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .experience-info img {
+    width: 70vw;
+  }
+}
+
+@media(max-width:600px) {
+  header #menu-icon {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    margin-top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 3rem;
+    display: none;
+    max-height: 80vh;
+    overflow-y: auto;
+    transition: width 0.3s ease-in-out;
+  }
+
+  .nav-links li {
+    margin-top: 1.5rem;
+    padding: 1rem;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+
+  header {
+    width: 100%;
+    padding: 1rem 5rem;
+    gap: 8rem;
+  }
+
+  header .logo {
+    font-size: 1.5rem;
+  }
+
+  .about-container img {
+    width: 80vw;
+  }
+
+  .input-box input {
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .input-box input::placeholder {
+    font-size: 1.5rem;
+  }
+
+  footer ul {
+    gap: 1rem;
+  }
+
+  .contact .section-title {
+    font-size: 2.5rem;
+  }
+
+  .projects .section-title {
+    font-size: 2.5rem;
+  }
+
+  .experience .section-title {
+    font-size: 2.5rem;
+  }
+} */
