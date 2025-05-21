@@ -1,30 +1,56 @@
 import React from 'react'
-import '../style/footer.css'
+import '../style/footer.css';
+import { Link } from 'react-scroll';
+
 function Footer() {
-  return (
-    <footer>
+    return (
+        <footer>
 
-        <ul>
-            <li>
-                <a href="#">About</a>
-            </li>
+            <ul>
+                <li>
+                    <Link
+                        to="section1"
+                        smooth={true}
+                        duration={500}
+                    >
+                        <a href="#">About</a>
+                    </Link>
+                </li>
 
-            <li>
-                <a href="#">Experience</a>
-            </li>
+                <li>
+                    <Link
+                        to="section2"
+                        smooth={true}
+                        duration={500}
+                    >
+                        <a href="#">Experience</a>
+                    </Link>
+                </li>
 
-            <li>
-                <a href="#">Projects</a>
-            </li>
+                <li>
+                    <Link
+                        to="section3"
+                        smooth={true}
+                        duration={500}
+                    >
+                        <a href="#">Projects</a>
+                    </Link>
+                </li>
 
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
+                <li>
+                    <Link
+                        to="section4"
+                        smooth={true}
+                        duration={500}
+                    >
+                        <a href="#">Contact</a>
+                    </Link>
+                </li>
+            </ul>
 
-        <p className="copyright">&copy; All Rights Reserved | Nasir Rasulzada</p>
-    </footer>
-  )
+            <p className="copyright">&copy; All Rights Reserved | Nasir Rasulzada</p>
+        </footer>
+    )
 }
 
 export default Footer

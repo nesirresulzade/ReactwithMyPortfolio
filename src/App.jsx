@@ -11,20 +11,13 @@ function App() {
 
   return (
     <>
-      {/* <Navbar/>
-      <About/>
-      <Experience/>
-      <RecentPro/>
-      <Contact/>
-      <Footer/> */}
-
       <Router>
         <Navbar />
 
         <Element name='section1'><About /></Element>
         <Element name='section2'><Experience /></Element>
-        <Element name='Project'><RecentPro /></Element>
-        <Element name='Contact'><Contact /></Element>
+        <Element name='section3'><RecentPro /></Element>
+        <Element name='section4'><Contact /></Element>
 
         <Footer />
       </Router>

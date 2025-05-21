@@ -15,10 +15,42 @@ function Navbar() {
       <a href="#" className="logo"><span>Nasir Rasulzada</span></a>
 
       <ul className={`nav-links ${isActive ? 'active' : ''}`}>
-        <li><Link to="section1" smooth={true} duration={500}>About</Link></li>
-        <li><Link to="section2"  smooth={true} duration={500} >Experience</Link></li>
-        <li><a href="#">Projects</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+          <Link
+            to="section1"
+            smooth={true}
+            duration={500}
+          >
+            <a href="#">About</a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="section2"
+            smooth={true}
+            duration={500}
+          >
+            <a href="#">Experience</a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="section3"
+            smooth={true}
+            duration={500}
+          >
+            <a href="#">Projects</a>
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="section4"
+            smooth={true}
+            duration={500}
+          >
+            <a href="#">Contact</a>
+          </Link>
+        </li>
       </ul>
 
       <i className="bi bi-list" id="menu-icon" onClick={toggleMenu}></i>
