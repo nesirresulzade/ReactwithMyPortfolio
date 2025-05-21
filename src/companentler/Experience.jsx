@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style/Experience.css';
+import '../style/experience.css';
 import Mypp2 from '../image/mypp2.jpeg'
 function Experience() {
     return (
