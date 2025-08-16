@@ -59,9 +59,11 @@
     max-height: none;
     overflow: visible;
     display: block;
-    -webkit-line-clamp: unset;
-    -webkit-box-orient: unset;
+    -webkit-line-clamp: initial;
+    -webkit-box-orient: initial;
     margin-bottom: 1rem;
+    /* Reset text overflow for hover state */
+    text-overflow: clip;
 }
 
 .btn-group {
@@ -96,6 +98,8 @@
     position: relative;
     z-index: 1;
     transition: all 0.3s ease-in-out;
+    /* Fallback for browsers that don't support -webkit-line-clamp */
+    text-overflow: ellipsis;
 }
 
 .btn {

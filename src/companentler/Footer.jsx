@@ -32,13 +32,23 @@ function Footer() {
                         smooth={true}
                         duration={500}
                     >
-                        <a href="#">Projects</a>
+                        <a href="#">Skills</a>
                     </Link>
                 </li>
 
                 <li>
                     <Link
                         to="section4"
+                        smooth={true}
+                        duration={500}
+                    >
+                        <a href="#">Projects</a>
+                    </Link>
+                </li>
+
+                <li>
+                    <Link
+                        to="section5"
                         smooth={true}
                         duration={500}
                     >

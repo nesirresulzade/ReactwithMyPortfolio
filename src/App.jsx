@@ -1,6 +1,7 @@
 import Navbar from './companentler/Navbar'
 import About from './companentler/About'
 import Experience from './companentler/Experience'
+import Skills from './companentler/Skills'
 import RecentPro from './companentler/RecentPro'
 import Contact from './companentler/Contact'
 import Footer from './companentler/Footer'
@@ -16,8 +17,9 @@ function App() {
 
         <Element name='section1'><About /></Element>
         <Element name='section2'><Experience /></Element>
-        <Element name='section3'><RecentPro /></Element>
-        <Element name='section4'><Contact /></Element>
+        <Element name='section3'><Skills /></Element>
+        <Element name='section4'><RecentPro /></Element>
+        <Element name='section5'><Contact /></Element>
 
         <Footer />
       </Router>

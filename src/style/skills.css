@@ -1,0 +1,138 @@
+.skills {
+    min-height: 50vh;
+    padding: 4rem 12%;
+    margin-bottom: 1rem;
+}
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skills-category {
+    text-align: center;
+}
+
+.category-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border: 2px solid black;
+    border-radius: 2rem;
+    background: white;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.skill-item:hover {
+    background: black;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.skill-item i {
+    font-size: 3rem;
+    color: #009dff;
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-item:hover i {
+    color: #ff00ff;
+    transform: scale(1.1);
+}
+
+.skill-svg-icon {
+    width: 3rem;
+    height: 3rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-item:hover .skill-svg-icon {
+    transform: scale(1.1);
+}
+
+.skill-item span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media(max-width: 768px) {
+    .skills {
+        padding: 3rem 8%;
+    }
+    
+    .category-title {
+        font-size: 2rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+    
+    .skill-item {
+        padding: 1.5rem 1rem;
+    }
+    
+    .skill-item i {
+        font-size: 2.5rem;
+    }
+    
+    .skill-item span {
+        font-size: 1rem;
+    }
+}
+
+@media(max-width: 480px) {
+    .skills {
+        padding: 2rem 5%;
+    }
+    
+    .category-title {
+        font-size: 1.8rem;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 0.8rem;
+    }
+    
+    .skill-item {
+        padding: 1rem 0.8rem;
+    }
+    
+    .skill-item i {
+        font-size: 2rem;
+    }
+    
+    .skill-item span {
+        font-size: 0.9rem;
+    }
+}
