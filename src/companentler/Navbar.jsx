@@ -12,9 +12,11 @@ function Navbar() {
 
   return (
     <header className="header">
-      <a href="#" className="logo"><span>Nasir Rasulzada</span></a>
+      <a href="#" className="logo" data-aos="fade-right" data-aos-delay="100">
+        <span>Nasir Rasulzada</span>
+      </a>
 
-      <ul className={`nav-links ${isActive ? 'active' : ''}`}>
+      <ul className={`nav-links ${isActive ? 'active' : ''}`} data-aos="fade-down" data-aos-delay="300">
         <li>
           <Link
             to="section1"
@@ -53,9 +55,9 @@ function Navbar() {
         </li>
       </ul>
 
-      <i className="bi bi-list" id="menu-icon" onClick={toggleMenu}></i>
+      <i className="bi bi-list" id="menu-icon" onClick={toggleMenu} data-aos="fade-left" data-aos-delay="500"></i>
 
-      <button className="visit-btn">
+      <button className="visit-btn" data-aos="fade-left" data-aos-delay="700">
         <a href="https://github.com/nesirresulzade/partfolio">Visit GitHub</a>
       </button>
     </header>

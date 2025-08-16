@@ -5,8 +5,7 @@ import { Link } from 'react-scroll';
 function Footer() {
     return (
         <footer>
-
-            <ul>
+            <ul data-aos="fade-up" data-aos-delay="200">
                 <li>
                     <Link
                         to="section1"
@@ -48,7 +47,7 @@ function Footer() {
                 </li>
             </ul>
 
-            <p className="copyright">&copy; All Rights Reserved | Nasir Rasulzada</p>
+            <p className="copyright" data-aos="fade-up" data-aos-delay="400">&copy; All Rights Reserved | Nasir Rasulzada</p>
         </footer>
     )
 }

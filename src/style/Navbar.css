@@ -25,10 +25,8 @@
 }
 
 .logo:hover {
-    transform: scale(1.2);
-    /* Üzərinə gəldikdə 1.2 dəfə böyüyür */
-    transition: transform 0.3s ease-in-out;
-    /* Effektin hamar keçməsi üçün */
+    color: #009dff;
+    transition: color 0.3s ease-in-out;
 }
 
 .nav-links {
@@ -79,7 +77,7 @@ li a:hover::before {
 
 .visit-btn:hover {
     background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
-    transform: scale(1.03);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 #menu-icon {
