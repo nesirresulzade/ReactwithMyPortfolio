@@ -9,9 +9,9 @@ import App from './App.jsx';
 AOS.init({
   duration: 800,
   easing: 'ease-out-cubic',
-  once: true,
+  once: false,
   offset: 50,
-  mirror: false,
+  mirror: true,
   disable: false,
   startEvent: 'DOMContentLoaded',
   initClassName: 'aos-init',
@@ -22,7 +22,9 @@ AOS.init({
   throttleDelay: 99,
   // Mobile optimizations
   mobile: true,
-  tablet: true
+  tablet: true,
+  // Performance optimizations
+  anchorPlacement: 'top-bottom'
 });
 
 // Mobile və tablet üçün AOS-u yenilə
@@ -34,6 +36,43 @@ window.addEventListener('resize', () => {
 window.addEventListener('touchstart', () => {
   AOS.refresh();
 }, { passive: true });
+
+// Hər scroll zamanı AOS-u yenilə
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+  // Scroll bitdikdən sonra AOS-u yenilə
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    AOS.refresh();
+  }, 100);
+}, { passive: true });
+
+// Wheel event üçün də AOS-u yenilə
+window.addEventListener('wheel', () => {
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    AOS.refresh();
+  }, 100);
+}, { passive: true });
+
+// AOS-u məcburi yenilə
+function forceRefreshAOS() {
+  AOS.refresh();
+  // Bütün animasiyaları yenidən başlat
+  document.querySelectorAll('[data-aos]').forEach(element => {
+    element.classList.remove('aos-animate');
+    element.classList.add('aos-init');
+  });
+  // Qısa gecikmədən sonra yenidən başlat
+  setTimeout(() => {
+    AOS.refresh();
+  }, 50);
+}
+
+// Hər 2 saniyədə bir AOS-u yenilə (backup üçün)
+setInterval(() => {
+  AOS.refresh();
+}, 2000);
 
 createRoot(document.getElementById('root')).render(
     <App />
