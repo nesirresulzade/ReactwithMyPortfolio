@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../style/skills.css';
 import ReactIcon from '../assets/react.svg';
 import ViteIcon from '../assets/vitejs-svgrepo-com.svg';
@@ -7,10 +7,13 @@ import FigmaIcon from '../assets/figma-svgrepo-com.svg';
 import CSSIcon from '../assets/css-3-svgrepo-com.svg';
 import HTMLIcon from '../assets/html-5-svgrepo-com.svg';
 import JSIcon from '../assets/js-svgrepo-com.svg';
+import { LanguageContext } from '../App';
 
 function Skills() {
+  const { translations, currentLanguage } = useContext(LanguageContext);
+
   const skillsData = {
-    "Core Technologies": [
+    [translations.coreTechnologies]: [
       { name: "HTML5", icon: HTMLIcon, isSvg: true },
       { name: "CSS3", icon: CSSIcon, isSvg: true },
       { name: "JavaScript (ES6+)", icon: JSIcon, isSvg: true },
@@ -20,13 +23,13 @@ function Skills() {
       { name: "RESTful APIs", icon: "bi bi-code-slash" },
       { name: "Cross-Browser Compatibility", icon: "bi bi-browser-chrome" }
     ],
-    "Libraries": [
+    [currentLanguage === 'az' ? "Kitabxanalar" : "Libraries"]: [
       { name: "React.js", icon: ReactIcon, isSvg: true },
       { name: "Material UI", icon: "bi bi-palette" },
       { name: "Bootstrap", icon: "bi bi-bootstrap" },
       { name: "Tailwind CSS", icon: "bi bi-wind" }
     ],
-    "Tools & Runtime": [
+    [translations.developmentTools]: [
       { name: "Node.js", icon: NodeIcon, isSvg: true },
       { name: "Webpack / Vite", icon: ViteIcon, isSvg: true },
       { name: "GitHub / GitLab", icon: "bi bi-github" },
@@ -37,7 +40,7 @@ function Skills() {
   return (
     <>
       <section id="skills" className="skills">
-        <h2 className="section-title" data-aos="fade-down">Skills</h2>
+        <h2 className="section-title" data-aos="fade-down">{translations.skillsTitle}</h2>
         
         <div className="skills-container">
           {Object.entries(skillsData).map(([category, skills], categoryIndex) => (

@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import '../style/Navbar.css';
 import { Link } from 'react-scroll';
+import { LanguageContext } from '../App';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function Navbar() {
-
   const [isActive, setIsActive] = useState(false);
+  const { translations, currentLanguage, onLanguageChange } = useContext(LanguageContext);
 
   const toggleMenu = () => {
     setIsActive(!isActive);
@@ -22,8 +24,9 @@ function Navbar() {
             to="section1"
             smooth={true}
             duration={500}
+            className="nav-link"
           >
-            <a href="#">About</a>
+            {translations.about}
           </Link>
         </li>
         <li>
@@ -31,8 +34,9 @@ function Navbar() {
             to="section2"
             smooth={true}
             duration={500}
+            className="nav-link"
           >
-            <a href="#">Experience</a>
+            {translations.experience}
           </Link>
         </li>
         <li>
@@ -40,8 +44,9 @@ function Navbar() {
             to="section3"
             smooth={true}
             duration={500}
+            className="nav-link"
           >
-            <a href="#">Skills</a>
+            {translations.skills}
           </Link>
         </li>
         <li>
@@ -49,8 +54,9 @@ function Navbar() {
             to="section4"
             smooth={true}
             duration={500}
+            className="nav-link"
           >
-            <a href="#">Projects</a>
+            {translations.projects}
           </Link>
         </li>
         <li>
@@ -58,17 +64,23 @@ function Navbar() {
             to="section5"
             smooth={true}
             duration={500}
+            className="nav-link"
           >
-            <a href="#">Contact</a>
+            {translations.contact}
           </Link>
         </li>
       </ul>
 
-      <i className="bi bi-list" id="menu-icon" onClick={toggleMenu} data-aos="fade-left" data-aos-delay="500"></i>
-
-      <button className="visit-btn" data-aos="fade-left" data-aos-delay="700">
-        <a href="https://github.com/nesirresulzade/partfolio">Visit GitHub</a>
-      </button>
+      <div className="header-right">
+        <LanguageSwitcher 
+          currentLanguage={currentLanguage} 
+          onLanguageChange={onLanguageChange} 
+        />
+        <i className="bi bi-list" id="menu-icon" onClick={toggleMenu} data-aos="fade-left" data-aos-delay="500"></i>
+        <button className="visit-btn" data-aos="fade-left" data-aos-delay="700">
+          <a href="https://github.com/nesirresulzade/partfolio">{translations.visitGitHub}</a>
+        </button>
+      </div>
     </header>
   );
 }

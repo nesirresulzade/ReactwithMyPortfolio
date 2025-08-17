@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../style/footer.css';
 import { Link } from 'react-scroll';
+import { LanguageContext } from '../App';
 
 function Footer() {
+    const { translations } = useContext(LanguageContext);
+
     return (
         <footer>
             <ul data-aos="fade-up" data-aos-delay="200">
@@ -11,8 +14,9 @@ function Footer() {
                         to="section1"
                         smooth={true}
                         duration={500}
+                        className="footer-link"
                     >
-                        <a href="#">About</a>
+                        {translations.about}
                     </Link>
                 </li>
 
@@ -21,8 +25,9 @@ function Footer() {
                         to="section2"
                         smooth={true}
                         duration={500}
+                        className="footer-link"
                     >
-                        <a href="#">Experience</a>
+                        {translations.experience}
                     </Link>
                 </li>
 
@@ -31,8 +36,9 @@ function Footer() {
                         to="section3"
                         smooth={true}
                         duration={500}
+                        className="footer-link"
                     >
-                        <a href="#">Skills</a>
+                        {translations.skills}
                     </Link>
                 </li>
 
@@ -41,8 +47,9 @@ function Footer() {
                         to="section4"
                         smooth={true}
                         duration={500}
+                        className="footer-link"
                     >
-                        <a href="#">Projects</a>
+                        {translations.projects}
                     </Link>
                 </li>
 
@@ -51,13 +58,13 @@ function Footer() {
                         to="section5"
                         smooth={true}
                         duration={500}
+                        className="footer-link"
                     >
-                        <a href="#">Contact</a>
+                        {translations.contact}
                     </Link>
                 </li>
             </ul>
-
-            <p className="copyright" data-aos="fade-up" data-aos-delay="400">&copy; All Rights Reserved | Nasir Rasulzada</p>
+            <p className="copyright" data-aos="fade-up" data-aos-delay="400">{translations.copyright}</p>
         </footer>
     )
 }

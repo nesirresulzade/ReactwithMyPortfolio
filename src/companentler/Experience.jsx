@@ -1,45 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../style/experience.css';
 import Mypp2 from '../image/mypp2.jpeg'
+import MyPicture from "../image/myImage.jpg"
+import { LanguageContext } from '../App';
+
 function Experience() {
+    const { translations } = useContext(LanguageContext);
+
     return (
         <>
             <section id="experience" className="experience">
-                <h2 className="section-title" data-aos="fade-down">Experience</h2>
+                <h2 className="section-title" data-aos="fade-down">{translations.experienceTitle}</h2>
 
                 <div className="experience-info">
                     <div className="grid">
                         <div className="grid-card" data-aos="zoom-in" data-aos-delay="200">
                             <i className="bi bi-code-slash"></i>
-                            <span>Frontend Development</span>
-                            <h3>5 years</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, pariatur!</p>
+                            <span>{translations.frontendDev}</span>
+                            <h3>{translations.frontendYears}</h3>
+                            <p>{translations.frontendDesc}</p>
                         </div>
 
                         <div className="grid-card" data-aos="zoom-in" data-aos-delay="400">
                             <i className="bi bi-file-code"></i>
-                            <span>Graphic Design</span>
-                            <h3>3 years</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, pariatur!</p>
+                            <span>{translations.graphicDesign}</span>
+                            <h3>{translations.graphicYears}</h3>
+                            <p>{translations.graphicDesc}</p>
                         </div>
 
                         <div className="grid-card" data-aos="zoom-in" data-aos-delay="600">
                             <i className="bi bi-file-code"></i>
-                            <span>System Design</span>
-                            <h3>2 years</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, pariatur!</p>
+                            <span>{translations.systemDesign}</span>
+                            <h3>{translations.systemYears}</h3>
+                            <p>{translations.systemDesc}</p>
                         </div>
 
                         <div className="grid-card" data-aos="zoom-in" data-aos-delay="800">
                             <i className="bi bi-list-ul"></i>
-                            <span>Content Manager</span>
-                            <h3>1 years</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, pariatur!</p>
+                            <span>{translations.contentManager}</span>
+                            <h3>{translations.contentYears}</h3>
+                            <p>{translations.contentDesc}</p>
                         </div>
                     </div>
 
                     <img 
-                        src={Mypp2} 
+                        src={MyPicture} 
                         alt="experience visual" 
                         data-aos="fade-left"
                         data-aos-delay="1000"

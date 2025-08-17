@@ -3,18 +3,22 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 50vh;
     /* 100 idi*/
     gap: 1.5rem;
+    max-width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .contact {
-    min-height: 35vh;
     /* Daha kiçik ölçü */
     padding: 2rem 12%;
     /* Üst və alt boşluğu azaltdım */
     margin-bottom: 0.5rem;
     /* Footer ilə olan məsafəni azaldır */
+    max-width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 .input-box {
@@ -22,6 +26,8 @@
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
 }
 
 .input-box input {
@@ -31,6 +37,8 @@
     font-size: 2rem;
     text-align: left;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
 .input-box input::placeholder {
@@ -92,10 +100,13 @@
     }
 }
 
-@media(max-width:768px) {
+/* Responsive Design */
+@media(max-width: 768px) {
     .input-box input {
         padding: 1rem 2rem;
         font-size: 1.8rem;
+        width: 100%;
+        max-width: 100%;
     }
 
     .input-box input::placeholder {
@@ -105,14 +116,18 @@
     .input-box i {
         display: none;
     }
+    
+    .contact {
+        padding: 1.5rem 5%;
+    }
 }
 
-@media(max-width:600px) {
+@media(max-width: 600px) {
     .input-box input {
         padding: 1rem 2rem;
         font-size: 1.5rem;
         width: 100%;
-        max-width: 400px;
+        max-width: 100%;
     }
 
     .input-box input::placeholder {
@@ -122,6 +137,10 @@
     .contact .section-title {
         font-size: 2.5rem;
     }
+    
+    .contact {
+        padding: 1rem 3%;
+    }
 }
 
 @media (max-width: 400px) {
@@ -129,7 +148,7 @@
     padding: 0.5rem 1rem;
     font-size: 1rem;
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
   }
 
   .input-box input::placeholder {
@@ -139,5 +158,58 @@
   .contact .section-title{
     font-size: 2rem;
     text-align: center;
+  }
+  
+  .contact {
+    padding: 0.8rem 2%;
+  }
+}
+
+/* Responsive fixes for horizontal scroll */
+@media(max-width: 730px) {
+  .contact {
+    padding: 1.5rem 5%;
+  }
+  
+  .input-box {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .input-box input {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media(max-width: 600px) {
+  .contact {
+    padding: 1rem 3%;
+  }
+  
+  .input-box {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .input-box input {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media(max-width: 400px) {
+  .contact {
+    padding: 0.8rem 2%;
+  }
+  
+  .input-box {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .input-box input {
+    width: 100%;
+    max-width: 100%;
   }
 }

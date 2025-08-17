@@ -23,6 +23,19 @@ footer ul li a {
     font-size: 1.1rem;
 }
 
+.footer-link {
+    color: black;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: #009dff;
+}
+
 .copyright {
     font-size: 1rem;
     margin-top: 2rem;
