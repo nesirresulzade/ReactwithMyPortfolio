@@ -9,9 +9,12 @@ function Footer() {
     const { translations } = useContext(LanguageContext);
 
     useEffect(() => {
-        // Animasiya hər scroll zamanı işləsin
-        AOS.init({ duration: 600, easing: 'ease-in-out', once: false });
-        AOS.refresh();
+        AOS.init({
+            duration: 600,
+            easing: 'ease-in-out',
+            once: true,
+            mirror: false,
+        });
     }, []);
 
     const footerLinks = [
