@@ -73,6 +73,45 @@ section {
   gap: 2rem;
 }
 
+/* Mobile Animation Optimizations */
+@media (max-width: 768px) {
+  /* Reduce animation duration for mobile */
+  [data-aos] {
+    transition-duration: 600ms !important;
+  }
+  
+  /* Optimize fade animations for mobile */
+  [data-aos="fade-up"],
+  [data-aos="fade-down"],
+  [data-aos="fade-left"],
+  [data-aos="fade-right"] {
+    transition-timing-function: ease-out !important;
+  }
+  
+  /* Reduce delays for mobile */
+  [data-aos-delay] {
+    transition-delay: 0ms !important;
+  }
+  
+  /* Optimize zoom animations for mobile */
+  [data-aos="zoom-in"] {
+    transform: scale(0.95) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further optimize for small mobile devices */
+  [data-aos] {
+    transition-duration: 400ms !important;
+  }
+  
+  /* Disable complex animations on very small screens */
+  [data-aos="zoom-in"] {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
 /* @media(max-width:1280px) {
   header {
     width: auto;
