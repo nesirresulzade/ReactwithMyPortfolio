@@ -1,3 +1,4 @@
+/* ---------- HEADER ÜMUMİ STİL ---------- */
 .header {
     position: fixed;
     top: 1rem;
@@ -118,21 +119,70 @@ li a:hover::before {
 #menu-icon {
     font-size: 2rem;
     display: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#menu-icon:hover {
+    color: #009dff;
 }
 
 .visit-btn a {
     color: white;
 }
 
-@media(max-width:1280px) {
-    header {
-        width: auto;
-        padding: 1rem 2rem;
-        gap: 2rem;
+/* ---------- MEDIA QUERIES ---------- */
+@media(max-width:1024px) {
+    header #menu-icon {
+        display: block;
     }
-    
-    .header-right {
-        gap: 0.8rem;
+
+    /* Mobil və tablet menyu */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        width: 300px;
+        max-width: 90%;
+        padding: 1.5rem;
+        color: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: 1rem;
+        z-index: 999;
+        margin-top: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+
+        display: none;
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-links.active {
+        display: flex;
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .nav-links li {
+        margin: 0.8rem 0;
+        padding: 0.8rem;
+        width: 100%;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(5px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .nav-links.active li {
+        opacity: 1;
+        transform: translateY(0);
+        transition-delay: 0;
+        /* Sağ animasiya tam silindi */
     }
 }
 
@@ -150,96 +200,69 @@ li a:hover::before {
     header .visit-btn {
         display: none;
     }
-    
+
     .header-right {
         gap: 0.5rem;
     }
 }
 
 @media(max-width:600px) {
-    header #menu-icon {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 100%;
-        margin-top: 1rem;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        padding: 1rem;
-        color: white;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.9);
-        border-radius: 3rem;
-        display: none;
-        max-height: 80vh;
-        overflow-y: auto;
-        transition: width 0.3s ease-in-out;
-    }
-
-    .nav-links li {
-        margin-top: 1.5rem;
-        padding: 1rem;
-    }
-
-    .nav-links.active {
-        display: block;
-    }
-
     header {
-        width: 100%;
-        padding: 1rem 5rem;
-        gap: 8rem;
+        width: 280px;
+        padding: 1rem;
+        gap: 1rem;
     }
 
     header .logo {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
-    
+
     .header-right {
         gap: 0.3rem;
+    }
+
+    .nav-links {
+        width: 260px;
+        padding: 1rem;
+    }
+
+    .nav-links li {
+        margin: 0.6rem 0;
+        padding: 0.6rem;
     }
 }
 
 @media (max-width: 400px) {
-  header {
-    padding: 0.5rem 1rem;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+    header {
+        padding: 0.5rem 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
 
-  header .logo {
-    font-size: 1.2rem;
-  }
+    header .logo {
+        font-size: 1.2rem;
+    }
 
-  #menu-icon {
-    font-size: 1.5rem;
-  }
+    #menu-icon {
+        font-size: 1.5rem;
+    }
 
-  .nav-links {
-    width: 90%;
-    padding: 0.5rem;
-    font-size: 0.9rem;
-  }
+    .nav-links {
+        width: 250px;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
 
-  .nav-links li {
-    margin-top: 1rem;
-    padding: 0.5rem;
-  }
+    .nav-links li {
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+    }
 
-  .nav-links.active {
-    display: block;
-  }
+    .visit-btn {
+        display: none;
+    }
 
-  .visit-btn {
-    display: none;
-  }
-  
-  .header-right {
-    gap: 0.2rem;
-  }
+    .header-right {
+        gap: 0.2rem;
+    }
 }

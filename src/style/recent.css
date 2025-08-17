@@ -1,3 +1,12 @@
+/* ---------- PROJECTS SECTION ---------- */
+.projects {
+    padding: 4rem 12%;
+    margin-bottom: 1rem;
+    max-width: 100vw;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -7,38 +16,21 @@
 }
 
 .project-card {
-    padding: 2rem 2rem;
+    padding: 2rem;
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
     flex-direction: column;
+    align-items: center;
     text-align: center;
     gap: 1rem;
     border: 2px solid black;
-    border-radius: 3rem;
+    border-radius: 2rem;
     cursor: pointer;
-    transition: 0.3s ease-in-out;
-    height: 420px;
-    overflow: hidden;
+    transition: all 0.3s ease-in-out;
     position: relative;
+    overflow: hidden;
     width: 100%;
     box-sizing: border-box;
-}
-
-.projects {
-    /* Daha balanslı ölçü */
-    padding: 4rem 12%;
-    margin-bottom: 1rem;
-    max-width: 100vw;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-.project-card:hover {
-    background-color: black;
-    color: white;
-    transform: translateY(-10px)scale(1.02);
-    height: auto;
+    background-color: #fff;
     min-height: 420px;
 }
 
@@ -50,40 +42,6 @@
     flex-shrink: 0;
 }
 
-.project-card:hover .btn {
-    border: 2px solid white;
-    color: white;
-}
-
-.project-card:hover .btn:hover {
-    border: 2px solid white;
-    background-color: white;
-    color: black;
-}
-
-.project-card:hover p {
-    max-height: none;
-    overflow: visible;
-    display: block;
-    -webkit-line-clamp: initial;
-    -webkit-box-orient: initial;
-    margin-bottom: 1rem;
-    /* Reset text overflow for hover state */
-    text-overflow: clip;
-}
-
-.btn-group {
-    margin-top: auto;
-    display: flex;
-    gap: 0.8rem;
-    justify-content: center;
-    width: 100%;
-    padding-top: 0.5rem;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 10;
-}
-
 .project-card h3 {
     font-size: 1.8rem;
     font-weight: 500;
@@ -93,32 +51,39 @@
 .project-card p {
     flex: 1;
     line-height: 1.4;
+    font-size: 0.95rem;
     margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    max-height: 70px;
+    color: #333;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
+    /* Mobile və tablet üçün description göstər */
     -webkit-box-orient: vertical;
-    flex-shrink: 0;
-    position: relative;
-    z-index: 1;
     transition: all 0.3s ease-in-out;
-    /* Fallback for browsers that don't support -webkit-line-clamp */
     text-overflow: ellipsis;
+}
+
+.btn-group {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    width: 100%;
+    margin-top: auto;
 }
 
 .btn {
     background-color: black;
     color: white;
     padding: 0.5rem 1.5rem;
-    border-radius: 3rem;
+    border-radius: 2rem;
     border: none;
-    font-size: 1rem;
     cursor: pointer;
+    font-size: 1rem;
     transition: 0.3s ease-in-out;
-    position: relative;
-    z-index: 10;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn:hover {
@@ -127,115 +92,96 @@
     border: 2px solid black;
 }
 
-@media(max-width:600px) {
-    .projects .section-title {
-        font-size: 2.5rem;
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    background-color: #000;
+    color: #fff;
+}
+
+.project-card:hover p {
+    color: #fff;
+}
+
+.project-card:hover .btn {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.project-card:hover .btn:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: #000;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media(max-width: 1024px) {
+    .projects {
+        padding: 3rem 8%;
     }
-}
 
-@media (max-width: 400px) {
-    .projects .section-title {
-        font-size: 2rem;
-        text-align: center;
-    }
-}
-
-@media(max-width:380px) {
-    .project-card {
-        width: 100%;
-        padding: 1rem 0.5rem;
-    }
-}
-
-.recent {
-    padding: 4rem 12%;
-    max-width: 100vw;
-    overflow: hidden;
-    box-sizing: border-box;
-}
-
-/* Responsive Design */
-@media(max-width: 768px) {
     .projects-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
-        width: 100%;
     }
-    
+
     .project-card {
-        padding: 1.5rem 1.5rem;
-        height: 380px;
-        width: 100%;
+        min-height: 400px;
+        padding: 1.8rem;
+    }
+
+    .project-card p {
+        -webkit-line-clamp: 4;
     }
 }
 
-@media(max-width: 600px) {
-    .projects .section-title {
-        font-size: 2.5rem;
+@media(max-width: 768px) {
+    .projects {
+        padding: 3rem 5%;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
-        width: 100%;
     }
-    
+
     .project-card {
-        padding: 1.5rem 1rem;
-        height: 350px;
-        width: 100%;
+        min-height: auto;
+        padding: 1.5rem;
+    }
+
+    .project-card p {
+        -webkit-line-clamp: 5;
     }
 }
 
-@media (max-width: 400px) {
-    .projects .section-title {
-        font-size: 2rem;
-        text-align: center;
+@media(max-width: 480px) {
+    .projects {
+        padding: 2rem 3%;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1rem;
-        width: 100%;
     }
-    
+
     .project-card {
-        padding: 1rem 0.8rem;
-        height: 320px;
-        width: 100%;
+        padding: 1.2rem;
     }
-}
 
-/* Responsive fixes for horizontal scroll */
-@media(max-width: 730px) {
-  .recent {
-    padding: 3rem 5%;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-}
+    .project-card p {
+        -webkit-line-clamp: 6;
+        font-size: 0.9rem;
+    }
 
-@media(max-width: 600px) {
-  .recent {
-    padding: 2rem 3%;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-}
-
-@media(max-width: 400px) {
-  .recent {
-    padding: 1.5rem 2%;
-  }
-  
-  .projects-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
+    .section-title {
+        font-size: 2rem;
+    }
 }
