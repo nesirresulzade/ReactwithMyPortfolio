@@ -140,32 +140,35 @@ li a:hover::before {
     /* Mobil və tablet menyu */
     .nav-links {
         position: absolute;
-        top: 100%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-10px);
-        width: 300px;
-        max-width: 90%;
-        padding: 1.5rem;
+        top: calc(100% + 1rem);
+        left: 0;
+        right: 0;
+        width: 320px;
+        max-width: 90vw;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
         color: white;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         background: rgba(0, 0, 0, 0.95);
-        backdrop-filter: blur(10px);
+        backdrop-filter: blur(15px);
         border-radius: 1rem;
         z-index: 999;
-        margin-top: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
-        display: none;
         opacity: 0;
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     }
 
     .nav-links.active {
-        display: flex;
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
     }
 
     .nav-links li {
@@ -174,15 +177,11 @@ li a:hover::before {
         width: 100%;
         text-align: center;
         opacity: 0;
-        transform: translateY(5px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
+        transition: opacity 0.3s ease;
     }
 
     .nav-links.active li {
         opacity: 1;
-        transform: translateY(0);
-        transition-delay: 0;
-        /* Sağ animasiya tam silindi */
     }
 }
 
@@ -222,8 +221,8 @@ li a:hover::before {
     }
 
     .nav-links {
-        width: 260px;
-        padding: 1rem;
+        width: 300px;
+        padding: 1.5rem 1rem;
     }
 
     .nav-links li {
@@ -248,8 +247,8 @@ li a:hover::before {
     }
 
     .nav-links {
-        width: 250px;
-        padding: 0.8rem;
+        width: 280px;
+        padding: 1.2rem 0.8rem;
         font-size: 0.9rem;
     }
 
