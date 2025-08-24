@@ -7,12 +7,35 @@ import RecentPro from './companentler/RecentPro'
 import Contact from './companentler/Contact'
 import Footer from './companentler/Footer'
 import Loading from './companentler/Loading'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import MobileProjects from './companentler/MobileProjects'
+import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
 
 // Language Context
 export const LanguageContext = createContext();
+
+// Component to handle hash-based navigation
+function HashHandler() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    if (location.hash) {
+      const hash = location.hash.substring(1); // Remove the # symbol
+      
+      // Wait a bit for the page to render, then scroll to section
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 500);
+    }
+  }, [location]);
+
+  return null;
+}
 
 function App() {
   const [currentLanguage, setCurrentLanguage] = useState('az');
@@ -74,16 +97,28 @@ function App() {
       <Router>
         <div className="app">
           {isLoading && <Loading />}
+          <HashHandler />
           
-          <Navbar />
-
-          <Element name='section1'><About /></Element>
-          <Element name='section2'><Experience /></Element>
-          <Element name='section3'><Skills /></Element>
-          <Element name='section4'><RecentPro /></Element>
-          <Element name='section5'><Contact /></Element>
-
-          <Footer />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Navbar />
+                <Element name='section1'><About /></Element>
+                <Element name='section2'><Experience /></Element>
+                <Element name='section3'><Skills /></Element>
+                <Element name='section4'><RecentPro /></Element>
+                <Element name='section5'><Contact /></Element>
+                <Footer />
+              </>
+            } />
+            <Route path="/mobile-projects" element={
+              <>
+                <Navbar />
+                <MobileProjects />
+                <Footer />
+              </>
+            } />
+          </Routes>
         </div>
       </Router>
     </LanguageContext.Provider>
