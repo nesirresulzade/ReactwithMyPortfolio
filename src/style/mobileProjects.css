@@ -14,12 +14,21 @@
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 157, 255, 0.2);
     box-shadow: 0 2px 20px rgba(0, 157, 255, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .header-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .back-btn {
@@ -616,10 +625,19 @@
         background: rgba(255, 255, 255, 0.95);
         border-radius: 0 0 2rem 2rem;
         margin-bottom: 1rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .header-content {
         padding: 0 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .page-title {
@@ -788,10 +806,19 @@
         background: rgba(255, 255, 255, 0.98);
         border-radius: 0 0 1.5rem 1.5rem;
         margin-bottom: 0.5rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .header-content {
         padding: 0 0.8rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .page-title {
@@ -1002,10 +1029,19 @@
         background: rgba(255, 255, 255, 0.99);
         border-radius: 0 0 1.2rem 1.2rem;
         margin-bottom: 0.3rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     
     .header-content {
         padding: 0 0.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
     
     .page-title {

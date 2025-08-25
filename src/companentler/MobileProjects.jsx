@@ -3,6 +3,13 @@ import { Link as RouterLink } from 'react-router-dom';
 import { FaArrowLeft, FaArrowRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import '../style/mobileProjects.css';
 import { LanguageContext } from '../App';
+// Import images instead of using absolute '/src/...' paths so they work in production builds
+import img1 from '../image/scrollimg1.jpg';
+import img2 from '../image/scrollimg2.jpg';
+import img3 from '../image/scrollimg3.jpg';
+import img4 from '../image/scrollimg4.jpg';
+import img5 from '../image/scrollimg5.jpg';
+import img6 from '../image/scrollimg6.jpg';
 
 const MobileProjects = () => {
     const { translations, currentLanguage } = useContext(LanguageContext);
@@ -16,42 +23,42 @@ const MobileProjects = () => {
             id: 1,
             title: translations.notesApp,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg1.jpg",
+            image: img1,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 2,
             title: translations.notesAppLogin,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg2.jpg",
+            image: img2,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 3,
             title: translations.notesAppRules,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg3.jpg",
+            image: img3,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 4,
             title: translations.notesAppHome,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg4.jpg",
+            image: img4,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 5,
             title: translations.notesAppCardDetails,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg5.jpg",
+            image: img5,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 6,
             title: translations.notesAppProfile,
             description: translations.notesAppDescription,
-            image: "/src/image/scrollimg6.jpg",
+            image: img6,
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         }
     ];
