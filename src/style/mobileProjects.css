@@ -29,6 +29,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 1rem;
 }
 
 .back-btn {
@@ -43,6 +44,7 @@
     text-decoration: none;
     transition: all 0.3s ease;
     margin-bottom: 2rem;
+    margin-top: 70px;
 }
 
 .back-btn svg {
@@ -638,6 +640,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-top: 1.5rem;
     }
     
     .page-title {
@@ -659,6 +662,7 @@
         padding: 0.7rem 1.3rem;
         font-size: 0.9rem;
         margin-bottom: 1.5rem;
+        margin-top: 70px;
     }
     
     /* Slider Container - YENİ DİZAYN */
@@ -819,6 +823,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-top: 2rem;
     }
     
     .page-title {
@@ -841,6 +846,7 @@
         padding: 0.6rem 1.2rem;
         font-size: 0.85rem;
         margin-bottom: 1.2rem;
+        margin-top: 50px;
         border-radius: 1.5rem;
     }
     
@@ -1042,6 +1048,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        margin-top: 2.5rem;
     }
     
     .page-title {
@@ -1063,6 +1070,7 @@
         padding: 0.5rem 1rem;
         font-size: 0.8rem;
         margin-bottom: 1rem;
+        margin-top: 60px;
         border-radius: 1.2rem;
     }
     

@@ -71,7 +71,7 @@ const MobileProjects = () => {
     useEffect(() => {
         if (!isPaused) {
             const interval = setInterval(() => {
-                setCurrentSlide((prev) => 
+                setCurrentSlide((prev) =>
                     prev === mobileProjects.length - 1 ? 0 : prev + 1
                 );
             }, 3000); // Change slide every 3 seconds
@@ -81,13 +81,13 @@ const MobileProjects = () => {
     }, [isPaused, mobileProjects.length]);
 
     const nextSlide = () => {
-        setCurrentSlide((prev) => 
+        setCurrentSlide((prev) =>
             prev === mobileProjects.length - 1 ? 0 : prev + 1
         );
     };
 
     const prevSlide = () => {
-        setCurrentSlide((prev) => 
+        setCurrentSlide((prev) =>
             prev === 0 ? mobileProjects.length - 1 : prev - 1
         );
     };
@@ -113,7 +113,7 @@ const MobileProjects = () => {
                         <FaArrowLeft />
                         <span>{translations.backToHome}</span>
                     </RouterLink>
-                                            <h1 className="page-title">{translations.mobileProjectsTitle}</h1>
+                    <h1 className="page-title">{translations.mobileProjectsTitle}</h1>
                     <div className="header-description">
                         <p>{translations.mobileProjectsDescription}</p>
                     </div>
@@ -129,8 +129,8 @@ const MobileProjects = () => {
 
                     <div className="floating-images-container">
                         {mobileProjects.map((project, index) => (
-                            <div 
-                                key={project.id} 
+                            <div
+                                key={project.id}
                                 className={`floating-image ${index === currentSlide ? 'active' : ''}`}
                                 style={{
                                     transform: `translateX(${(index - currentSlide) * 100}%) scale(${index === currentSlide ? 1 : 0.8})`,
@@ -138,8 +138,8 @@ const MobileProjects = () => {
                                     zIndex: index === currentSlide ? 10 : 1
                                 }}
                             >
-                                <img 
-                                    src={project.image} 
+                                <img
+                                    src={project.image}
                                     alt={project.title}
                                     className="project-image"
                                 />
