@@ -117,7 +117,7 @@ const MobileProjects = () => {
             <section className="projects-slider-section">
                 <div className="slider-container">
                     <div className="slider-header">
-                        <h3 className="slider-title">{translations.notesAppTitle}</h3>
+                        <h3 className="slider-title slider-title-desktop">{translations.notesAppTitle}</h3>
                     </div>
 
                     <div className="floating-images-container">
