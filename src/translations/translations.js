@@ -42,6 +42,34 @@ export const translations = {
         viewProject: "Layihəyə Bax",
         liveDemo: "Canlı Demo",
         
+        // Mobile Projects Section
+        mobileProjectsTitle: "Mobil Layihələr",
+        mobileProjectsSubtitle: "Mobil Tətbiqlər",
+        mobileProjectsDescription: "Müasir mobil tətbiqlər yaradırıq. İstifadəçi təcrübəsinə diqqət yetirərək, funksional və gözəl mobil tətbiqlər hazırlayırıq.",
+        backToHome: "Ana Səhifəyə Qayıt",
+        viewOnGitHub: "GitHub-da Bax",
+        viewLiveDemo: "Canlı Demo",
+        notesAppTitle: "Qeydlerim",
+        notesApp: "Qeydlerim / Qeydiyyat",
+        notesAppLogin: "Qeydlerim / Giriş",
+        notesAppRules: "Qeydlerim / Qaydalar",
+        notesAppHome: "Qeydlerim / Əsas Səhifə",
+        notesAppCardDetails: "Qeydlerim / Kart Detallar",
+        notesAppProfile: "Qeydlerim / Profile",
+        notesAppDescription: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+        technologies: "Texnologiyalar",
+        reactNative: "React Native",
+        localStorage: "Local Storage",
+        uiux: "UI/UX",
+        
+        // Features
+        responsiveDesign: "Responsive Design",
+        responsiveDesignDesc: "Bütün cihazlarda mükəmməl görünüş",
+        performance: "Performance",
+        performanceDesc: "Yüksək sürət və optimizasiya",
+        modernUI: "Modern UI/UX",
+        modernUIDesc: "Göz oxşayan və istifadəçi dostu",
+        
         // Contact Section
         contactTitle: "Əlaqə",
         name: "Ad",
@@ -99,6 +127,34 @@ export const translations = {
         projectsTitle: "Recent Projects",
         viewProject: "View Project",
         liveDemo: "Live Demo",
+        
+        // Mobile Projects Section
+        mobileProjectsTitle: "Mobile Projects",
+        mobileProjectsSubtitle: "Mobile Applications",
+        mobileProjectsDescription: "We create modern mobile applications. We develop functional and beautiful mobile apps by paying attention to user experience.",
+        backToHome: "Back to Home",
+        viewOnGitHub: "View on GitHub",
+        viewLiveDemo: "Live Demo",
+        notesAppTitle: "My Notes",
+        notesApp: "My Notes / Registration",
+        notesAppLogin: "My Notes / Login",
+        notesAppRules: "My Notes / Rules",
+        notesAppHome: "My Notes / Home",
+        notesAppCardDetails: "My Notes / Card Details",
+        notesAppProfile: "My Notes / Profile",
+        notesAppDescription: "Mobile notes application. Simple and functional app for managing daily notes.",
+        technologies: "Technologies",
+        reactNative: "React Native",
+        localStorage: "Local Storage",
+        uiux: "UI/UX",
+        
+        // Features
+        responsiveDesign: "Responsive Design",
+        responsiveDesignDesc: "Perfect appearance on all devices",
+        performance: "Performance",
+        performanceDesc: "High speed and optimization",
+        modernUI: "Modern UI/UX",
+        modernUIDesc: "Eye-catching and user-friendly",
         
         // Contact Section
         contactTitle: "Contact",

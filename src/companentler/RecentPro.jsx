@@ -126,7 +126,7 @@ function RecentPro() {
 
         <div className="projects-grid">
           {projects.map((project) => (
-            <div key={project.id} className="project-card" data-aos="fade-up" data-aos-delay={project.id * 200}>
+            <div key={project.id} className="recent-project-card" data-aos="fade-up" data-aos-delay={project.id * 200}>
               <img src={project.image} alt={project.title} />
               <h3>{project.title}</h3>
               <p>{project.description}</p>

@@ -80,6 +80,8 @@
     backdrop-filter: blur(15px);
     border: 1px solid rgba(0, 157, 255, 0.2);
     box-shadow: 0 10px 40px rgba(0, 157, 255, 0.1);
+    position: relative;
+    z-index: 10;
 }
 
 .slider-header {
@@ -87,6 +89,8 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 3rem;
+    position: relative;
+    z-index: 15;
 }
 
 .slider-title {
@@ -96,6 +100,8 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    z-index: 15;
 }
 
 .slider-controls {
@@ -184,7 +190,7 @@
     padding: 1.5rem;
 }
 
-.project-card {
+.mobile-project-card {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 1.5rem;
     overflow: hidden;
@@ -197,7 +203,7 @@
     align-items: center;
 }
 
-.project-card:hover {
+.mobile-project-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 157, 255, 0.2);
     border-color: rgba(0, 157, 255, 0.5);
@@ -219,7 +225,7 @@
     transition: transform 0.3s ease;
 }
 
-.project-card:hover .project-image {
+.mobile-project-card:hover .project-image {
     transform: scale(1.05);
 }
 
@@ -257,11 +263,6 @@
     font-size: 0.9rem;
     color: #009dff;
 }
-
-
-
-
-
 /* Main Content */
 .mobile-projects-main {
     max-width: 1200px;
@@ -421,7 +422,7 @@
 /* Floating Images Container */
 .floating-images-container {
     position: relative;
-    height: 500px;
+    min-height: 600px; /* Changed from fixed height to min-height */
     width: 100vw;
     margin-left: calc(-50vw + 50%);
     display: flex;
@@ -429,19 +430,37 @@
     align-items: center;
     margin: 1rem 0;
     perspective: 1000px;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to visible */
+}
+
+/* Add spacer after floating images */
+.floating-images-container::after {
+    content: '';
+    display: block;
+    height: 100px; /* Space below the floating images */
+    width: 100%;
 }
 
 .floating-image {
     position: absolute;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.floating-image.active {
+    z-index: 10;
 }
 
 .floating-image img {
     width: 300px;
-    height: 500px;
-    object-fit: cover;
+    height: auto; /* Changed from fixed 500px to auto to prevent cropping */
+    max-height: 600px; /* Added max-height to maintain reasonable size */
+    object-fit: contain; /* Changed from cover to contain to show full image */
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     border: 3px solid rgba(255, 255, 255, 0.8);
@@ -465,11 +484,16 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: #009dff;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.8rem 1.5rem;
     border-radius: 1rem;
-    border: 1px solid rgba(0, 157, 255, 0.3);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 2px solid rgba(0, 157, 255, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+    white-space: nowrap; /* Prevent text wrapping */
+    min-width: fit-content; /* Ensure title fits content */
 }
 
 /* Navigation Dots */
@@ -477,28 +501,37 @@
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin: 1rem 0;
+    margin: 3rem 0 1.5rem 0; /* Increased top margin */
+    position: relative;
+    z-index: 15;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
 }
 
 .dot {
-    width: 15px;
-    height: 15px;
+    width: 18px;
+    height: 18px;
     border: none;
     background: rgba(0, 157, 255, 0.3);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.3s ease;
+    border: 2px solid rgba(0, 157, 255, 0.2);
 }
 
 .dot.active {
     background: #009dff;
     transform: scale(1.3);
     box-shadow: 0 0 20px rgba(0, 157, 255, 0.6);
+    border-color: rgba(0, 157, 255, 0.8);
 }
 
 .dot:hover {
     background: rgba(0, 157, 255, 0.6);
     transform: scale(1.2);
+    border-color: rgba(0, 157, 255, 0.5);
 }
 
 /* Action Buttons */
@@ -506,7 +539,13 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-top: 1rem;
+    margin-top: 2rem; /* Increased top margin */
+    position: relative;
+    z-index: 15;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
 }
 
 .action-btn {
@@ -514,15 +553,16 @@
     align-items: center;
     gap: 0.8rem;
     padding: 1.2rem 2.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    border: 2px solid rgba(0, 157, 255, 0.3);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 157, 255, 0.4);
     border-radius: 2rem;
     color: #009dff;
     text-decoration: none;
     transition: all 0.3s ease;
     font-weight: 600;
     font-size: 1.1rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
 }
 
 .action-btn svg {
@@ -533,6 +573,8 @@
 .action-btn:hover {
     transform: translateY(-5px);
     box-shadow: 0 15px 40px rgba(0, 157, 255, 0.3);
+    background: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 157, 255, 0.6);
 }
 
 .github-btn:hover {

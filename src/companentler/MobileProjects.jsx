@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { FaArrowLeft, FaArrowRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import '../style/mobileProjects.css';
+import { LanguageContext } from '../App';
 
 const MobileProjects = () => {
+    const { translations, currentLanguage } = useContext(LanguageContext);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
@@ -12,45 +14,45 @@ const MobileProjects = () => {
     const mobileProjects = [
         {
             id: 1,
-            title: "Qeydlerim / Qeydiyyat",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesApp,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg1.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 2,
-            title: "Qeydlerim / Giriş",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesAppLogin,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg2.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 3,
-            title: "Qeydlerim / Qaydalar",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesAppRules,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg3.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 4,
-            title: "Qeydlerim / Əsas Səhifə",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesAppHome,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg4.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 5,
-            title: "Qeydlerim / Kart Detallar",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesAppCardDetails,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg5.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         },
         {
             id: 6,
-            title: "Qeydlerim / Profile",
-            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            title: translations.notesAppProfile,
+            description: translations.notesAppDescription,
             image: "/src/image/scrollimg6.jpg",
-            technologies: ["React Native", "Local Storage", "UI/UX"]
+            technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         }
     ];
 
@@ -102,11 +104,11 @@ const MobileProjects = () => {
                 <div className="header-content">
                     <RouterLink to="/" className="back-btn">
                         <FaArrowLeft />
-                        <span>Ana Səhifə</span>
+                        <span>{translations.backToHome}</span>
                     </RouterLink>
-                    <h1 className="page-title">Mobil Layihələr</h1>
+                                            <h1 className="page-title">{translations.mobileProjectsTitle}</h1>
                     <div className="header-description">
-                        <p>React Native və mobil texnologiyalar ilə hazırlanmış layihələr</p>
+                        <p>{translations.mobileProjectsDescription}</p>
                     </div>
                 </div>
             </header>
@@ -115,7 +117,7 @@ const MobileProjects = () => {
             <section className="projects-slider-section">
                 <div className="slider-container">
                     <div className="slider-header">
-                        <h3 className="slider-title">Qeydlerim App</h3>
+                        <h3 className="slider-title">{translations.notesAppTitle}</h3>
                     </div>
 
                     <div className="floating-images-container">
@@ -152,13 +154,13 @@ const MobileProjects = () => {
 
                     {/* GitHub and Demo Buttons */}
                     <div className="action-buttons">
-                        <a href="https://github.com" className="action-btn github-btn" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/nesirresulzade/ReactNativeWithMobileApp" className="action-btn github-btn" target="_blank" rel="noopener noreferrer">
                             <FaGithub />
-                            <span>GitHub</span>
+                            <span>{translations.viewOnGitHub}</span>
                         </a>
-                        <a href="https://example.com" className="action-btn demo-btn" target="_blank" rel="noopener noreferrer">
+                        <a href="https://expo.dev/artifacts/eas/bMgTJHVW2beFf3eLjmzcPe.apk" className="action-btn demo-btn" target="_blank" rel="noopener noreferrer">
                             <FaExternalLinkAlt />
-                            <span>Demo</span>
+                            <span>{translations.viewLiveDemo}</span>
                         </a>
                     </div>
                 </div>
@@ -170,11 +172,10 @@ const MobileProjects = () => {
                 <section className="hero-section">
                     <div className="hero-content">
                         <h2 className="hero-title">
-                            <span className="gradient-text">Mobil</span> Təcrübə
+                            <span className="gradient-text">{translations.mobileProjectsSubtitle}</span> {translations.mobileProjectsTitle}
                         </h2>
                         <p className="hero-description">
-                            Modern mobil tətbiqlər yaradırıq. Hər layihə öz hekayəsini danışır və 
-                            istifadəçi təcrübəsini mərkəzə qoyur.
+                            {translations.mobileProjectsDescription}
                         </p>
                     </div>
                 </section>
@@ -184,18 +185,18 @@ const MobileProjects = () => {
                     <div className="features-grid">
                         <div className="feature-card">
                             <div className="feature-icon">📱</div>
-                            <h4>Responsive Design</h4>
-                            <p>Bütün cihazlarda mükəmməl görünüş</p>
+                            <h4>{translations.responsiveDesign}</h4>
+                            <p>{translations.responsiveDesignDesc}</p>
                         </div>
                         <div className="feature-card">
                             <div className="feature-icon">⚡</div>
-                            <h4>Performance</h4>
-                            <p>Yüksək sürət və optimizasiya</p>
+                            <h4>{translations.performance}</h4>
+                            <p>{translations.performanceDesc}</p>
                         </div>
                         <div className="feature-card">
                             <div className="feature-icon">🎨</div>
-                            <h4>Modern UI/UX</h4>
-                            <p>Göz oxşayan və istifadəçi dostu</p>
+                            <h4>{translations.modernUI}</h4>
+                            <p>{translations.modernUIDesc}</p>
                         </div>
                     </div>
                 </section>
