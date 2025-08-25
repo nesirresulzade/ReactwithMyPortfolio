@@ -6,41 +6,70 @@ import '../style/mobileProjects.css';
 const MobileProjects = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
 
     // Mobile layihələr məlumatları
     const mobileProjects = [
         {
             id: 1,
-            title: "Weather App",
-            description: "React Native ilə hazırlanmış hava proqnozu tətbiqi. Real-time məlumatlar və gözəl UI.",
-            image: "/src/image/musicMobilApp.png",
-            technologies: ["React Native", "API", "UI/UX"],
-            github: "#",
-            live: "#"
+            title: "Qeydlerim / Qeydiyyat",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg1.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
         },
         {
             id: 2,
-            title: "Music Player",
-            description: "Mobil musiqi pleyer tətbiqi. Playlist idarəetməsi və audio kontrolları.",
-            image: "/src/image/musicMobilApp.png",
-            technologies: ["React Native", "Audio", "State Management"],
-            github: "#",
-            live: "#"
+            title: "Qeydlerim / Giriş",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg2.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
         },
         {
             id: 3,
-            title: "Task Manager",
-            description: "Gündəlik tapşırıqları idarə etmək üçün mobil tətbiq. Notification və reminder sistemi.",
-            image: "/src/image/musicMobilApp.png",
-            technologies: ["React Native", "Local Storage", "Notifications"],
-            github: "#",
-            live: "#"
+            title: "Qeydlerim / Qaydalar",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg3.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
+        },
+        {
+            id: 4,
+            title: "Qeydlerim / Əsas Səhifə",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg4.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
+        },
+        {
+            id: 5,
+            title: "Qeydlerim / Kart Detallar",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg5.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
+        },
+        {
+            id: 6,
+            title: "Qeydlerim / Profile",
+            description: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+            image: "/src/image/scrollimg6.jpg",
+            technologies: ["React Native", "Local Storage", "UI/UX"]
         }
     ];
 
     useEffect(() => {
         setIsVisible(true);
     }, []);
+
+    // Auto-slide functionality
+    useEffect(() => {
+        if (!isPaused) {
+            const interval = setInterval(() => {
+                setCurrentSlide((prev) => 
+                    prev === mobileProjects.length - 1 ? 0 : prev + 1
+                );
+            }, 3000); // Change slide every 3 seconds
+
+            return () => clearInterval(interval);
+        }
+    }, [isPaused, mobileProjects.length]);
 
     const nextSlide = () => {
         setCurrentSlide((prev) => 
@@ -56,6 +85,14 @@ const MobileProjects = () => {
 
     const goToSlide = (index) => {
         setCurrentSlide(index);
+    };
+
+    const handleSliderHover = () => {
+        setIsPaused(true);
+    };
+
+    const handleSliderLeave = () => {
+        setIsPaused(false);
     };
 
     return (
@@ -74,6 +111,59 @@ const MobileProjects = () => {
                 </div>
             </header>
 
+            {/* Projects Slider Section - Moved to top */}
+            <section className="projects-slider-section">
+                <div className="slider-container">
+                    <div className="slider-header">
+                        <h3 className="slider-title">Qeydlerim App</h3>
+                    </div>
+
+                    <div className="floating-images-container">
+                        {mobileProjects.map((project, index) => (
+                            <div 
+                                key={project.id} 
+                                className={`floating-image ${index === currentSlide ? 'active' : ''}`}
+                                style={{
+                                    transform: `translateX(${(index - currentSlide) * 100}%) scale(${index === currentSlide ? 1 : 0.8})`,
+                                    opacity: index === currentSlide ? 1 : 0.6,
+                                    zIndex: index === currentSlide ? 10 : 1
+                                }}
+                            >
+                                <img 
+                                    src={project.image} 
+                                    alt={project.title}
+                                    className="project-image"
+                                />
+                                <div className="image-title">{project.title}</div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Navigation Dots */}
+                    <div className="navigation-dots">
+                        {mobileProjects.map((_, index) => (
+                            <button
+                                key={index}
+                                className={`dot ${index === currentSlide ? 'active' : ''}`}
+                                onClick={() => goToSlide(index)}
+                            />
+                        ))}
+                    </div>
+
+                    {/* GitHub and Demo Buttons */}
+                    <div className="action-buttons">
+                        <a href="https://github.com" className="action-btn github-btn" target="_blank" rel="noopener noreferrer">
+                            <FaGithub />
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://example.com" className="action-btn demo-btn" target="_blank" rel="noopener noreferrer">
+                            <FaExternalLinkAlt />
+                            <span>Demo</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
             {/* Main Content */}
             <main className="mobile-projects-main">
                 {/* Hero Section */}
@@ -86,78 +176,6 @@ const MobileProjects = () => {
                             Modern mobil tətbiqlər yaradırıq. Hər layihə öz hekayəsini danışır və 
                             istifadəçi təcrübəsini mərkəzə qoyur.
                         </p>
-                    </div>
-                </section>
-
-                {/* Projects Slider Section */}
-                <section className="projects-slider-section">
-                    <div className="slider-container">
-                        <div className="slider-header">
-                            <h3 className="slider-title">Layihələr</h3>
-                            <div className="slider-controls">
-                                <button onClick={prevSlide} className="control-btn">
-                                    <FaArrowLeft />
-                                </button>
-                                <button onClick={nextSlide} className="control-btn">
-                                    <FaArrowRight />
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="slider-wrapper">
-                            <div 
-                                className="slider-track"
-                                style={{
-                                    transform: `translateX(-${currentSlide * 100}%)`
-                                }}
-                            >
-                                {mobileProjects.map((project, index) => (
-                                    <div key={project.id} className="slide">
-                                        <div className="project-card">
-                                            <div className="project-image-container">
-                                                <img 
-                                                    src={project.image} 
-                                                    alt={project.title}
-                                                    className="project-image"
-                                                />
-                                                <div className="project-overlay">
-                                                    <div className="project-links">
-                                                        <a href={project.github} className="project-link">
-                                                            <FaGithub />
-                                                        </a>
-                                                        <a href={project.live} className="project-link">
-                                                            <FaExternalLinkAlt />
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="project-content">
-                                                <h4 className="project-title">{project.title}</h4>
-                                                <p className="project-description">{project.description}</p>
-                                                <div className="project-technologies">
-                                                    {project.technologies.map((tech, techIndex) => (
-                                                        <span key={techIndex} className="tech-tag">
-                                                            {tech}
-                                                        </span>
-                                                    ))}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* Slider Indicators */}
-                        <div className="slider-indicators">
-                            {mobileProjects.map((_, index) => (
-                                <button
-                                    key={index}
-                                    className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                                    onClick={() => goToSlide(index)}
-                                />
-                            ))}
-                        </div>
                     </div>
                 </section>
 
