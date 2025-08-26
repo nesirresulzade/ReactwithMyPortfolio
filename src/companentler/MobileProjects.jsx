@@ -175,18 +175,6 @@ const MobileProjects = () => {
 
             {/* Main Content */}
             <main className="mobile-projects-main">
-                {/* Hero Section */}
-                <section className="hero-section">
-                    <div className="hero-content">
-                        <h2 className="hero-title">
-                            <span className="gradient-text">{translations.mobileProjectsSubtitle}</span> {translations.mobileProjectsTitle}
-                        </h2>
-                        <p className="hero-description">
-                            {translations.mobileProjectsDescription}
-                        </p>
-                    </div>
-                </section>
-
                 {/* Features Section */}
                 <section className="features-section">
                     <div className="features-grid">
