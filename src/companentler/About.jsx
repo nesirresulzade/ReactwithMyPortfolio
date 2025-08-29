@@ -6,6 +6,51 @@ import { LanguageContext } from '../App';
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
 
+  const handleDownloadCV = () => {
+    try {
+      // CV faylının yolu
+      const cvPath = '/RƏSULZADƏ NƏSİR.pdf';
+      
+      // Faylın mövcudluğunu yoxla
+      fetch(cvPath, { method: 'HEAD' })
+        .then(response => {
+          if (response.ok) {
+            // Yeni link elementi yaradır
+            const link = document.createElement('a');
+            link.href = cvPath;
+            link.download = 'RƏSULZADƏ NƏSİR.pdf';
+            link.target = '_blank';
+            
+            // Linki click et və təmizlə
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          } else {
+            console.error('CV faylı tapılmadı');
+            alert('CV faylı tapılmadı. Zəhmət olmasa yenidən cəhd edin.');
+          }
+        })
+        .catch(error => {
+          console.error('CV endirilmə xətası:', error);
+          alert('CV endirilmə xətası. Zəhmət olmasa yenidən cəhd edin.');
+        });
+    } catch (error) {
+      console.error('Gözlənilməz xəta:', error);
+      alert('Gözlənilməz xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
+    }
+  };
+
+  const handleContactClick = () => {
+    // Contact section-ına scroll et
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  };
+
   return (
     <>
       <section id="about" className="about">
@@ -27,8 +72,8 @@ function About() {
             </div>
 
             <div className="btn-group" data-aos="fade-up" data-aos-delay="1000">
-              <div className="btn">{translations.downloadCV}</div>
-              <div className="btn">{translations.contact}</div>
+              <button className="btn" onClick={handleDownloadCV}>{translations.downloadCV}</button>
+              <button className="btn" onClick={handleContactClick}>{translations.contact}</button>
             </div>
 
             <div className="socials" data-aos="fade-up" data-aos-delay="1200">
