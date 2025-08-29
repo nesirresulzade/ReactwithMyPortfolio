@@ -16,21 +16,21 @@ export const translations = {
         
         // Experience Section
         experienceTitle: "Təcrübə",
-        frontendDev: "Frontend Development",
-        frontendYears: "5 il",
-        frontendDesc: "React, JavaScript, HTML, CSS ilə müasir web tətbiqləri yaradıram.",
+        frontendDev: "Frontend (Başlanğıc səviyyə)",
+        frontendYears: "0–1 il",
+        frontendDesc: "HTML, CSS, JavaScript və React əsaslarını öyrənir, kiçik layihələr və responsiv səhifələr qururam.",
         
-        graphicDesign: "Qrafik Dizayn",
-        graphicYears: "3 il",
-        graphicDesc: "Adobe Photoshop, Figma ilə vizual dizayn və UI/UX layihələri.",
+        graphicDesign: "UI/UX əsasları",
+        graphicYears: "Başlanğıc",
+        graphicDesc: "Figma ilə sadə interfeyslər, rəng tipoqrafiya və dizayn prinsiplərinin əsasları.",
         
-        systemDesign: "Sistem Dizaynı",
-        systemYears: "2 il",
-        systemDesc: "Mürəkkəb sistemlərin arxitekturası və planlanması.",
+        systemDesign: "Git və Versiya Nəzarəti",
+        systemYears: "Başlanğıc",
+        systemDesc: "Git/GitHub ilə versiyalaşdırma, branch, commit və pull request axınları.",
         
-        contentManager: "Kontent Meneceri",
-        contentYears: "1 il",
-        contentDesc: "Web saytlar üçün məzmun yaradılması və idarə edilməsi.",
+        contentManager: "Portfel və Öyrənmə",
+        contentYears: "Davam edir",
+        contentDesc: "Kiçik layihələr hazırlayıb portfeli genişləndirir, bilikləri praktikada möhkəmləndirirəm.",
         
         // Skills Section
         skillsTitle: "Bacarıqlar",
@@ -138,21 +138,21 @@ export const translations = {
         
         // Experience Section
         experienceTitle: "Experience",
-        frontendDev: "Frontend Development",
-        frontendYears: "5 years",
-        frontendDesc: "Creating modern web applications with React, JavaScript, HTML, CSS.",
+        frontendDev: "Frontend (Beginner)",
+        frontendYears: "0–1 year",
+        frontendDesc: "Learning HTML, CSS, JavaScript and React fundamentals. Building small projects and responsive pages.",
         
-        graphicDesign: "Graphic Design",
-        graphicYears: "3 years",
-        graphicDesc: "Visual design and UI/UX projects with Adobe Photoshop, Figma.",
+        graphicDesign: "UI/UX Basics",
+        graphicYears: "Beginner",
+        graphicDesc: "Simple interfaces in Figma, basics of color, typography and design principles.",
         
-        systemDesign: "System Design",
-        systemYears: "2 years",
-        systemDesc: "Architecture and planning of complex systems.",
+        systemDesign: "Git & Version Control",
+        systemYears: "Beginner",
+        systemDesc: "Using Git/GitHub for versioning, branches, commits and pull requests.",
         
-        contentManager: "Content Manager",
-        contentYears: "1 year",
-        contentDesc: "Content creation and management for websites.",
+        contentManager: "Portfolio & Learning",
+        contentYears: "Ongoing",
+        contentDesc: "Practicing with small projects, improving portfolio and strengthening fundamentals.",
         
         // Skills Section
         skillsTitle: "Skills",
