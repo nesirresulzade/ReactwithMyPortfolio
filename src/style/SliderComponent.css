@@ -1,0 +1,229 @@
+.coverflow-carousel-container {
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+.coverflow-carousel .carousel .slide {
+  background: transparent !important;
+  width: 100% !important;
+}
+
+.coverflow-carousel .carousel .slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* Ensure explicit sizing for slider images */
+.coverflow-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* Force override of react-responsive-carousel defaults (keep selector simple) */
+.coverflow-image {
+  width: 100% !important;
+  display: block !important;
+}
+
+/* Mobile: make images fully visible without cropping */
+@media (max-width: 768px) {
+  .coverflow-image {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 85vh !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .coverflow-image {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 80vh !important;
+  }
+}
+
+/* Mobile Carousel Design */
+@media (max-width: 768px) {
+  .coverflow-carousel .carousel .slider-wrapper { overflow: hidden; width: 100vw; }
+  .coverflow-carousel-container {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .coverflow-carousel .carousel .slide {
+    width: 100vw !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .coverflow-carousel .carousel .slide img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 85vh; /* keep same as selected to avoid jump */
+    min-height: 420px;
+    min-width: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    transition: none !important;
+  }
+  
+  .coverflow-navigation {
+    margin-top: 20px;
+    justify-content: center;
+  }
+  
+  .coverflow-dot {
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+  }
+
+  /* Active slide grows, others shrink */
+  .coverflow-carousel .carousel .slide { opacity: 0; visibility: hidden; z-index: 1; }
+  .coverflow-carousel .carousel .slide.selected { opacity: 1; visibility: visible; z-index: 3; }
+  .coverflow-carousel .carousel .slide:not(.selected) img { transform: none; filter: brightness(0.96); width: auto; max-width: 100%; }
+  .coverflow-carousel .carousel .slide.selected img {
+    transform: none;
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 85vh;
+    min-height: 420px;
+    object-fit: contain;
+    transition: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .coverflow-carousel .carousel .slider-wrapper { overflow: hidden; width: 100vw; }
+  .coverflow-carousel-container {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  .coverflow-carousel .carousel .slide {
+    width: 100vw !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+  }
+  
+  .coverflow-carousel .carousel .slide img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 80vh; /* keep same as selected to avoid jump */
+    min-height: 320px;
+    min-width: 300px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    transition: none !important;
+  }
+  
+  .coverflow-navigation {
+    margin-top: 15px;
+    justify-content: center;
+  }
+  
+  .coverflow-dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 3px;
+  }
+
+  /* Active slide grows, others shrink (small mobile) */
+  .coverflow-carousel .carousel .slide { opacity: 0; visibility: hidden; z-index: 1; }
+  .coverflow-carousel .carousel .slide.selected { opacity: 1; visibility: visible; z-index: 3; }
+  .coverflow-carousel .carousel .slide:not(.selected) img { transform: none; filter: brightness(0.96); width: auto; max-width: 100%; }
+  .coverflow-carousel .carousel .slide.selected img {
+    transform: none;
+    width: 100vw;
+    max-width: 100vw;
+    max-height: 80vh;
+    min-height: 320px;
+    object-fit: contain;
+    transition: none !important;
+  }
+}
+
+.coverflow-carousel .carousel .slide:hover img {
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.coverflow-slide {
+  transition: transform 0.6s ease, opacity 0.6s ease;
+  opacity: 0.5;
+  transform: scale(0.8) translateX(0);
+}
+
+.coverflow-slide.active {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  z-index: 2;
+}
+
+.coverflow-carousel .control-arrow {
+  display: none;
+  /* oxları gizlət */
+}
+
+.coverflow-navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.coverflow-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  border: none;
+  background: #bbb;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.coverflow-dot.active {
+  background: #6a0dad;
+  /* bənövşəyi aktiv rəng */
+}
+
+/* Desktop sizing: enlarge images on large screens */
+@media (min-width: 1025px) {
+  .coverflow-carousel-container {
+    max-width: 1600px;
+  }
+  .coverflow-carousel .carousel .slider-wrapper { width: 100% !important; overflow: hidden; }
+  .coverflow-carousel .carousel .slide { width: 100% !important; height: auto !important; }
+  .coverflow-carousel .carousel .slide img,
+  .coverflow-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 85vh !important;
+    object-fit: contain !important;
+  }
+}

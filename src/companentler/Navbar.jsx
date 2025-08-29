@@ -36,6 +36,14 @@ function Navbar() {
       return;
     }
     
+    // Special handling for real-projects
+    if (sectionId === 'real-projects') {
+      if (location.pathname !== '/real-projects') {
+        navigate('/real-projects');
+      }
+      return;
+    }
+    
     // If we're not on the home page, navigate there with hash
     if (location.pathname !== '/') {
       window.location.href = `/#${sectionId}`;

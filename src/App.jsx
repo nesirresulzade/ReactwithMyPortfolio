@@ -8,6 +8,7 @@ import Contact from './companentler/Contact'
 import Footer from './companentler/Footer'
 import Loading from './companentler/Loading'
 import MobileProjects from './companentler/MobileProjects'
+import RealProjects from './companentler/RealProjects'
 import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
@@ -115,6 +116,13 @@ function App() {
               <>
                 <Navbar />
                 <MobileProjects />
+                <Footer />
+              </>
+            } />
+            <Route path="/real-projects" element={
+              <>
+                <Navbar />
+                <RealProjects />
                 <Footer />
               </>
             } />

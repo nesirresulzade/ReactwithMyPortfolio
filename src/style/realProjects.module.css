@@ -1,0 +1,287 @@
+/* ------------------- Real Projects Page Styles ------------------- */
+.real-projects-page {
+    min-height: 100vh;
+    background: linear-gradient(to right, #ffffff, #d6eaf8);
+    color: #333;
+    overflow-x: hidden;
+    animation: realFadeInUp 0.8s ease-out;
+}
+
+@keyframes realFadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ------------------- Header Section ------------------- */
+.real-projects-header {
+    padding: 2rem 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 157, 255, 0.2);
+    box-shadow: 0 2px 20px rgba(0, 157, 255, 0.1);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.real-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.real-back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: rgba(0, 157, 255, 0.1);
+    border: 1px solid rgba(0, 157, 255, 0.3);
+    border-radius: 2rem;
+    color: #009dff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    margin-top: 70px;
+}
+
+.real-back-btn:hover {
+    background: rgba(0, 157, 255, 0.2);
+    border-color: rgba(0, 157, 255, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 157, 255, 0.3);
+}
+
+.real-page-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #009dff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.real-header-description p {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ------------------- Project Sections ------------------- */
+.real-project-section {
+    padding: 4rem 0;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.real-project-container {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* ------------------- Project Header ------------------- */
+.real-project-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.real-project-logo {
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.hra-logo,
+.khazarsoft-logo {
+    width: 120px;
+    height: auto;
+    max-height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+.hra-logo:hover,
+.khazarsoft-logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+.real-project-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin: 1rem 0;
+    color: #333;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(45deg, #009dff, #ff00ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+}
+
+.real-project-subtitle {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 500;
+    text-align: center;
+}
+
+/* ------------------- Slider Container ------------------- */
+.real-slider-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2rem;
+    padding: 2rem;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 157, 255, 0.2);
+    box-shadow: 0 10px 40px rgba(0, 157, 255, 0.1);
+    position: relative;
+    z-index: 10;
+}
+
+/* ------------------- Action Buttons ------------------- */
+.real-action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.real-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.real-github-btn {
+    background: rgba(0, 157, 255, 0.1);
+    border: 1px solid rgba(0, 157, 255, 0.3);
+    color: #009dff;
+}
+
+.real-github-btn:hover {
+    background: rgba(0, 157, 255, 0.2);
+    border-color: rgba(0, 157, 255, 0.5);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 157, 255, 0.4);
+}
+
+.real-demo-btn {
+    background: linear-gradient(45deg, #009dff, #ff00ff);
+    color: white;
+}
+
+.real-demo-btn:hover {
+    background: linear-gradient(45deg, #ff00ff, #009dff);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 157, 255, 0.3);
+}
+
+/* ------------------- Responsive ------------------- */
+@media (max-width: 1024px) {
+    .real-floating-images-container {
+        height: 340px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .real-header-content,
+    .real-project-header,
+    .real-project-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .real-page-title {
+        font-size: 2.5rem;
+    }
+
+    .real-project-title {
+        font-size: 2rem;
+    }
+
+    .real-project-subtitle {
+        font-size: 1rem;
+    }
+
+    .hra-logo,
+    .khazarsoft-logo {
+        width: 100px;
+        max-height: 60px;
+    }
+
+    .real-action-buttons {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .real-action-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .real-page-title {
+        font-size: 2rem;
+    }
+
+    .real-project-title {
+        font-size: 1.8rem;
+    }
+
+    .real-project-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .hra-logo,
+    .khazarsoft-logo {
+        width: 80px;
+        max-height: 50px;
+    }
+
+    .real-action-btn {
+        width: 100%;
+        max-width: 250px;
+        padding: 0.7rem 1.3rem;
+        font-size: 0.9rem;
+    }
+}
