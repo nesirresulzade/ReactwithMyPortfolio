@@ -66,6 +66,21 @@ export const translations = {
         project2Image3: "Khazarsoft - Xidmətlər",
         project2Image4: "Khazarsoft - Blog",
         project2Image5: "Khazarsoft - Haqqımızda",
+        
+        // Admin Panel Images
+        project3Title: "High Result Academy Admin Panel",
+        project3Subtitle: "İdarəetmə paneli",
+        project3Image1: "HRA Admin - Ölkə idarəetməsi",
+        project3Image2: "HRA Admin - Universitet idarəetməsi", 
+        project3Image3: "HRA Admin - Əlaqə idarəetməsi",
+        project3Image4: "HRA Admin - Şərh idarəetməsi",
+        
+        project4Title: "Khazarsoft Admin Panel",
+        project4Subtitle: "İdarəetmə paneli",
+        project4Image1: "Khazarsoft Admin - Portfolio idarəetməsi",
+        project4Image2: "Khazarsoft Admin - Əlaqə idarəetməsi",
+        project4Image3: "Khazarsoft Admin - Blog idarəetməsi",
+        project4Image4: "Khazarsoft Admin - Xidmətlər idarəetməsi",
         feature1Title: "E-commerce",
         feature1Desc: "Tam funksional online mağaza",
         feature2Title: "Performance",
@@ -188,6 +203,21 @@ export const translations = {
         project2Image3: "Khazarsoft - Services",
         project2Image4: "Khazarsoft - Blog",
         project2Image5: "Khazarsoft - About",
+        
+        // Admin Panel Images
+        project3Title: "High Result Academy Admin Panel",
+        project3Subtitle: "Administration panel",
+        project3Image1: "HRA Admin - Country management",
+        project3Image2: "HRA Admin - University management",
+        project3Image3: "HRA Admin - Contact management", 
+        project3Image4: "HRA Admin - Comment management",
+        
+        project4Title: "Khazarsoft Admin Panel",
+        project4Subtitle: "Administration panel",
+        project4Image1: "Khazarsoft Admin - Portfolio management",
+        project4Image2: "Khazarsoft Admin - Contact management",
+        project4Image3: "Khazarsoft Admin - Blog management",
+        project4Image4: "Khazarsoft Admin - Services management",
         feature1Title: "E-commerce",
         feature1Desc: "Full-featured online store",
         feature2Title: "Performance",
