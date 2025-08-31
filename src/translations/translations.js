@@ -42,6 +42,12 @@ export const translations = {
         viewProject: "Layihəyə Bax",
         liveDemo: "Canlı Demo",
         
+        // Side Navigator
+        realProjectsTooltip: "Real Layihələr",
+        realProjectsDesc: "Professional layihələr",
+        mobileProjectsTooltip: "Mobil Tətbiqlər",
+        mobileProjectsDesc: "Mobil tətbiqlər",
+        
         // Mobile Projects Section
         mobileProjectsTitle: "Mobil Layihələr",
         mobileProjectsSubtitle: "Mobil Tətbiqlər",
@@ -133,7 +139,12 @@ export const translations = {
         
         // Footer
         allRightsReserved: "Bütün hüquqlar qorunur",
-        copyright: "© Bütün hüquqlar qorunur | Nasir Rəsulzadə"
+        copyright: "© Bütün hüquqlar qorunur | Nasir Rəsulzadə",
+        
+        // Error Messages
+        cvFileNotFound: "CV faylı tapılmadı. Zəhmət olmasa yenidən cəhd edin.",
+        cvDownloadError: "CV endirilmə xətası. Zəhmət olmasa yenidən cəhd edin.",
+        unexpectedError: "Gözlənilməz xəta baş verdi. Zəhmət olmasa yenidən cəhd edin."
     },
     
     en: {
@@ -178,6 +189,12 @@ export const translations = {
         projectsTitle: "Recent Projects",
         viewProject: "View Project",
         liveDemo: "Live Demo",
+        
+        // Side Navigator
+        realProjectsTooltip: "Real Projects",
+        realProjectsDesc: "Professional projects",
+        mobileProjectsTooltip: "Mobile Apps",
+        mobileProjectsDesc: "Mobile applications",
         
         // Mobile Projects Section
         mobileProjectsTitle: "Mobile Projects",
@@ -270,6 +287,11 @@ export const translations = {
         
         // Footer
         allRightsReserved: "All Rights Reserved",
-        copyright: "© All Rights Reserved | Nasir Rasulzada"
+        copyright: "© All Rights Reserved | Nasir Rasulzada",
+        
+        // Error Messages
+        cvFileNotFound: "CV file not found. Please try again.",
+        cvDownloadError: "CV download error. Please try again.",
+        unexpectedError: "An unexpected error occurred. Please try again."
     }
 };

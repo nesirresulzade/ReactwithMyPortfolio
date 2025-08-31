@@ -40,6 +40,19 @@
     font-weight: 700;
 }
 
+.lang-btn:disabled {
+    color: #009dff;
+    background: rgba(0, 157, 255, 0.2);
+    font-weight: 700;
+    cursor: default;
+    opacity: 0.8;
+}
+
+.lang-btn:disabled:hover {
+    color: #009dff;
+    background: rgba(0, 157, 255, 0.2);
+}
+
 .separator {
     color: #ccc;
     font-weight: 300;

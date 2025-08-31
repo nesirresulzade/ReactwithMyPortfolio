@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import '../style/experience.css';
-import Mypp2 from '../image/mypp2.jpeg'
 import MyPicture from "../image/myImage.jpg"
 import { LanguageContext } from '../App';
 

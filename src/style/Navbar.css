@@ -22,7 +22,7 @@
     font-size: 1.3rem;
     font-weight: 600;
     text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s linear;
 }
 
 .logo:hover {
@@ -62,7 +62,7 @@
     left: 0;
     top: 25px;
     border-radius: 1rem;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s linear;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
@@ -94,7 +94,7 @@
     left: 0;
     top: 25px;
     border-radius: 1rem;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s linear;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
@@ -195,7 +195,7 @@ li a::before {
     left: 0;
     top: 25px;
     border-radius: 1rem;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s linear;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
@@ -218,7 +218,7 @@ li a:hover::before {
     color: white;
     cursor: pointer;
     text-wrap: nowrap;
-    transition: 0.3s ease-in-out;
+    transition: all 0.3s linear;
     background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
 }
 
@@ -386,7 +386,7 @@ li a:hover::before {
         left: 0;
         top: 100%;
         border-radius: 1rem;
-        transition: 0.3s ease-in-out;
+        transition: all 0.3s linear;
         background: linear-gradient(to right, rgb(0, 157, 255), rgb(255, 0, 255));
     }
 

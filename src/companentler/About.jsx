@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import Mypp from '../image/mypp.jpeg'
+import Mypp from '../image/updateLogoPhoto.png'
 import '../style/about.css'
 import { LanguageContext } from '../App';
 
@@ -27,16 +27,16 @@ function About() {
             document.body.removeChild(link);
           } else {
             console.error('CV faylı tapılmadı');
-            alert('CV faylı tapılmadı. Zəhmət olmasa yenidən cəhd edin.');
+            alert(translations.cvFileNotFound);
           }
         })
         .catch(error => {
           console.error('CV endirilmə xətası:', error);
-          alert('CV endirilmə xətası. Zəhmət olmasa yenidən cəhd edin.');
+          alert(translations.cvDownloadError);
         });
     } catch (error) {
       console.error('Gözlənilməz xəta:', error);
-      alert('Gözlənilməz xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.');
+      alert(translations.unexpectedError);
     }
   };
 

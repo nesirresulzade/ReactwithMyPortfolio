@@ -6,9 +6,10 @@ import Skills from './companentler/Skills'
 import RecentPro from './companentler/RecentPro'
 import Contact from './companentler/Contact'
 import Footer from './companentler/Footer'
-import Loading from './companentler/Loading'
+
 import MobileProjects from './companentler/MobileProjects'
 import RealProjects from './companentler/RealProjects'
+import SideNavigator from './companentler/SideNavigator'
 import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
@@ -39,10 +40,9 @@ function HashHandler() {
 }
 
 function App() {
-  const [currentLanguage, setCurrentLanguage] = useState('az');
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  // Local storage'dan dil seçimini yüklə
+  // Load language selection from local storage
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
@@ -50,40 +50,18 @@ function App() {
     }
   }, []);
 
-  // Dil dəyişdikdə local storage'a yadda saxla və səhifəni yenilə
+  // Save language to local storage when changed
   const handleLanguageChange = (language) => {
     setCurrentLanguage(language);
     localStorage.setItem('language', language);
-    console.log('Language changed to:', language); // Debug üçün
-    
-    // Loading göstər və localStorage-a yadda saxla
-    setIsLoading(true);
-    localStorage.setItem('isLoading', 'true');
-    
-    // Qısa bir gecikmədən sonra səhifəni yenilə
-    setTimeout(() => {
-      window.location.reload();
-    }, 500);
+    console.log('Language changed to:', language); // Debug purpose
   };
 
-  // Səhifə yükləndikdə loading-i yoxla və deaktiv et
+  // Check loading state when page loads and deactivate
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
     if (savedLanguage) {
       setCurrentLanguage(savedLanguage);
-    }
-    
-    // Loading state-i yoxla
-    const loadingState = localStorage.getItem('isLoading');
-    if (loadingState === 'true') {
-      // Loading göstər və sonra deaktiv et
-      setIsLoading(true);
-      
-      // Qısa müddət sonra loading-i gizlət və localStorage-dan sil
-      setTimeout(() => {
-        setIsLoading(false);
-        localStorage.removeItem('isLoading');
-      }, 1000);
     }
   }, []);
 
@@ -97,7 +75,7 @@ function App() {
     }}>
       <Router>
         <div className="app">
-          {isLoading && <Loading />}
+
           <HashHandler />
           
           <Routes>
@@ -110,6 +88,7 @@ function App() {
                 <Element name='section4'><RecentPro /></Element>
                 <Element name='section5'><Contact /></Element>
                 <Footer />
+                <SideNavigator />
               </>
             } />
             <Route path="/mobile-projects" element={
@@ -117,6 +96,7 @@ function App() {
                 <Navbar />
                 <MobileProjects />
                 <Footer />
+                <SideNavigator />
               </>
             } />
             <Route path="/real-projects" element={
@@ -124,6 +104,7 @@ function App() {
                 <Navbar />
                 <RealProjects />
                 <Footer />
+                <SideNavigator />
               </>
             } />
           </Routes>
