@@ -31,10 +31,12 @@ function SideNavigator() {
   // Navigation functions
   const handleRealProjects = () => {
     navigate('/real-projects');
+    window.scrollTo(0, 0);
   };
 
   const handleMobileProjects = () => {
     navigate('/mobile-projects');
+    window.scrollTo(0, 0);
   };
 
   // Check if current page is active
