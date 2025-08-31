@@ -42,11 +42,15 @@ function HashHandler() {
 function App() {
   const [currentLanguage, setCurrentLanguage] = useState('en');
 
-  // Load language selection from local storage
+  // Load language selection from local storage only if it exists
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
+    if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'az')) {
       setCurrentLanguage(savedLanguage);
+    } else {
+      // Set default language to English if no valid saved language
+      setCurrentLanguage('en');
+      localStorage.setItem('language', 'en');
     }
   }, []);
 
@@ -57,13 +61,13 @@ function App() {
     console.log('Language changed to:', language); // Debug purpose
   };
 
-  // Check loading state when page loads and deactivate
-  useEffect(() => {
-    const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setCurrentLanguage(savedLanguage);
-    }
-  }, []);
+  // Remove duplicate useEffect
+  // useEffect(() => {
+  //   const savedLanguage = localStorage.getItem('language');
+  //   if (savedLanguage) {
+  //     setCurrentLanguage(savedLanguage);
+  //   }
+  // }, []);
 
   const currentTranslations = translations[currentLanguage];
 

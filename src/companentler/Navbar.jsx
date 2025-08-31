@@ -6,7 +6,6 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
-  const [isSkillsDropdownOpen, setIsSkillsDropdownOpen] = useState(false);
   const { translations, currentLanguage, onLanguageChange } = useContext(LanguageContext);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,13 +14,8 @@ function Navbar() {
     setIsActive(!isActive);
   };
 
-  const toggleSkillsDropdown = () => {
-    setIsSkillsDropdownOpen(!isSkillsDropdownOpen);
-  };
-
   const closeMenu = () => {
     setIsActive(false);
-    setIsSkillsDropdownOpen(false);
   };
 
   // Navigation function that handles both page navigation and section scrolling
@@ -61,7 +55,6 @@ function Navbar() {
     const handleScroll = () => {
       if (isActive) {
         setIsActive(false);
-        setIsSkillsDropdownOpen(false);
       }
     };
 
@@ -91,28 +84,10 @@ function Navbar() {
             {translations.skills}
           </button>
         </li>
-        <li className="dropdown-container">
-          <div className="nav-link dropdown-trigger" onClick={toggleSkillsDropdown}>
+        <li>
+          <button onClick={() => handleNavigation('projects')} className="nav-link">
             {currentLanguage === 'az' ? 'Layihələr' : 'Projects'}
-            <i className={`dropdown-arrow ${isSkillsDropdownOpen ? 'open' : ''}`}></i>
-          </div>
-          <ul className={`dropdown-menu ${isSkillsDropdownOpen ? 'open' : ''}`}>
-            <li>
-              <button onClick={() => handleNavigation('projects')} className="dropdown-link">
-                {currentLanguage === 'az' ? 'Lahiyeler' : 'Projects'}
-              </button>
-            </li>
-            <li>
-              <button onClick={() => handleNavigation('real-projects')} className="dropdown-link">
-                {currentLanguage === 'az' ? 'Real Layihələr' : 'Real Projects'}
-              </button>
-            </li>
-            <li>
-              <button onClick={() => handleNavigation('mobile-projects')} className="dropdown-link">
-                {currentLanguage === 'az' ? 'Mobil Layihələr' : 'Mobile Projects'}
-              </button>
-            </li>
-          </ul>
+          </button>
         </li>
         <li>
           <button onClick={() => handleNavigation('contact')} className="nav-link">
