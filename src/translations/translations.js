@@ -108,6 +108,18 @@ export const translations = {
         notesAppCardDetails: "Qeydlerim / Kart Detallar",
         notesAppProfile: "Qeydlerim / Profile",
         notesAppDescription: "Mobil qeyd tətbiqi. Gündəlik qeydləri idarə etmək üçün sadə və funksional tətbiq.",
+        
+        // Tap Game Project
+        tapGameTitle: "Tap Game",
+        tapGameLogin: "Tap Game / Giriş",
+        tapGameSignup: "Tap Game / Qeydiyyat", 
+        tapGameHome: "Tap Game / Ana Səhifə",
+        tapGameProfile: "Tap Game / Profil",
+        tapGameRules: "Tap Game / Qaydalar",
+        tapGameLeaderboard: "Tap Game / Liderboard",
+        tapGameSearch: "Tap Game / Axtarış",
+        tapGameDescription: "Mobil oyun tətbiqi. Tap oyunu ilə əyləncəli vaxt keçirin və rəqabət edin.",
+        
         technologies: "Texnologiyalar",
         reactNative: "React Native",
         localStorage: "Local Storage",
@@ -262,6 +274,18 @@ export const translations = {
         notesAppCardDetails: "My Notes / Card Details",
         notesAppProfile: "My Notes / Profile",
         notesAppDescription: "Mobile notes application. Simple and functional app for managing daily notes.",
+        
+        // Tap Game Project
+        tapGameTitle: "Tap Game",
+        tapGameLogin: "Tap Game / Login",
+        tapGameSignup: "Tap Game / Sign Up", 
+        tapGameHome: "Tap Game / Home",
+        tapGameProfile: "Tap Game / Profile",
+        tapGameRules: "Tap Game / Rules",
+        tapGameLeaderboard: "Tap Game / Leaderboard",
+        tapGameSearch: "Tap Game / Search",
+        tapGameDescription: "Mobile game application. Have fun and compete with the tap game.",
+        
         technologies: "Technologies",
         reactNative: "React Native",
         localStorage: "Local Storage",
