@@ -18,6 +18,7 @@ function Skills() {
       { name: "CSS3", icon: CSSIcon, isSvg: true },
       { name: "JavaScript (ES6+)", icon: JSIcon, isSvg: true },
       { name: "React.js", icon: ReactIcon, isSvg: true },
+      { name: "React Native", icon: ReactIcon, isSvg: true },
       { name: "Responsive Design", icon: "bi bi-phone" },
       { name: "Git", icon: "bi bi-git" },
       { name: "RESTful APIs", icon: "bi bi-code-slash" },
@@ -41,11 +42,11 @@ function Skills() {
     <>
       <section id="skills" className="skills">
         <h2 className="section-title" data-aos="fade-down">{translations.skillsTitle}</h2>
-        
+
         <div className="skills-container">
           {Object.entries(skillsData).map(([category, skills], categoryIndex) => (
-            <div 
-              key={category} 
+            <div
+              key={category}
               className="skills-category"
               data-aos="fade-up"
               data-aos-delay={categoryIndex * 200}
@@ -53,19 +54,19 @@ function Skills() {
               <h3 className="category-title">{category}</h3>
               <div className="skills-grid">
                 {skills.map((skill, skillIndex) => (
-                                     <div 
-                     key={skill.name} 
-                     className="skill-item"
-                     data-aos="zoom-in"
-                     data-aos-delay={categoryIndex * 200 + skillIndex * 100}
-                   >
-                     {skill.isSvg ? (
-                       <img src={skill.icon} alt={skill.name} className="skill-svg-icon" />
-                     ) : (
-                       <i className={skill.icon}></i>
-                     )}
-                     <span>{skill.name}</span>
-                   </div>
+                  <div
+                    key={skill.name}
+                    className="skill-item"
+                    data-aos="zoom-in"
+                    data-aos-delay={categoryIndex * 200 + skillIndex * 100}
+                  >
+                    {skill.isSvg ? (
+                      <img src={skill.icon} alt={skill.name} className="skill-svg-icon" />
+                    ) : (
+                      <i className={skill.icon}></i>
+                    )}
+                    <span>{skill.name}</span>
+                  </div>
                 ))}
               </div>
             </div>
