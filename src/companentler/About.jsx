@@ -9,7 +9,7 @@ function About() {
   const handleDownloadCV = () => {
     try {
       // CV faylının yolu
-      const cvPath = '/RƏSULZADƏ NƏSİR.pdf';
+      const cvPath = '/Nasir Rasulzadeh.pdf';
       
       // Faylın mövcudluğunu yoxla
       fetch(cvPath, { method: 'HEAD' })
@@ -18,7 +18,7 @@ function About() {
             // Yeni link elementi yaradır
             const link = document.createElement('a');
             link.href = cvPath;
-            link.download = 'RƏSULZADƏ NƏSİR.pdf';
+            link.download = 'Nasir Rasulzadeh.pdf';
             link.target = '_blank';
             
             // Linki click et və təmizlə
