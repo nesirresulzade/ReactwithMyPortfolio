@@ -10,7 +10,7 @@ import Footer from './companentler/Footer'
 import MobileProjects from './companentler/MobileProjects'
 import RealProjects from './companentler/RealProjects'
 import SideNavigator from './companentler/SideNavigator'
-import { BrowserRouter as Router, Route, Routes, useLocation, useNavigate } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
 
@@ -60,14 +60,6 @@ function App() {
     localStorage.setItem('language', language);
     console.log('Language changed to:', language); // Debug purpose
   };
-
-  // Remove duplicate useEffect
-  // useEffect(() => {
-  //   const savedLanguage = localStorage.getItem('language');
-  //   if (savedLanguage) {
-  //     setCurrentLanguage(savedLanguage);
-  //   }
-  // }, []);
 
   const currentTranslations = translations[currentLanguage];
 

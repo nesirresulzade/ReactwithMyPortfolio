@@ -43,7 +43,7 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 100px;
 }
 
 .real-back-btn {
@@ -226,6 +226,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
+        margin-top: 100px;
     }
 
     .real-page-title {

@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import '../style/contact.css'
 import { LanguageContext } from '../App';
+import Button from './Button';
 
 function Contact() {
   const { translations } = useContext(LanguageContext);
@@ -142,15 +143,26 @@ function Contact() {
             <i className="bi bi-chat-dots"></i>
           </div>
 
-          <button 
-            type="submit" 
-            className="btn primary-btn" 
-            data-aos="fade-up" 
-            data-aos-delay="400"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Göndərilir...' : translations.sendMessage}
-          </button>
+          <div data-aos="fade-up" data-aos-delay="400">
+            <Button 
+              type="submit"
+              label={isSubmitting ? 'Göndərilir...' : translations.sendMessage}
+              variant="filled"
+              color="dark"
+              size="sm"
+              disabled={isSubmitting}
+              style={{
+                '--btn-bg': 'linear-gradient(45deg, #007bff, #0056b3)',
+                '--btn-hover-bg': 'linear-gradient(45deg, #0056b3, #004299)',
+                '--btn-color': '#fff',
+                '--btn-border-color': 'transparent',
+                '--btn-radius': '9999px',
+                '--btn-padding-y': '0.55rem',
+                '--btn-padding-x': '1.3rem',
+                '--btn-font-size': '16px',
+              }}
+            />
+          </div>
 
           {submitStatus === 'success' && (
             <div className="success-message" data-aos="fade-up">

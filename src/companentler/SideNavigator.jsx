@@ -120,11 +120,17 @@ function SideNavigator() {
 
         {/* Tooltip Container */}
         <div className={`absolute right-full mr-4 top-0 transition-all duration-300 ease-out ${
-          (isHovered || isTouched) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
+          (isVisible || isHovered || isTouched) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
         } ${isTouched ? 'block' : 'hidden xl:block'}`}>
           <div className="flex flex-col space-y-4">
             {/* Real Projects Tooltip */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px]">
+            <div 
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px] cursor-pointer"
+              onClick={handleRealProjects}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleRealProjects(); }}
+            >
               <div className="flex items-center space-x-2">
                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full"></div>
                 <span className="text-xs md:text-sm font-medium text-gray-800">
@@ -137,7 +143,13 @@ function SideNavigator() {
             </div>
 
             {/* Mobile Projects Tooltip */}
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px]">
+            <div 
+              className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px] cursor-pointer"
+              onClick={handleMobileProjects}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') handleMobileProjects(); }}
+            >
               <div className="flex items-center space-x-2">
                 <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full"></div>
                 <span className="text-xs md:text-sm font-medium text-gray-800">

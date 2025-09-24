@@ -1,0 +1,91 @@
+.nsr-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--btn-radius, 1.6rem);
+  padding: var(--btn-padding-y, 0.45rem) var(--btn-padding-x, 0.9rem);
+  border: 2px solid var(--btn-border-color, transparent);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: var(--btn-font-size, 16px) !important;
+  line-height: 1.05;
+  text-wrap: nowrap;
+  transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  background: var(--btn-bg, white);
+  color: var(--btn-color, black);
+}
+
+.nsr-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.nsr-btn__label {
+  position: relative;
+  z-index: 1;
+  font-size: inherit;
+}
+
+.nsr-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 157, 255, 0.35), transparent);
+  transition: left 0.8s ease;
+}
+
+.nsr-btn:hover::before {
+  left: 100%;
+}
+
+/* Variants */
+.nsr-btn--filled {
+  background: var(--btn-bg, #000);
+  color: var(--btn-color, #fff);
+}
+
+.nsr-btn--filled:hover {
+  background: var(--btn-hover-bg, #111);
+  color: var(--btn-hover-color, #fff);
+  transform: scale(1.02);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.nsr-btn--outline {
+  background: var(--btn-bg, transparent);
+  color: var(--btn-color, #000);
+}
+
+.nsr-btn--outline:hover {
+  background: var(--btn-hover-bg, #000);
+  color: var(--btn-hover-color, #fff);
+  transform: scale(1.02);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive sizing */
+@media (max-width: 768px) {
+  .nsr-btn {
+    padding: var(--btn-padding-y, 0.4rem) var(--btn-padding-x, 0.8rem);
+    font-size: var(--btn-font-size, 16px) !important;
+    border-radius: var(--btn-radius, 1.4rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .nsr-btn {
+    padding: var(--btn-padding-y, 0.35rem) var(--btn-padding-x, 0.7rem);
+    font-size: var(--btn-font-size, 16px) !important;
+    border-radius: var(--btn-radius, 1.2rem);
+  }
+}
+
+

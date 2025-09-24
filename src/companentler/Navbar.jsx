@@ -18,6 +18,17 @@ function Navbar() {
     setIsActive(false);
   };
 
+  const handleLogoClick = () => {
+    closeMenu();
+    if (location.pathname !== '/') {
+      navigate('/');
+      // ensure scroll to top after navigation
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   // Navigation function that handles both page navigation and section scrolling
   const handleNavigation = (sectionId) => {
     closeMenu();
@@ -64,9 +75,9 @@ function Navbar() {
 
   return (
     <header className="header">
-      <a href="#" className="logo" data-aos="fade-right" data-aos-delay="100">
+      <button onClick={handleLogoClick} className="logo" data-aos="fade-right" data-aos-delay="100">
         <span>Nasir Rasulzada</span>
-      </a>
+      </button>
 
       <ul className={`nav-links ${isActive ? 'active' : ''}`} data-aos="fade-down" data-aos-delay="300">
         <li>
@@ -104,7 +115,7 @@ function Navbar() {
           <span></span>
         </div>
         <button className="visit-btn" data-aos="fade-left" data-aos-delay="700">
-          <a href="https://github.com/nesirresulzade/partfolio">{translations.visitGitHub}</a>
+          <a href="https://github.com/nesirresulzade">{translations.visitGitHub}</a>
         </button>
       </div>
     </header>

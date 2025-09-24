@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Mypp from '../image/updateLogoPhoto.png'
 import '../style/about.css'
 import { LanguageContext } from '../App';
+import Button from './Button';
 
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
@@ -72,8 +73,22 @@ function About() {
             </div>
 
             <div className="btn-group" data-aos="fade-up" data-aos-delay="1000">
-              <button className="btn" onClick={handleDownloadCV}>{translations.downloadCV}</button>
-              <button className="btn" onClick={handleContactClick}>{translations.contact}</button>
+              <Button 
+                label={translations.downloadCV}
+                onClick={handleDownloadCV}
+                size="sm"
+                variant="filled"
+                color="dark"
+                style={{ '--btn-radius': '9999px', '--btn-font-size': '16px', fontSize: '16px', '--btn-padding-y': '0.5rem', '--btn-padding-x': '1.1rem' }}
+              />
+              <Button 
+                label={translations.contact}
+                onClick={handleContactClick}
+                size="sm"
+                variant="filled"
+                color="dark"
+                style={{ '--btn-radius': '9999px', '--btn-font-size': '16px', fontSize: '16px', '--btn-padding-y': '0.5rem', '--btn-padding-x': '1.1rem' }}
+              />
             </div>
 
             <div className="socials" data-aos="fade-up" data-aos-delay="1200">

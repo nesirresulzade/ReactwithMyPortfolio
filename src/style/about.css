@@ -38,7 +38,7 @@
     font-weight: 600;
 }
 
-.info-box span {
+.info-box .text span {
     background: linear-gradient(to right, rgb(255, 0, 255), rgb(0, 157, 255));
     background-clip: text;
     color: transparent;

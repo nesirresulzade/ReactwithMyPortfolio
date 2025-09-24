@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { FaArrowLeft, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 import styles from '../style/realProjects.module.css';
 import { LanguageContext } from '../App';
 import SliderComponent from './SliderComponent';
@@ -144,10 +143,6 @@ const RealProjects = () => {
             {/* Header Section */}
             <header className={styles["real-projects-header"]}>
                 <div className={styles["real-header-content"]}>
-                    <RouterLink to="/" className={styles["real-back-btn"]}>
-                        <FaArrowLeft />
-                        <span>{translations.backToHome || "Ana Səhifəyə Qayıt"}</span>
-                    </RouterLink>
                     <h1 className={styles["real-page-title"]}>{translations.realProjectsTitle || "Real Layihələr"}</h1>
                     <div className={styles["real-header-description"]}>
                         <p>{translations.realProjectsDescription || "Həqiqi layihələr və canlı tətbiqlər. Müasir texnologiyalar və professional həllər."}</p>

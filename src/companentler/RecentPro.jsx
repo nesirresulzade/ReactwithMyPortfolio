@@ -94,7 +94,7 @@ function RecentPro() {
       description: currentLanguage === 'az'
         ? "İstifadəçilərə kitabları baxmaq və satın almaq imkanı verən istifadəçi paneli tətbiq. React və müasir web texnologiyaları ilə qurulub."
         : "A use panel app that allows users to browse and purchase books. Built with React and modern web technologies.",
-      liveDemo: "https://user-register-one.vercel.app/new-register",
+      liveDemo: "https://user-register-one.vercel.app",
       github: "https://github.com/nesirresulzade/UserRegister"
     },
     {

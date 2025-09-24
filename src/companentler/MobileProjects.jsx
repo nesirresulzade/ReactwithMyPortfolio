@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import { FaArrowLeft, FaArrowRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { FaArrowRight, FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import '../style/mobileProjects.css';
 import { LanguageContext } from '../App';
 // Import images instead of using absolute '/src/...' paths so they work in production builds
@@ -212,10 +211,6 @@ const MobileProjects = () => {
             {/* Header Section */}
             <header className="mobile-projects-header">
                 <div className="header-content">
-                    <RouterLink to="/" className="back-btn">
-                        <FaArrowLeft />
-                        <span>{translations.backToHome}</span>
-                    </RouterLink>
                     <h1 className="page-title">{translations.mobileProjectsTitle}</h1>
                     <div className="header-description">
                         <p>{translations.mobileProjectsDescription}</p>

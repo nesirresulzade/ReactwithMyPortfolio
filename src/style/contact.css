@@ -55,7 +55,7 @@
 .input-box textarea {
     border-radius: 2rem;
     padding: 1.5rem 5.9rem;
-    resize: vertical;
+    resize: none;
     min-height: 120px;
 }
 
