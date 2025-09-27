@@ -120,6 +120,17 @@ export const translations = {
         tapGameSearch: "Tap Game / Axtarış",
         tapGameDescription: "Mobil oyun tətbiqi. Tap oyunu ilə əyləncəli vaxt keçirin və rəqabət edin.",
         
+        // Fitness App Project
+        fitnessAppTitle: "Fitness Tətbiqi",
+        fitnessAppLogin: "Fitness Tətbiqi / Giriş",
+        fitnessAppSignup: "Fitness Tətbiqi / Qeydiyyat",
+        fitnessAppHome: "Fitness Tətbiqi / Ana Səhifə",
+        fitnessAppWorkout: "Fitness Tətbiqi / Adımlar",
+        fitnessAppProgress: "Fitness Tətbiqi / İrəliləyiş",
+        fitnessAppProfile: "Fitness Tətbiqi / Profil",
+        fitnessAppSettings: "Fitness Tətbiqi / Detallar",
+        fitnessAppDescription: "Fitness tətbiqi. Məşq planları, tərəqqi izləmə və sağlam həyat üçün köməkçi tətbiq.",
+        
         technologies: "Texnologiyalar",
         reactNative: "React Native",
         localStorage: "Local Storage",
@@ -285,6 +296,17 @@ export const translations = {
         tapGameLeaderboard: "Tap Game / Leaderboard",
         tapGameSearch: "Tap Game / Search",
         tapGameDescription: "Mobile game application. Have fun and compete with the tap game.",
+        
+        // Fitness App Project
+        fitnessAppTitle: "Fitness Application",
+        fitnessAppLogin: "Fitness Application / Login",
+        fitnessAppSignup: "Fitness Application / Sign Up",
+        fitnessAppHome: "Fitness Application / Home",
+        fitnessAppWorkout: "Fitness Application / Steps",
+        fitnessAppProgress: "Fitness Application / Progress",
+        fitnessAppProfile: "Fitness Application / Profile",
+        fitnessAppSettings: "Fitness Application / Details",
+        fitnessAppDescription: "Fitness application. Workout plans, progress tracking and health assistant app.",
         
         technologies: "Technologies",
         reactNative: "React Native",
