@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import styles from '../style/realProjects.module.css';
 import { LanguageContext } from '../App';
-import SliderComponent from './SliderComponent';
+import RealProjectsCarousel from './RealProjectsCarousel';
 
 // Hra Images
 import img1 from '../RealProjAllimgs/hraHome.png';
@@ -165,9 +165,11 @@ const RealProjects = () => {
                         <p className={styles["real-project-subtitle"]}>{translations.project1Subtitle || "Təhsil və təlim platforması"}</p>
                     </div>
 
-                    <SliderComponent 
+                    <RealProjectsCarousel 
                         images={project1Images.map(item => item.image)}
                         titles={project1Images.map(item => item.title)}
+                        autoPlay={true}
+                        autoPlayInterval={4000}
                     />
                     
                     {/* Action Buttons for Project 1 */}
@@ -195,9 +197,11 @@ const RealProjects = () => {
                         <p className={styles["real-project-subtitle"]}>{translations.project2Subtitle || "Professional IT xidmətləri"}</p>
                     </div>
 
-                    <SliderComponent 
+                    <RealProjectsCarousel 
                         images={project2Images.map(item => item.image)}
                         titles={project2Images.map(item => item.title)}
+                        autoPlay={true}
+                        autoPlayInterval={4000}
                     />
                     
                     {/* Action Buttons for Project 2 */}
@@ -225,9 +229,11 @@ const RealProjects = () => {
                         <p className={styles["real-project-subtitle"]}>{translations.project3Subtitle || "İdarəetmə paneli"}</p>
                     </div>
 
-                    <SliderComponent 
+                    <RealProjectsCarousel 
                         images={project3Images.map(item => item.image)}
                         titles={project3Images.map(item => item.title)}
+                        autoPlay={true}
+                        autoPlayInterval={4000}
                     />
                     
                     {/* Action Buttons for Project 3 */}
@@ -255,9 +261,11 @@ const RealProjects = () => {
                         <p className={styles["real-project-subtitle"]}>{translations.project4Subtitle || "İdarəetmə paneli"}</p>
                     </div>
 
-                    <SliderComponent 
+                    <RealProjectsCarousel 
                         images={project4Images.map(item => item.image)}
                         titles={project4Images.map(item => item.title)}
+                        autoPlay={true}
+                        autoPlayInterval={4000}
                     />
                     
                     {/* Action Buttons for Project 4 */}

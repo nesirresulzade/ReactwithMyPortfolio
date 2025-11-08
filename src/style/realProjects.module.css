@@ -255,8 +255,16 @@
 
     .real-action-btn {
         width: 100%;
-        max-width: 280px;
+        max-width: 200px;
         justify-content: center;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        gap: 0.4rem;
+    }
+    
+    .real-action-btn svg {
+        width: 14px;
+        height: 14px;
     }
 }
 
@@ -279,10 +287,22 @@
         max-height: 50px;
     }
 
+    .real-action-buttons {
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+    }
+
     .real-action-btn {
         width: 100%;
-        max-width: 250px;
-        padding: 0.7rem 1.3rem;
-        font-size: 0.9rem;
+        max-width: 180px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.85rem;
+        gap: 0.35rem;
+        border-radius: 20px;
+    }
+    
+    .real-action-btn svg {
+        width: 12px;
+        height: 12px;
     }
 }
