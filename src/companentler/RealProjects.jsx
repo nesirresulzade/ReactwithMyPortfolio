@@ -220,7 +220,7 @@ const RealProjects = () => {
                     <div className={styles["real-project-header"]}>
                         <div className={styles["real-project-logo"]}>
                             <img 
-                                src="https://hra-api.azurewebsites.net/uploads/settings/newlogo.png" 
+                                src="https://api.hra.edu.az/uploads/settings/newlogo.png" 
                                 alt="High Result Academy Logo" 
                                 className={styles["hra-logo"]}
                             />
@@ -252,7 +252,7 @@ const RealProjects = () => {
                     <div className={styles["real-project-header"]}>
                         <div className={styles["real-project-logo"]}>
                             <img 
-                                src="https://khazarsoftapi-ceenb2d4fbeuacde.westeurope-01.azurewebsites.net/uploads/settings/khazarsoft.png" 
+                                src="https://r2.khazarsoft.az/uploads/settings/khazarsoft.png" 
                                 alt="Khazarsoft Logo" 
                                 className={styles["khazarsoft-logo"]}
                             />
