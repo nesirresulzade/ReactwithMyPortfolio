@@ -95,7 +95,7 @@ function About() {
               <a href="https://github.com/nesirresulzade/partfolio">
                 <i className="bi bi-github"></i>
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/nasir-rasulzada-28a6b7392/">
                 <i className="bi bi-linkedin"></i>
               </a>
             </div>
