@@ -9,6 +9,7 @@ import Project7 from '../image/bigFinalApp.png';
 import Project8 from '../image/usePanel.png';
 import Project9 from '../image/musicMobilApp.png';
 import Project10 from '../image/ReactWithWeather.png';
+import Project11 from '../image/brainquizSite.png';
 import '../style/recent.css';
 import { LanguageContext } from '../App';
 import ProjectCard from './ProjectCard';
@@ -127,6 +128,18 @@ function RecentPro() {
           : 'A weather app that allows users to browse and purchase books. Built with React and modern web technologies.',
       liveDemo: 'https://reactwith-weather-app.vercel.app/',
       github: 'https://github.com/nesirresulzade/ReactwithWeatherApp',
+    },
+    {
+      id: 11,
+      image: Project11,
+      title: 'Brain Quiz',
+      description:
+        currentLanguage === 'az'
+          ? 'Magistraturaya hazırlaşanlar üçün mövzuları istənilən vaxt tez bir şəkildə təkrar etməyə imkan verən interaktiv test platforması.'
+          : 'An interactive quiz platform that helps master\'s applicants quickly review topics anytime they want.',
+      // Placeholder linklər – sonradan özün yeniləyə bilərsən
+      liveDemo: 'https://brain-quiz-two.vercel.app/',
+      github: 'https://github.com/nesirresulzade/BrainQuiz',
     },
   ];
 
