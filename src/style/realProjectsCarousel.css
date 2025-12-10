@@ -228,13 +228,13 @@
 /* Mobile: 1 card (<768px) */
 @media (max-width: 767px) {
     .real-projects-carousel {
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
     
     .carousel-track {
-        margin: 0 1rem; /* Reduced margin - no buttons */
-        gap: 16px;
-        padding: 0.5rem 0;
+        margin: 0 0.5rem; /* Reduced margin - no buttons */
+        gap: 12px;
+        padding: 0.25rem 0;
     }
     
     .carousel-card {
@@ -247,13 +247,14 @@
     }
     
     .card-title {
-        padding: 0.875rem 1rem;
-        font-size: 0.9375rem;
+        padding: 0.75rem 0.875rem;
+        font-size: 0.875rem;
     }
     
     .carousel-dots {
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         gap: 0.5rem;
+        padding: 0.25rem;
     }
     
     .carousel-dot {
