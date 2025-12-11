@@ -3,9 +3,17 @@ import Mypp from '../image/updateLogoPhoto.png'
 import '../style/about.css'
 import { LanguageContext } from '../App';
 import Button from './Button';
+import { useTypewriter } from '../hooks/useTypewriter';
 
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
+  
+  // Typewriter animation for "Frontend Developer"
+  const { displayedText: subtitleText, isComplete: subtitleComplete } = useTypewriter(
+    translations.aboutSubtitle,
+    100, // 100ms per character
+    800  // Start after 800ms delay
+  );
 
   const handleDownloadCV = () => {
     try {
@@ -69,7 +77,10 @@ function About() {
                 {currentLanguage === 'az' ? 'Salam, mən' : "Hi, I'm"}
               </h3>
               <h1 data-aos="fade-left" data-aos-delay="600">Nasir Rasulzada</h1>
-              <span data-aos="fade-left" data-aos-delay="800">{translations.aboutSubtitle}</span>
+              <span className="animated-subtitle">
+                {subtitleText}
+                {!subtitleComplete && <span className="typing-cursor">|</span>}
+              </span>
             </div>
 
             <div className="btn-group" data-aos="fade-up" data-aos-delay="1000">
