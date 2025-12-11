@@ -136,25 +136,21 @@
     }
     
     .about img {
-        margin-top: 3rem;
+        display: none;
     }
     
     .info-box {
-        margin-top: 2rem;
+        margin-top: 6rem;
     }
 }
 
 @media(max-width:600px) {
-    .about-container img {
-        width: 80vw;
-    }
-    
     .about img {
-        margin-top: 4rem;
+        display: none;
     }
     
     .info-box {
-        margin-top: 1.5rem;
+        margin-top: 7.5rem;
     }
 }
 
@@ -164,15 +160,11 @@
     gap: 1rem;
   }
 
-  .about-container img {
-    width: 90vw;
-  }
-  
   .about img {
-    margin-top: 5rem;
+    display: none;
   }
   
   .info-box {
-    margin-top: 1rem;
+    margin-top: 7rem;
   }
 }

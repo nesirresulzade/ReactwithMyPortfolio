@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useRef } from 'react';
 import Navbar from './companentler/Navbar'
 import About from './companentler/About'
 import Experience from './companentler/Experience'
@@ -10,6 +10,7 @@ import Footer from './companentler/Footer'
 import MobileProjects from './companentler/MobileProjects'
 import RealProjects from './companentler/RealProjects'
 import SideNavigator from './companentler/SideNavigator'
+import RippleAnimation from './components/RippleAnimation'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
@@ -17,9 +18,10 @@ import { translations } from './translations/translations';
 // Language Context
 export const LanguageContext = createContext();
 
-// Component to handle hash-based navigation
+// Component to handle hash-based navigation and initial scroll to About
 function HashHandler() {
   const location = useLocation();
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     // Check if there's a hash in the URL
@@ -33,6 +35,20 @@ function HashHandler() {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 500);
+    } else if (location.pathname === '/' && isInitialMount.current) {
+      // If no hash and we're on home page, scroll to About section on initial load/refresh
+      setTimeout(() => {
+        const aboutElement = document.getElementById('about');
+        if (aboutElement) {
+          aboutElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+      isInitialMount.current = false;
+    }
+    
+    // Reset flag when pathname changes
+    if (location.pathname !== '/') {
+      isInitialMount.current = true;
     }
   }, [location]);
 
@@ -71,7 +87,7 @@ function App() {
     }}>
       <Router>
         <div className="app">
-
+          <RippleAnimation />
           <HashHandler />
           
           <Routes>

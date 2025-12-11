@@ -9,9 +9,9 @@ import App from './App.jsx';
 AOS.init({
   duration: 800,
   easing: 'ease-out-cubic',
-  once: false,
+  once: true, // ✅ Optimizasiya: bir dəfə animasiya
   offset: 50,
-  mirror: true,
+  mirror: false, // ✅ Optimizasiya: mirror deaktiv
   disable: false,
   startEvent: 'DOMContentLoaded',
   initClassName: 'aos-init',
@@ -27,52 +27,28 @@ AOS.init({
   anchorPlacement: 'top-bottom'
 });
 
-// Mobile və tablet üçün AOS-u yenilə
+// ✅ Optimizasiya: Debounced resize handler
+let resizeTimeout;
 window.addEventListener('resize', () => {
-  AOS.refresh();
-});
-
-// Touch events üçün AOS-u yenilə
-window.addEventListener('touchstart', () => {
-  AOS.refresh();
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    AOS.refresh();
+  }, 300); // 300ms debounce
 }, { passive: true });
 
-// Hər scroll zamanı AOS-u yenilə
+// ✅ Optimizasiya: Throttled scroll handler (yalnız lazım olduqda)
 let scrollTimeout;
+let lastScrollTime = 0;
 window.addEventListener('scroll', () => {
-  // Scroll bitdikdən sonra AOS-u yenilə
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    AOS.refresh();
-  }, 100);
+  const now = Date.now();
+  if (now - lastScrollTime > 500) { // 500ms throttle
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      AOS.refresh();
+      lastScrollTime = now;
+    }, 200);
+  }
 }, { passive: true });
-
-// Wheel event üçün də AOS-u yenilə
-window.addEventListener('wheel', () => {
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    AOS.refresh();
-  }, 100);
-}, { passive: true });
-
-// AOS-u məcburi yenilə
-function forceRefreshAOS() {
-  AOS.refresh();
-  // Bütün animasiyaları yenidən başlat
-  document.querySelectorAll('[data-aos]').forEach(element => {
-    element.classList.remove('aos-animate');
-    element.classList.add('aos-init');
-  });
-  // Qısa gecikmədən sonra yenidən başlat
-  setTimeout(() => {
-    AOS.refresh();
-  }, 50);
-}
-
-// Hər 2 saniyədə bir AOS-u yenilə (backup üçün)
-setInterval(() => {
-  AOS.refresh();
-}, 2000);
 
 createRoot(document.getElementById('root')).render(
     <App />
