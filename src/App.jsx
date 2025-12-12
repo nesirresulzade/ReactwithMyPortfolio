@@ -10,7 +10,6 @@ import Footer from './companentler/Footer'
 import MobileProjects from './companentler/MobileProjects'
 import RealProjects from './companentler/RealProjects'
 import SideNavigator from './companentler/SideNavigator'
-import RippleAnimation from './components/RippleAnimation'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
@@ -87,7 +86,6 @@ function App() {
     }}>
       <Router>
         <div className="app">
-          <RippleAnimation />
           <HashHandler />
           
           <Routes>
