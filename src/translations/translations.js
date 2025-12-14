@@ -133,7 +133,7 @@ export const translations = {
         
         technologies: "Texnologiyalar",
         reactNative: "React Native",
-        localStorage: "Local Storage",
+        localStorage: "Firebase",
         uiux: "UI/UX",
         
         // Carousel Section
@@ -310,7 +310,7 @@ export const translations = {
         
         technologies: "Technologies",
         reactNative: "React Native",
-        localStorage: "Local Storage",
+        localStorage: "Firebase",
         uiux: "UI/UX",
         
         // Features
