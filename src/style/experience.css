@@ -5,9 +5,16 @@
     gap: 5rem;
 }
 
-.experience img {
+.experience-photo-card {
     width: 24vw;
     border-radius: 3rem;
+}
+
+.experience-photo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
 }
 
 .experience {
@@ -66,7 +73,7 @@
 }
 
 @media(max-width:768px) {
-    .experience-info img {
+    .experience-photo-card {
         width: 70vw;
     }
 
@@ -108,7 +115,7 @@
 }
 
 @media (max-width: 400px) {
-  .experience-info img {
+  .experience-photo-card {
     width: 90vw;
   }
 

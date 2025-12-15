@@ -32,7 +32,7 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
-    AOS.refresh();
+  AOS.refresh();
   }, 300); // 300ms debounce
 }, { passive: true });
 
@@ -42,9 +42,9 @@ let lastScrollTime = 0;
 window.addEventListener('scroll', () => {
   const now = Date.now();
   if (now - lastScrollTime > 500) { // 500ms throttle
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      AOS.refresh();
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    AOS.refresh();
       lastScrollTime = now;
     }, 200);
   }

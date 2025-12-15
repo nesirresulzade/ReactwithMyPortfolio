@@ -10,7 +10,7 @@ export const translations = {
         
         // About Section
         aboutTitle: "Haqqımda",
-        aboutSubtitle: "Frontend Developer",
+        aboutSubtitle: "Frontend Developer.",
         aboutDescription: "5 ildir ki, web development sahəsində işləyirəm. React, JavaScript və müasir web texnologiyalarında təcrübəliyəm. İstifadəçi təcrübəsinə diqqət yetirərək, gözəl və funksional web saytlar yaradıram.",
         downloadCV: "CV Yüklə",
         
@@ -181,7 +181,7 @@ export const translations = {
         
         // About Section
         aboutTitle: "About",
-        aboutSubtitle: "Frontend Developer",
+        aboutSubtitle: "Frontend Developer.",
         aboutDescription: "I have been working in web development for 5 years. I am experienced in React, JavaScript and modern web technologies. I create beautiful and functional websites by paying attention to user experience.",
         downloadCV: "Download CV",
         

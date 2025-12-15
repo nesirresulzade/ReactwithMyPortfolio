@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 4rem; /* Üstdən məsafə artırıldı */
 }
 
 .about .about-container {
@@ -11,10 +12,18 @@
     gap: 10rem;
 }
 
-.about img {
-    width: 30vw;
-    border-radius: 50%;
+.about-photo-card {
+    width: 34vw;
+    max-width: 360px;
+    border-radius: 32px;
     margin-top: 2rem;
+}
+
+.about-photo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: inherit;
 }
 
 .info-box {
@@ -135,7 +144,7 @@
         flex-direction: column;
     }
     
-    .about img {
+    .about-photo-card {
         display: none;
     }
     
@@ -145,7 +154,7 @@
 }
 
 @media(max-width:600px) {
-    .about img {
+    .about-photo-card {
         display: none;
     }
     
@@ -160,10 +169,6 @@
     gap: 1rem;
   }
 
-  .about img {
-    display: none;
-  }
-  
   .info-box {
     margin-top: 7rem;
   }

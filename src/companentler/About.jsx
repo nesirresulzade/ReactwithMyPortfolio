@@ -4,6 +4,7 @@ import '../style/about.css'
 import { LanguageContext } from '../App';
 import Button from './Button';
 import { useTypewriter } from '../hooks/useTypewriter';
+import ElectricBorder from './ElectricBorder';
 
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
@@ -64,12 +65,24 @@ function About() {
     <>
       <section id="about" className="about">
         <div className="about-container">
-          <img 
-            src={Mypp} 
-            alt="My profile" 
+          <div
             data-aos="fade-right"
             data-aos-delay="200"
-          />
+          >
+            <ElectricBorder
+              color="#5227FF"
+              speed={1}
+              chaos={1}
+              thickness={2}
+              className="about-photo-card"
+            >
+              <img 
+                src={Mypp} 
+                alt="My profile" 
+                className="about-photo-img"
+              />
+            </ElectricBorder>
+          </div>
 
           <div className="info-box">
             <div className="text">

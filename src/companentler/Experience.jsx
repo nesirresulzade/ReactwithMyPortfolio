@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import '../style/experience.css';
 import MyPicture from "../image/myImage.jpg"
 import { LanguageContext } from '../App';
+import ElectricBorder from './ElectricBorder';
 
 function Experience() {
     const { translations } = useContext(LanguageContext);
@@ -42,12 +43,24 @@ function Experience() {
                         </div>
                     </div>
 
-                    <img 
-                        src={MyPicture} 
-                        alt="experience visual" 
+                    <div
                         data-aos="fade-left"
                         data-aos-delay="1000"
-                    />
+                    >
+                        <ElectricBorder
+                            color="#5227FF"
+                            speed={1}
+                            chaos={1}
+                            thickness={2}
+                            className="experience-photo-card"
+                        >
+                            <img 
+                                src={MyPicture} 
+                                alt="experience visual" 
+                                className="experience-photo-img"
+                            />
+                        </ElectricBorder>
+                    </div>
                 </div>
             </section>
         </>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useRef } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Navbar from './companentler/Navbar'
 import About from './companentler/About'
 import Experience from './companentler/Experience'
@@ -17,10 +17,9 @@ import { translations } from './translations/translations';
 // Language Context
 export const LanguageContext = createContext();
 
-// Component to handle hash-based navigation and initial scroll to About
+// Component to handle hash-based navigation and scroll-to-top on route change
 function HashHandler() {
   const location = useLocation();
-  const isInitialMount = useRef(true);
 
   useEffect(() => {
     // Check if there's a hash in the URL
@@ -34,20 +33,9 @@ function HashHandler() {
           element.scrollIntoView({ behavior: 'smooth' });
         }
       }, 500);
-    } else if (location.pathname === '/' && isInitialMount.current) {
-      // If no hash and we're on home page, scroll to About section on initial load/refresh
-      setTimeout(() => {
-        const aboutElement = document.getElementById('about');
-        if (aboutElement) {
-          aboutElement.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 300);
-      isInitialMount.current = false;
-    }
-    
-    // Reset flag when pathname changes
-    if (location.pathname !== '/') {
-      isInitialMount.current = true;
+    } else {
+      // No hash: always scroll to very top on route change / refresh
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
     }
   }, [location]);
 
