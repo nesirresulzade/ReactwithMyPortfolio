@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import '../style/skills.css';
 import ReactIcon from '../assets/react.svg';
 import ViteIcon from '../assets/vitejs-svgrepo-com.svg';
-import NodeIcon from '../assets/node-js-svgrepo-com.svg';
 import FigmaIcon from '../assets/figma-svgrepo-com.svg';
 import CSSIcon from '../assets/css-3-svgrepo-com.svg';
 import HTMLIcon from '../assets/html-5-svgrepo-com.svg';
@@ -31,10 +30,9 @@ function Skills() {
       { name: "Tailwind CSS", icon: "bi bi-wind" }
     ],
     [translations.developmentTools]: [
-      { name: "Node.js", icon: NodeIcon, isSvg: true },
-      { name: "Webpack / Vite", icon: ViteIcon, isSvg: true },
+      { name: "Vite", icon: ViteIcon, isSvg: true },
       { name: "GitHub / GitLab", icon: "bi bi-github" },
-      { name: "Figma", icon: FigmaIcon, isSvg: true }
+      { name: currentLanguage === 'az' ? "Figma ilə işləyə bilir" : "Can work with Figma", icon: FigmaIcon, isSvg: true }
     ]
   };
 
