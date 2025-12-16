@@ -241,22 +241,31 @@ const RealProjectsCarousel = ({
                 {clonedItems.map((image, index) => {
                     const title = clonedTitles[index] || `Slide ${index + 1}`;
                     const isActive = index === currentIndex;
+                    // Only render images near the current index for better performance
+                    const distance = Math.abs(index - currentIndex);
+                    const shouldRender = distance <= Math.ceil(visibleCards) + 1;
+                    // Unique key: use image src + index for stable keys in infinite loop
+                    const uniqueKey = `${typeof image === 'string' ? image : image.src || image}-${index}`;
                     
                     return (
                         <div
-                            key={`card-${index}`}
+                            key={uniqueKey}
                             className={`carousel-card ${isActive ? 'active' : ''}`}
                             role="group"
                             aria-roledescription="slide"
                             aria-label={`Slide ${(index % totalItems) + 1} of ${totalItems}`}
                         >
                             <div className="card-image-wrapper">
-                                <img
-                                    src={image}
-                                    alt={title}
-                                    loading={index < totalItems * 2 ? "eager" : "lazy"}
-                                    className="card-image"
-                                />
+                                {shouldRender ? (
+                                    <img
+                                        src={image}
+                                        alt={title}
+                                        loading={distance <= 1 ? "eager" : "lazy"}
+                                        className="card-image"
+                                    />
+                                ) : (
+                                    <div className="card-image" style={{ backgroundColor: '#f0f0f0' }} />
+                                )}
                             </div>
                             {title && (
                                 <div className="card-title">{title}</div>
@@ -268,9 +277,12 @@ const RealProjectsCarousel = ({
 
             {/* Pagination Dots */}
             <div className="carousel-dots" role="tablist" aria-label="Slide indicators">
-                {images.map((_, index) => (
+                {images.map((image, index) => {
+                    // Use image src or id for stable keys
+                    const uniqueKey = typeof image === 'string' ? image : (image.id || image.src || `dot-${index}`);
+                    return (
                     <button
-                        key={index}
+                        key={uniqueKey}
                         className={`carousel-dot ${index === activeSlideIndex ? 'active' : ''}`}
                         onClick={() => goToSlide(index)}
                         aria-label={`Go to slide ${index + 1}`}
@@ -278,7 +290,8 @@ const RealProjectsCarousel = ({
                         role="tab"
                         tabIndex={index === activeSlideIndex ? 0 : -1}
                     />
-                ))}
+                    );
+                })}
             </div>
         </div>
     );

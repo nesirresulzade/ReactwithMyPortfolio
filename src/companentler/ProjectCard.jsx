@@ -16,7 +16,7 @@ function ProjectCard({
       data-aos="fade-up"
       data-aos-delay={delay}
     >
-      <img src={image} alt={title} />
+      <img src={image} alt={title} loading="lazy" />
       <h3>{title}</h3>
       <p>{description}</p>
       <div className="btn-group">
@@ -39,6 +39,6 @@ function ProjectCard({
   );
 }
 
-export default ProjectCard;
+export default React.memo(ProjectCard);
 
 

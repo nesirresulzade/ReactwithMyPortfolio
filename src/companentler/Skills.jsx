@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import '../style/skills.css';
 import ReactIcon from '../assets/react.svg';
 import ViteIcon from '../assets/vitejs-svgrepo-com.svg';
@@ -11,7 +11,8 @@ import { LanguageContext } from '../App';
 function Skills() {
   const { translations, currentLanguage } = useContext(LanguageContext);
 
-  const skillsData = {
+  // Memoize skillsData to prevent recreation on every render
+  const skillsData = useMemo(() => ({
     [translations.coreTechnologies]: [
       { name: "HTML5", icon: HTMLIcon, isSvg: true },
       { name: "CSS3", icon: CSSIcon, isSvg: true },
@@ -34,7 +35,7 @@ function Skills() {
       { name: "GitHub / GitLab", icon: "bi bi-github" },
       { name: currentLanguage === 'az' ? "Figma ilə işləyə bilir" : "Can work with Figma", icon: FigmaIcon, isSvg: true }
     ]
-  };
+  }), [translations, currentLanguage]);
 
   return (
     <>
@@ -75,4 +76,4 @@ function Skills() {
   );
 }
 
-export default Skills;
+export default React.memo(Skills);

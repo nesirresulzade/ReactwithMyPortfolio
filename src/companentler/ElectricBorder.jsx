@@ -102,10 +102,24 @@ const ElectricBorder = ({
 
   useLayoutEffect(() => {
     if (!rootRef.current || typeof ResizeObserver === 'undefined') return;
-    const ro = new ResizeObserver(() => updateAnim());
+    
+    // Throttle resize observer for better performance
+    let rafId = null;
+    const throttledUpdate = () => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        updateAnim();
+        rafId = null;
+      });
+    };
+    
+    const ro = new ResizeObserver(throttledUpdate);
     ro.observe(rootRef.current);
     updateAnim();
-    return () => ro.disconnect();
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      ro.disconnect();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -27,26 +27,26 @@ AOS.init({
   anchorPlacement: 'top-bottom'
 });
 
-// ✅ Optimizasiya: Debounced resize handler
+// ✅ Optimizasiya: Debounced resize handler (daha uzun debounce)
 let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
-  AOS.refresh();
-  }, 300); // 300ms debounce
+    AOS.refresh();
+  }, 500); // 500ms debounce (artırıldı)
 }, { passive: true });
 
-// ✅ Optimizasiya: Throttled scroll handler (yalnız lazım olduqda)
+// ✅ Optimizasiya: Throttled scroll handler (daha az tez-tez refresh)
 let scrollTimeout;
 let lastScrollTime = 0;
 window.addEventListener('scroll', () => {
   const now = Date.now();
-  if (now - lastScrollTime > 500) { // 500ms throttle
-  clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    AOS.refresh();
+  if (now - lastScrollTime > 1000) { // 1000ms throttle (artırıldı)
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      AOS.refresh();
       lastScrollTime = now;
-    }, 200);
+    }, 300);
   }
 }, { passive: true });
 

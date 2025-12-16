@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import '../style/mobileProjects.css';
 import { LanguageContext } from '../App';
 import HeroSection from './HeroSection';
@@ -31,7 +31,8 @@ import img20 from "../image/FitnessImg/detail.jpg";
 const MobileProjects = () => {
     const { translations } = useContext(LanguageContext);
 
-    const projects = [
+    // Memoize projects array to prevent recreation on every render
+    const projects = useMemo(() => [
         {
             title: translations.notesAppTitle,
             description: translations.notesAppDescription,
@@ -79,7 +80,7 @@ const MobileProjects = () => {
             demoUrl: "https://expo.dev/artifacts/eas/wcvkRxttBA2kuLohw43G4D.apk",
             technologies: [translations.reactNative, translations.localStorage, translations.uiux]
         }
-    ];
+    ], [translations]);
 
     return (
         <div className="mobile-projects-page">
@@ -87,7 +88,7 @@ const MobileProjects = () => {
             
             {projects.map((project, index) => (
                 <ProjectSection
-                    key={project.title}
+                    key={`project-${index}-${project.title}`}
                     title={project.title}
                     description={project.description}
                     images={project.images}
@@ -102,4 +103,4 @@ const MobileProjects = () => {
     );
 };
 
-export default MobileProjects;
+export default React.memo(MobileProjects);

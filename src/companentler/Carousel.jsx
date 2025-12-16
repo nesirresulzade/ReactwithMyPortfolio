@@ -54,9 +54,12 @@ const Carousel = ({
                 </div>
 
                 <div className="floating-images-container">
-                    {images.map((project, index) => (
+                    {images.map((project, index) => {
+                        // Use project.id if available, otherwise use image src + index for unique key
+                        const uniqueKey = project.id || `${project.image || project}-${index}`;
+                        return (
                         <div
-                            key={project.id || index}
+                            key={uniqueKey}
                             className={`floating-image ${index === currentSlide ? 'active' : ''}`}
                             style={{
                                 transform: `translateX(${(index - currentSlide) * 100}%) scale(${index === currentSlide ? 1 : 0.8})`,
@@ -73,19 +76,24 @@ const Carousel = ({
                                 <div className="image-title">{project.title}</div>
                             )}
                         </div>
-                    ))}
+                        );
+                    })}
                 </div>
 
                 {/* Navigation Dots */}
                 <div className="navigation-dots">
-                    {images.map((_, index) => (
+                    {images.map((project, index) => {
+                        // Use project.id or image src for stable keys
+                        const uniqueKey = project.id || `${project.image || project}-dot-${index}`;
+                        return (
                         <button
-                            key={index}
+                            key={uniqueKey}
                             className={`dot ${index === currentSlide ? 'active' : ''}`}
                             onClick={() => goToSlide(index)}
                             aria-label={`Go to slide ${index + 1}`}
                         />
-                    ))}
+                        );
+                    })}
                 </div>
 
                 {/* GitHub and Demo Buttons */}

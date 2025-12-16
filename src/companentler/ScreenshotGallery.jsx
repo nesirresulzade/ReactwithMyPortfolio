@@ -65,7 +65,7 @@ const ScreenshotGallery = ({ images, autoAdvanceInterval = 4000 }) => {
     >
       <AnimatePresence mode="wait">
         <motion.img
-          key={currentIndex}
+          key={images[currentIndex].id || images[currentIndex].image || currentIndex}
           src={images[currentIndex].image}
           alt={images[currentIndex].title || `Screenshot ${currentIndex + 1}`}
           className="screenshot-image"
@@ -79,9 +79,9 @@ const ScreenshotGallery = ({ images, autoAdvanceInterval = 4000 }) => {
 
       {images.length > 1 && (
         <div className="screenshot-dots" aria-label="Screenshot navigation">
-          {images.map((_, index) => (
+          {images.map((image, index) => (
             <button
-              key={index}
+              key={image.id || image.image || index}
               className={`screenshot-dot ${index === currentIndex ? 'active' : ''}`}
               onClick={() => setCurrentIndex(index)}
               aria-label={`Go to screenshot ${index + 1}`}

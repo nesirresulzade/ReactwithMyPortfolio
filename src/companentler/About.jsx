@@ -80,6 +80,8 @@ function About() {
                 src={Mypp} 
                 alt="My profile" 
                 className="about-photo-img"
+                loading="eager"
+                fetchPriority="high"
               />
             </ElectricBorder>
           </div>
@@ -130,4 +132,4 @@ function About() {
   );
 }
 
-export default About;
+export default React.memo(About);

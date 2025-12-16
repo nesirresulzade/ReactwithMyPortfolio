@@ -1,18 +1,38 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, Suspense, lazy, useMemo, useCallback } from 'react';
 import Navbar from './companentler/Navbar'
-import About from './companentler/About'
-import Experience from './companentler/Experience'
-import Skills from './companentler/Skills'
-import RecentPro from './companentler/RecentPro'
-import Contact from './companentler/Contact'
 import Footer from './companentler/Footer'
-
-import MobileProjects from './companentler/MobileProjects'
-import RealProjects from './companentler/RealProjects'
 import SideNavigator from './companentler/SideNavigator'
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom'
 import { Element } from 'react-scroll';
 import { translations } from './translations/translations';
+
+// Lazy load components for better performance
+const About = lazy(() => import('./companentler/About'));
+const Experience = lazy(() => import('./companentler/Experience'));
+const Skills = lazy(() => import('./companentler/Skills'));
+const RecentPro = lazy(() => import('./companentler/RecentPro'));
+const Contact = lazy(() => import('./companentler/Contact'));
+const MobileProjects = lazy(() => import('./companentler/MobileProjects'));
+const RealProjects = lazy(() => import('./companentler/RealProjects'));
+
+// Loading fallback component
+const SectionLoader = () => (
+  <div style={{ 
+    minHeight: '400px', 
+    display: 'flex', 
+    alignItems: 'center', 
+    justifyContent: 'center' 
+  }}>
+    <div style={{ 
+      width: '40px', 
+      height: '40px', 
+      border: '3px solid #f3f3f3',
+      borderTop: '3px solid #5227FF',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }}></div>
+  </div>
+);
 
 // Language Context
 export const LanguageContext = createContext();
@@ -57,21 +77,22 @@ function App() {
     }
   }, []);
 
-  // Save language to local storage when changed
-  const handleLanguageChange = (language) => {
+  // Save language to local storage when changed - memoized with useCallback
+  const handleLanguageChange = useCallback((language) => {
     setCurrentLanguage(language);
     localStorage.setItem('language', language);
     console.log('Language changed to:', language); // Debug purpose
-  };
+  }, []);
 
-  const currentTranslations = translations[currentLanguage];
+  // Memoize context value to prevent unnecessary re-renders
+  const contextValue = useMemo(() => ({
+    currentLanguage,
+    translations: translations[currentLanguage],
+    onLanguageChange: handleLanguageChange
+  }), [currentLanguage, handleLanguageChange]);
 
   return (
-    <LanguageContext.Provider value={{ 
-      currentLanguage, 
-      translations: currentTranslations, 
-      onLanguageChange: handleLanguageChange 
-    }}>
+    <LanguageContext.Provider value={contextValue}>
       <Router>
         <div className="app">
           <HashHandler />
@@ -80,11 +101,21 @@ function App() {
             <Route path="/" element={
               <>
                 <Navbar />
-                <Element name='section1'><About /></Element>
-                <Element name='section2'><Experience /></Element>
-                <Element name='section3'><Skills /></Element>
-                <Element name='section4'><RecentPro /></Element>
-                <Element name='section5'><Contact /></Element>
+                <Suspense fallback={<SectionLoader />}>
+                  <Element name='section1'><About /></Element>
+                </Suspense>
+                <Suspense fallback={<SectionLoader />}>
+                  <Element name='section2'><Experience /></Element>
+                </Suspense>
+                <Suspense fallback={<SectionLoader />}>
+                  <Element name='section3'><Skills /></Element>
+                </Suspense>
+                <Suspense fallback={<SectionLoader />}>
+                  <Element name='section4'><RecentPro /></Element>
+                </Suspense>
+                <Suspense fallback={<SectionLoader />}>
+                  <Element name='section5'><Contact /></Element>
+                </Suspense>
                 <Footer />
                 <SideNavigator />
               </>
@@ -92,7 +123,9 @@ function App() {
             <Route path="/mobile-projects" element={
               <>
                 <Navbar />
-                <MobileProjects />
+                <Suspense fallback={<SectionLoader />}>
+                  <MobileProjects />
+                </Suspense>
                 <Footer />
                 <SideNavigator />
               </>
@@ -100,7 +133,9 @@ function App() {
             <Route path="/real-projects" element={
               <>
                 <Navbar />
-                <RealProjects />
+                <Suspense fallback={<SectionLoader />}>
+                  <RealProjects />
+                </Suspense>
                 <Footer />
                 <SideNavigator />
               </>

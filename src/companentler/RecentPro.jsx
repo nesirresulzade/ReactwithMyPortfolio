@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import Project1 from '../image/projects-1.png';
 import Project2 from '../image/projects-2.png';
 import Project3 from '../image/projects-3.png';
@@ -17,8 +17,8 @@ import ProjectCard from './ProjectCard';
 function RecentPro() {
   const { translations, currentLanguage } = useContext(LanguageContext);
 
-  // Layihə məlumatları - buraya yeni layihələr əlavə edə bilərsiniz
-  const projects = [
+  // Memoize projects array to prevent recreation on every render
+  const projects = useMemo(() => [
     {
       id: 1,
       image: Project1,
@@ -141,7 +141,7 @@ function RecentPro() {
       liveDemo: 'https://brain-quiz-two.vercel.app/',
       github: 'https://github.com/nesirresulzade/BrainQuiz',
     },
-  ];
+  ], [currentLanguage]);
 
   return (
     <section id="projects" className="projects">
@@ -168,4 +168,4 @@ function RecentPro() {
   );
 }
 
-export default RecentPro;
+export default React.memo(RecentPro);
