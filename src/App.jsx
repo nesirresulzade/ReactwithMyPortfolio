@@ -42,21 +42,41 @@ function HashHandler() {
   const location = useLocation();
 
   useEffect(() => {
-    // Check if there's a hash in the URL
-    if (location.hash) {
-      const hash = location.hash.substring(1); // Remove the # symbol
-      
-      // Wait a bit for the page to render, then scroll to section
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 500);
-    } else {
-      // No hash: always scroll to very top on route change / refresh
+    // Handle hash links more robustly: poll until element exists, then scroll.
+    if (!location.hash) {
       window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      return;
     }
+
+    const id = location.hash.substring(1);
+    const prefersReduced = typeof window !== 'undefined' &&
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    let mounted = true;
+    const start = performance.now();
+    const timeout = 3000; // give up after 3s
+    let rafId = null;
+
+    const tryScroll = () => {
+      if (!mounted) return;
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+        return;
+      }
+      if (performance.now() - start < timeout) {
+        rafId = requestAnimationFrame(tryScroll);
+      } else {
+        // fallback: scroll to top if target never appeared
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }
+    };
+
+    // Start on next paint so React can render the target first
+    rafId = requestAnimationFrame(tryScroll);
+
+    return () => { mounted = false; if (rafId) cancelAnimationFrame(rafId); };
   }, [location]);
 
   return null;
@@ -81,7 +101,7 @@ function App() {
   const handleLanguageChange = useCallback((language) => {
     setCurrentLanguage(language);
     localStorage.setItem('language', language);
-    console.log('Language changed to:', language); // Debug purpose
+    // debug log removed for production
   }, []);
 
   // Memoize context value to prevent unnecessary re-renders
