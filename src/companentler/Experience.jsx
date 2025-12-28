@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../style/experience.css';
-import MyPicture from "../image/myImage.jpg"
+import MyPicture from "../image/nasirPP.jpg"
 import { LanguageContext } from '../App';
 import ElectricBorder from './ElectricBorder';
 

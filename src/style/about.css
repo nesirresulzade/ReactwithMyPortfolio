@@ -5,6 +5,40 @@
     margin-top: 4rem; /* Üstdən məsafə artırıldı */
 }
 
+/* Desktop: center the section in the viewport and remove extra top margin */
+@media (min-width: 1025px) {
+    .about {
+        margin-top: 0;
+        min-height: 100vh;
+    }
+
+    .about .about-container {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info-box {
+        margin-top: 0;
+    }
+}
+
+/* Tablet: center the section vertically for medium screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .about {
+        margin-top: 0;
+        min-height: 100vh;
+    }
+
+    .about .about-container {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .info-box {
+        margin-top: 0;
+    }
+}
+
 .about .about-container {
     display: flex;
     align-items: center;
@@ -140,27 +174,20 @@
 }
 
 @media(max-width:768px) {
-    .about-container {
-        flex-direction: column;
-    }
-    
-    .about-photo-card {
-        display: none;
-    }
-    
-    .info-box {
-        margin-top: 6rem;
-    }
 }
 
 @media(max-width:600px) {
-    .about-photo-card {
-        display: none;
-    }
-    
-    .info-box {
-        margin-top: 7.5rem;
-    }
+        .about {
+                margin-top: 1rem;
+        }
+
+        .about-photo-card {
+                display: none;
+        }
+
+        .info-box {
+                margin-top: 1.25rem;
+        }
 }
 
 @media (max-width: 400px) {
@@ -169,7 +196,11 @@
     gap: 1rem;
   }
 
-  .info-box {
-    margin-top: 7rem;
-  }
+    .about {
+        margin-top: 0.8rem;
+    }
+
+    .info-box {
+        margin-top: 1rem;
+    }
 }

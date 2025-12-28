@@ -132,6 +132,16 @@ li a:hover::before {
     z-index: 1001;
 }
 
+/* Hide new toggle by default (desktop) */
+.toggle {
+    display: none;
+}
+
+/* Ensure checkbox is hidden by default */
+#nav-checkbox {
+    display: none;
+}
+
 .menu-icon span {
     display: block;
     width: 100%;
@@ -165,9 +175,73 @@ li a:hover::before {
 
 /* ---------- MEDIA QUERIES ---------- */
 @media(max-width:1024px) {
-    header .menu-icon {
-        display: flex;
-    }
+        header .menu-icon {
+                display: none; /* hide old icon implementation on mobile/tablet */
+        }
+
+        /* New animated toggle (from Uiverse sample) */
+        #nav-checkbox {
+            display: none;
+        }
+
+        .toggle {
+            position: relative;
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-left: 0.5rem; /* left spacing */
+            transition-duration: .5s;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bars {
+            width: 100%;
+            height: 3px;
+            background-color: rgb(176, 92, 255);
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        #bar2 {
+            transition-duration: .8s;
+        }
+
+        #bar1,#bar3 {
+            width: 60%;
+        }
+
+        /* When checked, animate into X */
+        #nav-checkbox:checked + .toggle .bars {
+            position: absolute;
+            transition-duration: .5s;
+        }
+
+        #nav-checkbox:checked + .toggle #bar2 {
+            transform: scaleX(0);
+            transition-duration: .5s;
+        }
+
+        #nav-checkbox:checked + .toggle #bar1 {
+            width: 100%;
+            transform: rotate(45deg);
+            transition-duration: .5s;
+        }
+
+        #nav-checkbox:checked + .toggle #bar3 {
+            width: 100%;
+            transform: rotate(-45deg);
+            transition-duration: .5s;
+        }
+
+        #nav-checkbox:checked + .toggle {
+            transition-duration: .5s;
+            transform: rotate(180deg);
+        }
 
 
 

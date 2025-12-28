@@ -109,11 +109,20 @@ function Navbar() {
 
       <div className="header-right">
         <LanguageSwitcher currentLanguage={currentLanguage} onLanguageChange={onLanguageChange} />
-        <div className={`menu-icon ${isActive ? 'active' : ''}`} onClick={toggleMenu} data-aos="fade-left" data-aos-delay="500">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+
+        {/* Controlled checkbox toggle for mobile/tablet menu (hidden on desktop) */}
+        <input
+          type="checkbox"
+          id="nav-checkbox"
+          checked={isActive}
+          onChange={(e) => setIsActive(e.target.checked)}
+        />
+        <label htmlFor="nav-checkbox" className="toggle" data-aos="fade-left" data-aos-delay="500">
+          <div className="bars" id="bar1"></div>
+          <div className="bars" id="bar2"></div>
+          <div className="bars" id="bar3"></div>
+        </label>
+
         <button className="visit-btn" data-aos="fade-left" data-aos-delay="700">
           <a href="https://github.com/nesirresulzade">{translations.visitGitHub}</a>
         </button>
