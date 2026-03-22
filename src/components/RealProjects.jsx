@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 import styles from '../style/realProjects.module.css';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
 import RealProjectsCarousel from './RealProjectsCarousel';
 
 // Hra Images

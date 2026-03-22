@@ -36,6 +36,8 @@ export const translations = {
         skillsTitle: "Bacarıqlar",
         coreTechnologies: "Əsas Texnologiyalar",
         developmentTools: "Development Alətləri",
+        libraries: "Kitabxanalar",
+        canWorkWithFigma: "Figma ilə işləyə bilir",
         
         // Projects Section
         projectsTitle: "Son Layihələr",
@@ -159,6 +161,11 @@ export const translations = {
         namePlaceholder: "Adınızı daxil edin",
         emailPlaceholder: "Email ünvanınızı daxil edin",
         messagePlaceholder: "Mesajınızı yazın",
+        subject: "Mövzu",
+        subjectPlaceholder: "Mövzunu daxil edin",
+        sending: "Göndərilir...",
+        successMessage: "Mesajınız uğurla göndərildi! Tezliklə sizinlə əlaqə saxlayacağıq.",
+        errorMessage: "Xəta baş verdi. Zəhmət olmasa yenidən cəhd edin.",
         
         // Footer
         allRightsReserved: "Bütün hüquqlar qorunur",
@@ -207,6 +214,8 @@ export const translations = {
         skillsTitle: "Skills",
         coreTechnologies: "Core Technologies",
         developmentTools: "Development Tools",
+        libraries: "Libraries",
+        canWorkWithFigma: "Can work with Figma",
         
         // Projects Section
         projectsTitle: "Recent Projects",
@@ -330,6 +339,11 @@ export const translations = {
         namePlaceholder: "Enter your name",
         emailPlaceholder: "Enter your email address",
         messagePlaceholder: "Write your message",
+        subject: "Subject",
+        subjectPlaceholder: "Enter the subject",
+        sending: "Sending...",
+        successMessage: "Your message has been sent successfully! We will contact you soon.",
+        errorMessage: "An error occurred. Please try again.",
         
         // Footer
         allRightsReserved: "All Rights Reserved",

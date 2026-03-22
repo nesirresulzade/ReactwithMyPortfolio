@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import '../style/mobileProjects.css';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
 import HeroSection from './HeroSection';
 import ProjectSection from './ProjectSection';
 

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../style/loading.css';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
 
 function Loading() {
   const { currentLanguage } = useContext(LanguageContext);

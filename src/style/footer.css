@@ -12,7 +12,7 @@ footer {
     /* Düzəliş */
 }
 
-footer ul {
+.footer-links {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -23,23 +23,19 @@ footer ul {
     list-style: none;
 }
 
-footer ul li {
-    opacity: 0;
-    /* AOS başlanğıc */
-    transform: translateY(20px);
-    /* AOS başlanğıc */
-}
-
-footer ul li a {
+.footer-link-btn {
     color: black;
     font-weight: 600;
     font-size: 1.2rem;
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
+    background: none;
+    border: none;
+    padding: 0;
 }
 
-.footer-link:hover {
+.footer-link-btn:hover {
     color: #009dff;
     transform: translateY(-3px);
 }
@@ -49,19 +45,15 @@ footer ul li a {
     text-align: center;
     color: black;
     margin-top: 1rem;
-    opacity: 0;
-    /* AOS başlanğıc */
-    transform: translateY(20px);
-    /* AOS başlanğıc */
 }
 
 /* Tablet */
 @media(max-width: 1024px) {
-    footer ul {
+    .footer-links {
         gap: 2rem;
     }
 
-    footer ul li a {
+    .footer-link-btn {
         font-size: 1.1rem;
     }
 
@@ -72,11 +64,11 @@ footer ul li a {
 
 /* Mobil */
 @media(max-width: 768px) {
-    footer ul {
+    .footer-links {
         gap: 1.5rem;
     }
 
-    footer ul li a {
+    .footer-link-btn {
         font-size: 1rem;
     }
 
@@ -86,11 +78,11 @@ footer ul li a {
 }
 
 @media(max-width: 600px) {
-    footer ul {
+    .footer-links {
         gap: 1rem;
     }
 
-    footer ul li a {
+    .footer-link-btn {
         font-size: 0.95rem;
     }
 
@@ -100,11 +92,11 @@ footer ul li a {
 }
 
 @media(max-width: 400px) {
-    footer ul {
+    .footer-links {
         gap: 0.5rem;
     }
 
-    footer ul li a {
+    .footer-link-btn {
         font-size: 0.85rem;
     }
 

@@ -8,15 +8,16 @@ function ProjectCard({
   github,
   liveLabel = 'Live Demo',
   githubLabel = 'GitHub',
-  delay = 0,
 }) {
   return (
-    <div
-      className="recent-project-card"
-      data-aos="fade-up"
-      data-aos-delay={delay}
-    >
-      <img src={image} alt={title} loading="lazy" />
+    <div className="recent-project-card">
+      <img 
+        src={image} 
+        alt={title} 
+        loading="lazy" 
+        width="300"
+        height="180"
+      />
       <h3>{title}</h3>
       <p>{description}</p>
       <div className="btn-group">

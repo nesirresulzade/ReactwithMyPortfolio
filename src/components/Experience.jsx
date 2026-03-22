@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import '../style/experience.css';
 import MyPicture from "../image/nasirPP.jpg"
-import { LanguageContext } from '../App';
-import ElectricBorder from './ElectricBorder';
+import { LanguageContext } from '../context/LanguageContext';
+import AnimatedBorder from './AnimatedBorder';
 
 function Experience() {
     const { translations } = useContext(LanguageContext);
@@ -10,32 +10,32 @@ function Experience() {
     return (
         <>
             <section id="experience" className="experience">
-                <h2 className="section-title" data-aos="fade-down">{translations.experienceTitle}</h2>
+                <h2 className="section-title">{translations.experienceTitle}</h2>
 
                 <div className="experience-info">
                     <div className="grid">
-                        <div className="grid-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div className="grid-card">
                             <i className="bi bi-code-slash"></i>
                             <span>{translations.frontendDev}</span>
                             <h3>{translations.frontendYears}</h3>
                             <p>{translations.frontendDesc}</p>
                         </div>
 
-                        <div className="grid-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div className="grid-card">
                             <i className="bi bi-file-code"></i>
                             <span>{translations.graphicDesign}</span>
                             <h3>{translations.graphicYears}</h3>
                             <p>{translations.graphicDesc}</p>
                         </div>
 
-                        <div className="grid-card" data-aos="zoom-in" data-aos-delay="600">
+                        <div className="grid-card">
                             <i className="bi bi-file-code"></i>
                             <span>{translations.systemDesign}</span>
                             <h3>{translations.systemYears}</h3>
                             <p>{translations.systemDesc}</p>
                         </div>
 
-                        <div className="grid-card" data-aos="zoom-in" data-aos-delay="800">
+                        <div className="grid-card">
                             <i className="bi bi-list-ul"></i>
                             <span>{translations.contentManager}</span>
                             <h3>{translations.contentYears}</h3>
@@ -43,23 +43,23 @@ function Experience() {
                         </div>
                     </div>
 
-                    <div
-                        data-aos="fade-left"
-                        data-aos-delay="1000"
-                    >
-                        <ElectricBorder
-                            color="#5227FF"
-                            speed={1}
-                            chaos={1}
-                            thickness={2}
+                    <div>
+                        <AnimatedBorder
+                            color1="#5227FF"
+                            color2="#FF00FF"
+                            borderRadius="3rem"
+                            thickness="2px"
                             className="experience-photo-card"
                         >
                             <img 
                                 src={MyPicture} 
                                 alt="experience visual" 
                                 className="experience-photo-img"
+                                loading="lazy"
+                                width="300"
+                                height="400"
                             />
-                        </ElectricBorder>
+                        </AnimatedBorder>
                     </div>
                 </div>
             </section>

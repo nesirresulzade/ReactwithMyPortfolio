@@ -83,29 +83,10 @@ section {
   gap: 2rem;
 }
 
-/* Mobile Animation Optimizations */
+/* Mobile Optimizations */
 @media (max-width: 768px) {
-  /* Reduce animation duration for mobile */
-  [data-aos] {
-    transition-duration: 600ms !important;
-  }
-  
-  /* Optimize fade animations for mobile */
-  [data-aos="fade-up"],
-  [data-aos="fade-down"],
-  [data-aos="fade-left"],
-  [data-aos="fade-right"] {
-    transition-timing-function: ease-out !important;
-  }
-  
-  /* Reduce delays for mobile */
-  [data-aos-delay] {
-    transition-delay: 0ms !important;
-  }
-  
-  /* Optimize zoom animations for mobile */
-  [data-aos="zoom-in"] {
-    transform: scale(0.95) !important;
+  section {
+    padding: 4rem 5%;
   }
 }
 
@@ -291,4 +272,33 @@ section {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.section-loader {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #5227FF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

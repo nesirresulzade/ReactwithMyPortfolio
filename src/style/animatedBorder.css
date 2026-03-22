@@ -1,0 +1,92 @@
+.animated-border-container {
+  --border-radius: 32px;
+  --border-thickness: 2px;
+  --color-1: #5227FF;
+  --color-2: #FF00FF;
+  --animation-speed: 3s;
+  
+  position: relative;
+  display: inline-block;
+  padding: var(--border-thickness);
+  border-radius: var(--border-radius);
+  background-clip: padding-box;
+  overflow: visible; /* To let the glow show out */
+  isolation: isolate;
+  box-sizing: border-box;
+}
+
+.animated-border-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    var(--color-1) 0%,
+    var(--color-2) 25%,
+    var(--color-1) 50%,
+    var(--color-2) 75%,
+    var(--color-1) 100%
+  );
+  animation: borderRotate var(--animation-speed) linear infinite;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  padding: var(--border-thickness);
+}
+
+/* Optional glow effect */
+.animated-border-glow {
+  position: absolute;
+  inset: calc(-1 * var(--border-thickness));
+  z-index: -3;
+  border-radius: inherit;
+  background: inherit; /* Fallback */
+  background: conic-gradient(
+    from 0deg,
+    var(--color-1) 0%,
+    var(--color-2) 25%,
+    var(--color-1) 50%,
+    var(--color-2) 75%,
+    var(--color-1) 100%
+  );
+  filter: blur(15px);
+  opacity: 0.4;
+  animation: borderRotate var(--animation-speed) linear infinite;
+  pointer-events: none;
+}
+
+.animated-border-inner {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
+  border-radius: calc(var(--border-radius) - var(--border-thickness));
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes borderRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ensure images inside are contained */
+.animated-border-inner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}

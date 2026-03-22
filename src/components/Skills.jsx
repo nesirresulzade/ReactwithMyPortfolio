@@ -6,7 +6,7 @@ import FigmaIcon from '../assets/figma-svgrepo-com.svg';
 import CSSIcon from '../assets/css-3-svgrepo-com.svg';
 import HTMLIcon from '../assets/html-5-svgrepo-com.svg';
 import JSIcon from '../assets/js-svgrepo-com.svg';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
 
 function Skills() {
   const { translations, currentLanguage } = useContext(LanguageContext);
@@ -24,7 +24,7 @@ function Skills() {
       { name: "RESTful APIs", icon: "bi bi-code-slash" },
       { name: "Cross-Browser Compatibility", icon: "bi bi-browser-chrome" }
     ],
-    [currentLanguage === 'az' ? "Kitabxanalar" : "Libraries"]: [
+    [translations.libraries]: [
       { name: "React.js", icon: ReactIcon, isSvg: true },
       { name: "Material UI", icon: "bi bi-palette" },
       { name: "Bootstrap", icon: "bi bi-bootstrap" },
@@ -33,31 +33,27 @@ function Skills() {
     [translations.developmentTools]: [
       { name: "Vite", icon: ViteIcon, isSvg: true },
       { name: "GitHub / GitLab", icon: "bi bi-github" },
-      { name: currentLanguage === 'az' ? "Figma ilə işləyə bilir" : "Can work with Figma", icon: FigmaIcon, isSvg: true }
+      { name: translations.canWorkWithFigma, icon: FigmaIcon, isSvg: true }
     ]
-  }), [translations, currentLanguage]);
+  }), [translations]);
 
   return (
     <>
       <section id="skills" className="skills">
-        <h2 className="section-title" data-aos="fade-down">{translations.skillsTitle}</h2>
+        <h2 className="section-title">{translations.skillsTitle}</h2>
 
         <div className="skills-container">
-          {Object.entries(skillsData).map(([category, skills], categoryIndex) => (
+          {Object.entries(skillsData).map(([category, skills]) => (
             <div
               key={category}
               className="skills-category"
-              data-aos="fade-up"
-              data-aos-delay={categoryIndex * 200}
             >
               <h3 className="category-title">{category}</h3>
               <div className="skills-grid">
-                {skills.map((skill, skillIndex) => (
+                {skills.map((skill) => (
                   <div
                     key={skill.name}
                     className="skill-item"
-                    data-aos="zoom-in"
-                    data-aos-delay={categoryIndex * 200 + skillIndex * 100}
                   >
                     {skill.isSvg ? (
                       <img src={skill.icon} alt={skill.name} className="skill-svg-icon" />

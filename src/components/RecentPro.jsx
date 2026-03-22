@@ -11,7 +11,7 @@ import Project9 from '../image/musicMobilApp.png';
 import Project10 from '../image/ReactWithWeather.png';
 import Project11 from '../image/brainquizSite.png';
 import '../style/recent.css';
-import { LanguageContext } from '../App';
+import { LanguageContext } from '../context/LanguageContext';
 import ProjectCard from './ProjectCard';
 
 function RecentPro() {
@@ -91,19 +91,19 @@ function RecentPro() {
       title: currentLanguage === 'az' ? 'Böyük Final Tətbiq' : 'Big Final App',
       description:
         currentLanguage === 'az'
-          ? 'İstifadəçilərə kitabları baxmaq və satın almaq imkanı verən böyük final tətbiq. React və müasir web texnologiyaları ilə qurulub.'
-          : 'A big final app that allows users to browse and purchase books. Built with React and modern web technologies.',
+          ? 'Tədris müddətində öyrənilən texnologiyaların tətbiq olunduğu kompleks final layihə. React və müasir web texnologiyaları ilə qurulub.'
+          : 'A complex final project applying technologies learned during the course. Built with React and modern web technologies.',
       liveDemo: 'https://big-app-final.vercel.app/',
       github: 'https://github.com/nesirresulzade/BigAPP-Final',
     },
     {
       id: 8,
       image: Project8,
-      title: currentLanguage === 'az' ? 'İstifadəçi Paneli' : 'Use Panel',
+      title: currentLanguage === 'az' ? 'İstifadəçi Paneli' : 'User Panel',
       description:
         currentLanguage === 'az'
-          ? 'İstifadəçilərə kitabları baxmaq və satın almaq imkanı verən istifadəçi paneli tətbiq. React və müasir web texnologiyaları ilə qurulub.'
-          : 'A use panel app that allows users to browse and purchase books. Built with React and modern web technologies.',
+          ? 'İstifadəçilərin qeydiyyatı, idarə edilməsi və profil məlumatlarının göstərildiyi panel tətbiqi. React və müasir web texnologiyaları ilə qurulub.'
+          : 'A user registration, management, and profile display panel application. Built with React and modern web technologies.',
       liveDemo: 'https://user-register-one.vercel.app',
       github: 'https://github.com/nesirresulzade/UserRegister',
     },
@@ -113,8 +113,8 @@ function RecentPro() {
       title: currentLanguage === 'az' ? 'Musiqi Mobil Tətbiq' : 'Music Mobile App',
       description:
         currentLanguage === 'az'
-          ? 'İstifadəçilərə kitabları baxmaq və satın almaq imkanı verən musiqi mobil tətbiq. React və müasir web texnologiyaları ilə qurulub.'
-          : 'A music mobile app that allows users to browse and purchase books. Built with React and modern web technologies.',
+          ? 'Musiqi dinləmək, siyahılara baxmaq və idarə etmək üçün nəzərdə tutulmuş mobil interfeysli tətbiq. React və müasir web texnologiyaları ilə qurulub.'
+          : 'A mobile-interfaced application designed for listening to music, browsing playlists, and management. Built with React and modern web technologies.',
       liveDemo: 'https://music-player-with-react-app.vercel.app/',
       github: 'https://github.com/nesirresulzade/MusicPlayerWithReactApp',
     },
@@ -124,8 +124,8 @@ function RecentPro() {
       title: currentLanguage === 'az' ? 'React ilə Hava' : 'React With Weather',
       description:
         currentLanguage === 'az'
-          ? 'İstifadəçilərə kitabları baxmaq və satın almaq imkanı verən hava tətbiq. React və müasir web texnologiyaları ilə qurulub.'
-          : 'A weather app that allows users to browse and purchase books. Built with React and modern web technologies.',
+          ? 'Hava proqnozunu izləmək üçün React istifadə edərək qurulmuş alternativ hava tətbiqi.'
+          : 'An alternative weather application built using React to track weather forecasts.',
       liveDemo: 'https://reactwith-weather-app.vercel.app/',
       github: 'https://github.com/nesirresulzade/ReactwithWeatherApp',
     },
@@ -145,7 +145,7 @@ function RecentPro() {
 
   return (
     <section id="projects" className="projects">
-      <h2 className="section-title" data-aos="fade-down">
+      <h2 className="section-title">
         {translations.projectsTitle}
       </h2>
 
@@ -160,7 +160,6 @@ function RecentPro() {
             github={project.github}
             liveLabel={translations.liveDemo}
             githubLabel="GitHub"
-            delay={project.id * 200}
           />
         ))}
       </div>
