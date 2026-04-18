@@ -5,10 +5,10 @@ import Button from './Button';
 import { useTypewriter } from '../hooks/useTypewriter';
 
 const images = [
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
-  "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80"
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80&fmt=webp",
+  "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80&fmt=webp",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80&fmt=webp",
+  "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80&fmt=webp"
 ];
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
@@ -79,6 +79,8 @@ function About() {
                 className={`about-photo-img ${index === currentImageIndex ? 'active' : ''}`}
                 loading={index === 0 ? "eager" : "lazy"}
                 fetchPriority={index === 0 ? "high" : "auto"}
+                width="360"
+                height="360"
               />
             ))}
           </div>

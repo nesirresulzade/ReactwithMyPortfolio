@@ -56,7 +56,7 @@ function Skills() {
                     className="skill-item"
                   >
                     {skill.isSvg ? (
-                      <img src={skill.icon} alt="" aria-hidden="true" className="skill-svg-icon" />
+                      <img src={skill.icon} alt="" aria-hidden="true" className="skill-svg-icon" width="48" height="48" loading="lazy" />
                     ) : (
                       <i className={skill.icon} aria-hidden="true"></i>
                     )}
