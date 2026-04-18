@@ -16,7 +16,7 @@ function About() {
   );
 
   const handleDownloadCV = useCallback(() => {
-    const cvPath = '/Nasir Rasulzadeh.pdf';
+    const cvPath = '/Nasir_Rasulzadeh_CV.pdf';
     
     fetch(cvPath, { method: 'HEAD' })
       .then(response => {
