@@ -302,3 +302,23 @@ section {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Custom basic but effective image animation */
+@keyframes softFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+.floating-image-effect {
+  animation: softFloat 4s ease-in-out infinite;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+.floating-image-effect:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  animation-play-state: paused;
+}

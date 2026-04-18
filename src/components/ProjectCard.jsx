@@ -10,7 +10,7 @@ function ProjectCard({
   githubLabel = 'GitHub',
 }) {
   return (
-    <div className="recent-project-card">
+    <article className="recent-project-card">
       <img 
         src={image} 
         alt={title} 
@@ -23,20 +23,20 @@ function ProjectCard({
       <div className="btn-group">
         {liveDemo && (
           <div className="btn">
-            <a href={liveDemo} target="_blank" rel="noopener noreferrer">
+            <a href={liveDemo} target="_blank" rel="noopener noreferrer" aria-label={`${liveLabel} for ${title}`}>
               {liveLabel}
             </a>
           </div>
         )}
         {github && (
           <div className="btn">
-            <a href={github} target="_blank" rel="noopener noreferrer">
+            <a href={github} target="_blank" rel="noopener noreferrer" aria-label={`${githubLabel} for ${title}`}>
               {githubLabel}
             </a>
           </div>
         )}
       </div>
-    </div>
+    </article>
   );
 }
 

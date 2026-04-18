@@ -1,11 +1,15 @@
-import React, { useContext, useCallback, useMemo } from 'react';
-import Mypp from '../image/updateLogoPhoto.png';
+import React, { useContext, useCallback, useMemo, useState, useEffect } from 'react';
 import '../style/about.css';
 import { LanguageContext } from '../context/LanguageContext';
 import Button from './Button';
 import { useTypewriter } from '../hooks/useTypewriter';
-import AnimatedBorder from './AnimatedBorder';
 
+const images = [
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80",
+  "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80"
+];
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
   
@@ -14,6 +18,15 @@ function About() {
     100,
     800
   );
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleDownloadCV = useCallback(() => {
     const cvPath = '/Nasir_Rasulzadeh_CV.pdf';
@@ -57,25 +70,19 @@ function About() {
     <section id="about" className="about" aria-labelledby="about-name">
       <div className="about-container">
         <div>
-          <AnimatedBorder
-            color1="#5227FF"
-            color2="#FF00FF"
-            borderRadius="32px"
-            thickness="2px"
-            className="about-photo-card"
-          >
-            <img 
-              src={Mypp} 
-              alt="Nasir Rasulzada profile" 
-              className="about-photo-img"
-              loading="eager"
-              width="360"
-              height="360"
-              fetchPriority="high"
-            />
-          </AnimatedBorder>
+          <div className="about-photo-card floating-image-effect">
+            {images.map((src, index) => (
+              <img 
+                key={index}
+                src={src} 
+                alt={`Frontend Developer Theme ${index + 1}`} 
+                className={`about-photo-img ${index === currentImageIndex ? 'active' : ''}`}
+                loading={index === 0 ? "eager" : "lazy"}
+                fetchPriority={index === 0 ? "high" : "auto"}
+              />
+            ))}
+          </div>
         </div>
-
         <div className="info-box">
           <div className="text">
             <h3>

@@ -39,9 +39,11 @@ const HeroSection = ({ translations }) => {
       initial="hidden"
       animate={inView ? "visible" : "hidden"}
       variants={containerVariants}
+      aria-labelledby="mobile-hero-title"
     >
       <div className="hero-container">
         <motion.h1 
+          id="mobile-hero-title"
           className="hero-title"
           variants={itemVariants}
         >

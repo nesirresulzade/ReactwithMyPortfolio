@@ -137,15 +137,14 @@ function RecentPro() {
         currentLanguage === 'az'
           ? 'Magistraturaya hazırlaşanlar üçün mövzuları istənilən vaxt tez bir şəkildə təkrar etməyə imkan verən interaktiv test platforması.'
           : 'An interactive quiz platform that helps master\'s applicants quickly review topics anytime they want.',
-      // Placeholder linklər – sonradan özün yeniləyə bilərsən
       liveDemo: 'https://brain-quiz-two.vercel.app/',
       github: 'https://github.com/nesirresulzade/BrainQuiz',
     },
   ], [currentLanguage]);
 
   return (
-    <section id="projects" className="projects">
-      <h2 className="section-title">
+    <section id="projects" className="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title" className="section-title">
         {translations.projectsTitle}
       </h2>
 

@@ -39,8 +39,8 @@ function Skills() {
 
   return (
     <>
-      <section id="skills" className="skills">
-        <h2 className="section-title">{translations.skillsTitle}</h2>
+      <section id="skills" className="skills" aria-labelledby="skills-title">
+        <h2 id="skills-title" className="section-title">{translations.skillsTitle}</h2>
 
         <div className="skills-container">
           {Object.entries(skillsData).map(([category, skills]) => (
@@ -56,9 +56,9 @@ function Skills() {
                     className="skill-item"
                   >
                     {skill.isSvg ? (
-                      <img src={skill.icon} alt={skill.name} className="skill-svg-icon" />
+                      <img src={skill.icon} alt="" aria-hidden="true" className="skill-svg-icon" />
                     ) : (
-                      <i className={skill.icon}></i>
+                      <i className={skill.icon} aria-hidden="true"></i>
                     )}
                     <span>{skill.name}</span>
                   </div>
