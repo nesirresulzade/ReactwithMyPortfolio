@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 function ProjectCard({
   image,
@@ -10,36 +11,58 @@ function ProjectCard({
   githubLabel = 'GitHub',
 }) {
   return (
-    <article className="recent-project-card">
-      <img 
-        src={image} 
-        alt={title} 
-        loading="lazy" 
-        width="300"
-        height="180"
-      />
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <div className="btn-group">
-        {liveDemo && (
-          <div className="btn">
-            <a href={liveDemo} target="_blank" rel="noopener noreferrer" aria-label={`${liveLabel} for ${title}`}>
-              {liveLabel}
-            </a>
+    <motion.article 
+      className="project-card-v2"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -8 }}
+    >
+      <div className="card-image-container">
+        <img 
+          src={image} 
+          alt={title} 
+          loading="lazy" 
+        />
+        <div className="card-overlay">
+          <div className="overlay-links">
+            {liveDemo && (
+              <a href={liveDemo} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="Live Demo">
+                <i className="bi bi-eye"></i>
+              </a>
+            )}
+            {github && (
+              <a href={github} target="_blank" rel="noopener noreferrer" className="icon-link" aria-label="GitHub">
+                <i className="bi bi-github"></i>
+              </a>
+            )}
           </div>
-        )}
-        {github && (
-          <div className="btn">
-            <a href={github} target="_blank" rel="noopener noreferrer" aria-label={`${githubLabel} for ${title}`}>
-              {githubLabel}
-            </a>
-          </div>
-        )}
+        </div>
       </div>
-    </article>
+      
+      <div className="card-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        
+        <div className="card-footer">
+          {liveDemo && (
+            <a href={liveDemo} target="_blank" rel="noopener noreferrer" className="primary-link">
+              {liveLabel} <i className="bi bi-arrow-up-right"></i>
+            </a>
+          )}
+          {github && (
+            <a href={github} target="_blank" rel="noopener noreferrer" className="secondary-link">
+              <i className="bi bi-github"></i>
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
   );
 }
 
 export default React.memo(ProjectCard);
+
 
 

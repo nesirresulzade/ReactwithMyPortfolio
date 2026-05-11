@@ -1,153 +1,100 @@
 import React, { useState, useEffect, useContext, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { LanguageContext } from '../context/LanguageContext';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function SideNavigator() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isTouched, setIsTouched] = useState(false);
   const { translations } = useContext(LanguageContext);
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsVisible(scrollTop > 200);
+      setIsVisible(window.scrollY > 200);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleRealProjects = useCallback(() => {
-    navigate('/real-projects');
+  const handleNavigation = useCallback((path) => {
+    navigate(path);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [navigate]);
 
-  const handleMobileProjects = useCallback(() => {
-    navigate('/mobile-projects');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [navigate]);
-
-  const isRealProjectsActive = location.pathname === '/real-projects';
-  const isMobileProjectsActive = location.pathname === '/mobile-projects';
+  const navItems = [
+    {
+      id: 'real',
+      path: '/real-projects',
+      tooltip: translations.realProjectsTooltip,
+      desc: translations.realProjectsDesc,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        </svg>
+      ),
+      activeClass: 'bg-blue-600/20 text-blue-400 border-blue-500/50',
+      inactiveClass: 'bg-white/5 text-gray-400 border-white/10'
+    },
+    {
+      id: 'mobile',
+      path: '/mobile-projects',
+      tooltip: translations.mobileProjectsTooltip,
+      desc: translations.mobileProjectsDesc,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
+      activeClass: 'bg-purple-600/20 text-purple-400 border-purple-500/50',
+      inactiveClass: 'bg-white/5 text-gray-400 border-white/10'
+    }
+  ];
 
   return (
-    <div 
-      className={`fixed right-0 top-1/2 transform -translate-y-1/2 z-50 transition-all duration-500 ease-out ${
-        isVisible ? 'translate-x-0' : 'translate-x-full'
-      }`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsTouched(true)}
-      onTouchEnd={() => setTimeout(() => setIsTouched(false), 2000)}
-    >
-      <div className="relative">
-        <div className="flex flex-col space-y-4 mr-4">
-          <button
-            onClick={handleRealProjects}
-            aria-label={translations.realProjectsTooltip}
-            className={`group relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-l-2xl shadow-lg transition-all duration-300 ease-out transform hover:scale-110 hover:shadow-xl ${
-              isRealProjectsActive 
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white' 
-                : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-white'
-            }`}
-          >
-            <div className="flex flex-col items-center space-y-1">
-              <svg 
-                className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-300 ${
-                  isRealProjectsActive ? 'text-white' : 'text-blue-600 group-hover:text-blue-700'
-                }`} 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-              </svg>
-              <span className="text-xs font-medium hidden sm:block">RP</span>
-            </div>
-            
-            {isRealProjectsActive && (
-              <div className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full shadow-lg"></div>
-            )}
-          </button>
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div 
+          className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col gap-4"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+        >
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <div key={item.id} className="group relative flex items-center">
+                {/* Tooltip */}
+                <div className="absolute right-full mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0 pointer-events-none">
+                  <div className="bg-gray-900/90 backdrop-blur-md border border-white/10 rounded-xl p-3 shadow-2xl min-w-[160px]">
+                    <div className="font-semibold text-white text-sm mb-1">{item.tooltip}</div>
+                    <div className="text-gray-400 text-xs leading-relaxed">{item.desc}</div>
+                  </div>
+                </div>
 
-          <button
-            onClick={handleMobileProjects}
-            aria-label={translations.mobileProjectsTooltip}
-            className={`group relative flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-l-2xl shadow-lg transition-all duration-300 ease-out transform hover:scale-110 hover:shadow-xl ${
-              isMobileProjectsActive 
-                ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white' 
-                : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-white'
-            }`}
-          >
-            <div className="flex flex-col items-center space-y-1">
-              <svg 
-                className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-300 ${
-                  isMobileProjectsActive ? 'text-white' : 'text-green-600 group-hover:text-green-700'
-                }`} 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-              </svg>
-              <span className="text-xs font-medium hidden sm:block">MP</span>
-            </div>
-            
-            {isMobileProjectsActive && (
-              <div className="absolute -left-1 top-1/2 transform -translate-y-1/2 w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full shadow-lg"></div>
-            )}
-          </button>
-        </div>
-
-        <div className={`absolute right-full mr-4 top-0 transition-all duration-300 ease-out ${
-          (isVisible || isHovered || isTouched) ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'
-        } ${isTouched ? 'block' : 'hidden xl:block'}`}>
-          <div className="flex flex-col space-y-4">
-            <button
-              className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px] cursor-pointer text-left"
-              onClick={handleRealProjects}
-              aria-label={`Go to ${translations.realProjectsTooltip}`}
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-xs md:text-sm font-medium text-gray-800">
-                  {translations.realProjectsTooltip}
-                </span>
+                {/* Button */}
+                <button
+                  onClick={() => handleNavigation(item.path)}
+                  className={`relative w-14 h-14 flex items-center justify-center rounded-2xl border backdrop-blur-md transition-all duration-300 hover:scale-110 ${
+                    isActive ? item.activeClass : item.inactiveClass
+                  } hover:bg-white/10`}
+                >
+                  {item.icon}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="active-indicator"
+                      className="absolute -right-1 w-1.5 h-1.5 bg-current rounded-full shadow-[0_0_10px_rgba(0,0,0,0.5)]"
+                    />
+                  )}
+                </button>
               </div>
-              <p className="text-xs text-gray-600 mt-1 hidden md:block">
-                {translations.realProjectsDesc}
-              </p>
-            </button>
-
-            <button 
-              className="bg-white/95 backdrop-blur-sm rounded-lg p-2 md:p-3 shadow-lg border border-gray-200/50 min-w-[120px] md:min-w-[140px] cursor-pointer text-left"
-              onClick={handleMobileProjects}
-              aria-label={`Go to ${translations.mobileProjectsTooltip}`}
-            >
-              <div className="flex items-center space-x-2">
-                <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full"></div>
-                <span className="text-xs md:text-sm font-medium text-gray-800">
-                  {translations.mobileProjectsTooltip}
-                </span>
-              </div>
-              <p className="text-xs text-gray-600 mt-1 hidden md:block">
-                {translations.mobileProjectsDesc}
-              </p>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <div className={`absolute right-0 top-0 w-0.5 md:w-1 h-full bg-gradient-to-b from-blue-500 via-purple-500 to-green-500 rounded-l-full transition-all duration-500 ease-out ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}></div>
-    </div>
+            );
+          })}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
 export default React.memo(SideNavigator);
+

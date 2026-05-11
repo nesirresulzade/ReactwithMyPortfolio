@@ -1,15 +1,17 @@
-import React, { useContext, useCallback, useMemo, useState, useEffect } from 'react';
+import React, { useContext, useCallback, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import '../style/about.css';
 import { LanguageContext } from '../context/LanguageContext';
 import Button from './Button';
 import { useTypewriter } from '../hooks/useTypewriter';
 
-const images = [
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80&fmt=webp",
-  "https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=600&q=80&fmt=webp",
-  "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80&fmt=webp",
-  "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=600&q=80&fmt=webp"
+const floatingElements = [
+  { icon: 'bi-code-slash', color: '#6c63ff', top: '10%', left: '-15%', delay: 0 },
+  { icon: 'bi-braces', color: '#00d4ff', top: '60%', left: '-20%', delay: 1 },
+  { icon: 'bi-layers', color: '#a855f7', top: '20%', left: '105%', delay: 0.5 },
+  { icon: 'bi-lightning-charge', color: '#ec4899', top: '75%', left: '95%', delay: 1.5 },
 ];
+
 function About() {
   const { translations, currentLanguage } = useContext(LanguageContext);
   
@@ -19,18 +21,8 @@ function About() {
     800
   );
 
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
   const handleDownloadCV = useCallback(() => {
     const cvPath = '/Nasir_Rasulzadeh_CV.pdf';
-    
     fetch(cvPath, { method: 'HEAD' })
       .then(response => {
         if (response.ok) {
@@ -55,10 +47,7 @@ function About() {
   const handleContactClick = useCallback(() => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView({ 
-        behavior: 'smooth', 
-        block: 'start' 
-      });
+      contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }, []);
 
@@ -69,35 +58,96 @@ function About() {
   return (
     <section id="about" className="about" aria-labelledby="about-name">
       <div className="about-container">
-        <div>
-          <div className="about-photo-card floating-image-effect">
-            {images.map((src, index) => (
-              <img 
-                key={index}
-                src={src} 
-                alt={`Frontend Developer Theme ${index + 1}`} 
-                className={`about-photo-img ${index === currentImageIndex ? 'active' : ''}`}
-                loading={index === 0 ? "eager" : "lazy"}
-                fetchPriority={index === 0 ? "high" : "auto"}
-                width="360"
-                height="360"
-              />
-            ))}
-          </div>
+        <div className="about-visual-wrapper">
+          {/* Main Code Visual */}
+          <motion.div 
+            className="main-code-card"
+            initial={{ opacity: 0, scale: 0.8, x: -50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            whileHover={{ y: -10, rotateY: 5, rotateX: -5 }}
+            style={{ perspective: 1000 }}
+          >
+            <div className="code-header">
+              <span className="dot red"></span>
+              <span className="dot yellow"></span>
+              <span className="dot green"></span>
+              <span className="file-name">developer.js</span>
+            </div>
+            <pre className="code-content">
+              <code>
+                <span className="purple">const</span> <span className="blue">developer</span> = {"{"} <br />
+                &nbsp;&nbsp;name: <span className="orange">'Nasir Rasulzade'</span>,<br />
+                &nbsp;&nbsp;role: <span className="orange">'Frontend Developer'</span>,<br />
+                &nbsp;&nbsp;specialization: <span className="orange">'React & Modern Web Apps'</span>,<br />
+                &nbsp;&nbsp;skills: [<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="orange">'HTML'</span>, <span className="orange">'CSS'</span>, <span className="orange">'JS'</span>, <span className="orange">'React'</span>,<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;<span className="orange">'React Native'</span>, <span className="orange">'Bootstrap'</span>, <span className="orange">'Tailwind'</span><br />
+                &nbsp;&nbsp;],<br />
+                &nbsp;&nbsp;learning: <span className="orange">'Advanced React & Next.js'</span>,<br />
+                &nbsp;&nbsp;experience: <span className="orange">'1+ Years'</span>,<br />
+                &nbsp;&nbsp;status: <span className="orange">'Open to Work'</span>,<br />
+                &nbsp;&nbsp;passion: <span className="orange">'Building interactive UI'</span><br />
+                {"}"};
+              </code>
+            </pre>
+
+
+            
+            <div className="card-glow"></div>
+          </motion.div>
+
+          {/* Floating Icons */}
+          {floatingElements.map((el, index) => (
+            <motion.div
+              key={index}
+              className="floating-icon"
+              style={{ 
+                top: el.top, 
+                left: el.left,
+                color: el.color,
+                fontSize: '2.5rem',
+                position: 'absolute',
+                zIndex: 2,
+                filter: `drop-shadow(0 0 15px ${el.color}66)`
+              }}
+              animate={{ 
+                y: [0, -20, 0],
+                rotate: [0, 15, -15, 0]
+              }}
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                delay: el.delay,
+                ease: "easeInOut" 
+              }}
+            >
+              <i className={`bi ${el.icon}`}></i>
+            </motion.div>
+          ))}
         </div>
+
         <div className="info-box">
-          <div className="text">
-            <h3>
-              {greeting}
-            </h3>
+          <motion.div 
+            className="text"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h3>{greeting}</h3>
             <h1 id="about-name">Nasir Rasulzada</h1>
             <span className="animated-subtitle" aria-live="polite">
               {subtitleText}
               {!subtitleComplete && <span className="typing-cursor" aria-hidden="true">|</span>}
             </span>
-          </div>
+          </motion.div>
 
-          <div className="btn-group">
+          <motion.div 
+            className="btn-group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <Button 
               label={translations.downloadCV}
               onClick={handleDownloadCV}
@@ -114,26 +164,17 @@ function About() {
               color="dark"
               aria-label={`Scroll to ${translations.contact}`}
             />
-          </div>
+          </motion.div>
 
           <div className="socials">
-            <a 
-              href="https://github.com/nesirresulzade/partfolio" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="View this project on GitHub"
-            >
-              <i className="bi bi-github" aria-hidden="true"></i>
+            <a href="https://github.com/nesirresulzade" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-github"></i>
             </a>
-            <a 
-              href="https://www.linkedin.com/in/nasir-rasulzada-28a6b7392/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-            >
-              <i className="bi bi-linkedin" aria-hidden="true"></i>
+            <a href="https://www.linkedin.com/in/nasir-rasulzada-28a6b7392/" target="_blank" rel="noopener noreferrer">
+              <i className="bi bi-linkedin"></i>
             </a>
           </div>
+
         </div>
       </div>
     </section>
@@ -141,3 +182,5 @@ function About() {
 }
 
 export default React.memo(About);
+
+

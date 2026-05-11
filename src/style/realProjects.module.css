@@ -5,6 +5,19 @@
     color: #333;
     overflow-x: hidden;
     animation: realFadeInUp 0.8s ease-out;
+    position: relative;
+    padding-top: 140px; /* Clear fixed navbar on desktop */
+}
+
+.real-projects-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 600px;
+    background: radial-gradient(circle at 50% 0%, rgba(0, 157, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
 }
 
 @keyframes realFadeInUp {
@@ -21,29 +34,21 @@
 
 /* ------------------- Header Section ------------------- */
 .real-projects-header {
-    padding: 2rem 0;
+    padding: 2rem 0 4rem;
     text-align: center;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 157, 255, 0.2);
-    box-shadow: 0 2px 20px rgba(0, 157, 255, 0.1);
+    background: transparent;
+    position: relative;
+    z-index: 1;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .real-header-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    margin-top: 140px;
+    box-sizing: border-box;
 }
 
 .real-back-btn {
@@ -69,20 +74,23 @@
 }
 
 .real-page-title {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    background: linear-gradient(45deg, #009dff, #ff00ff);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    margin-bottom: 2.5rem;
+    background: linear-gradient(135deg, #009dff 0%, #ff00ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
 .real-header-description p {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.6;
     color: #666;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
+    opacity: 0.9;
 }
 
 /* ------------------- Project Sections ------------------- */
@@ -144,22 +152,25 @@
 }
 
 .real-project-subtitle {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 500px;
+    font-size: 1.25rem;
+    color: #555;
+    max-width: 650px;
     margin: 0 auto;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
+    line-height: 1.6;
 }
 
 /* ------------------- Slider Container ------------------- */
 .real-slider-container {
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 2rem;
-    padding: 2rem;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(0, 157, 255, 0.2);
-    box-shadow: 0 10px 40px rgba(0, 157, 255, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 3rem;
+    padding: clamp(1rem, 3vw, 3rem);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+        0 20px 50px rgba(0, 157, 255, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.02);
     position: relative;
     z-index: 10;
 }
@@ -218,7 +229,7 @@
     }
 
     .real-header-content {
-        margin-top: 120px;
+        margin-top: 160px;
         padding: 0 1.5rem;
     }
 
@@ -264,7 +275,7 @@
         align-items: center;
         justify-content: center;
         text-align: center;
-        margin-top: 90px;
+        margin-top: 140px;
         padding: 0 1rem;
     }
 
@@ -333,23 +344,28 @@
 
 /* Mobile (max-width: 480px) */
 @media (max-width: 480px) {
+    .real-projects-page {
+        padding-top: 100px;
+    }
+
     .real-projects-header {
-        padding: 0.5rem 0;
+        padding: 2rem 1.5rem 3rem;
+        margin-top: 0;
     }
 
     .real-header-content {
-        margin-top: 80px;
-        padding: 0 0.75rem;
+        margin-top: 0;
+        padding: 0;
     }
 
     .real-page-title {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+        font-size: clamp(2.5rem, 7vw, 3.5rem);
+        margin-bottom: 2rem;
     }
 
     .real-header-description p {
-        font-size: 0.95rem;
-        line-height: 1.5;
+        font-size: 1.1rem;
+        padding: 0 1rem;
     }
 
     .real-project-section {

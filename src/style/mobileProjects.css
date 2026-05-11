@@ -2,45 +2,53 @@
 
 .mobile-projects-page {
   min-height: 100vh;
-  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
-  color: #1a1a1a;
+  background: var(--bg-primary);
+  color: var(--text-primary);
   overflow-x: hidden;
   position: relative;
 }
 
+.mobile-projects-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: radial-gradient(circle at 50% 0%, rgba(108, 99, 255, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
 /* Hero Section */
 .mobile-projects-hero {
-  padding: clamp(6rem, 12vw, 10rem) 5% clamp(4rem, 8vw, 6rem);
+  padding: clamp(8rem, 15vw, 12rem) 5% clamp(4rem, 8vw, 6rem);
   text-align: center;
   max-width: 1400px;
   margin: 0 auto;
   position: relative;
-}
-
-.hero-container {
-  max-width: 800px;
-  margin: 0 auto;
+  z-index: 1;
 }
 
 .hero-title {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
   margin-bottom: 1.5rem;
-  line-height: 1.1;
-  background: linear-gradient(135deg, #009dff 0%, #7c3aed 50%, #ff00ff 100%);
+  background: linear-gradient(135deg, #009dff 0%, #ff00ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-description {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  line-height: 1.7;
-  color: #666;
-  max-width: 600px;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 700px;
   margin: 0 auto;
+  opacity: 0.9;
 }
+
 
 /* Project Section */
 .project-section {

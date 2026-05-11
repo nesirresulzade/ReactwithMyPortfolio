@@ -1,44 +1,32 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react';
-import '../style/Navbar.css';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import '../style/Navbar.css';
 import { LanguageContext } from '../context/LanguageContext';
 import LanguageSwitcher from './LanguageSwitcher';
 
 function Navbar() {
   const [isActive, setIsActive] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { translations, currentLanguage, onLanguageChange } = useContext(LanguageContext);
   const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+      if (isActive) setIsActive(false);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isActive]);
 
   const toggleMenu = useCallback(() => {
     setIsActive(prev => !prev);
   }, []);
 
-  const closeMenu = useCallback(() => {
-    setIsActive(false);
-  }, []);
-
-  const handleLogoClick = (e) => {
-    e.preventDefault();
-    closeMenu();
-    if (location.pathname !== '/') {
-      navigate('/');
-    } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  };
-
   const handleNavigation = (sectionId) => {
-    closeMenu();
-    
-    if (sectionId === 'mobile-projects' || sectionId === 'real-projects') {
-      const targetPath = `/${sectionId}`;
-      if (location.pathname !== targetPath) {
-        navigate(targetPath);
-      }
-      return;
-    }
-    
+    setIsActive(false);
     if (location.pathname !== '/') {
       navigate(`/#${sectionId}`);
     } else {
@@ -49,17 +37,6 @@ function Navbar() {
     }
   };
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isActive) {
-        setIsActive(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isActive]);
-
   const navItems = [
     { id: 'about', label: translations.about },
     { id: 'experience', label: translations.experience },
@@ -69,59 +46,64 @@ function Navbar() {
   ];
 
   return (
-    <header className="header">
-      <Link 
-        to="/" 
-        onClick={handleLogoClick} 
-        className="logo" 
-        aria-label="Nasir Rasulzada - Home"
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <motion.div 
+        className="logo"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        onClick={() => navigate('/')}
+        style={{ cursor: 'pointer' }}
       >
-        <span>Nasir Rasulzada</span>
-      </Link>
+        <span>Nasir.dev</span>
+      </motion.div>
 
-      <nav aria-label="Main Navigation">
+      <nav>
         <ul className={`nav-links ${isActive ? 'active' : ''}`}>
-          {navItems.map((item) => (
-            <li key={item.id}>
+          {navItems.map((item, index) => (
+            <motion.li 
+              key={item.id}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
               <button 
                 onClick={() => handleNavigation(item.id)} 
                 className="nav-link"
-                aria-label={`Scroll to ${item.label}`}
               >
                 {item.label}
               </button>
-            </li>
+            </motion.li>
           ))}
         </ul>
       </nav>
 
       <div className="header-right">
         <LanguageSwitcher currentLanguage={currentLanguage} onLanguageChange={onLanguageChange} />
-
+        
         <button 
           className="toggle" 
           onClick={toggleMenu}
           aria-expanded={isActive}
-          aria-controls="nav-links"
-          aria-label="Toggle navigation menu"
         >
           <div className={`bars ${isActive ? 'active' : ''}`} id="bar1"></div>
           <div className={`bars ${isActive ? 'active' : ''}`} id="bar2"></div>
           <div className={`bars ${isActive ? 'active' : ''}`} id="bar3"></div>
         </button>
 
-        <a 
+        <motion.a 
           href="https://github.com/nesirresulzade" 
-          className="visit-btn" 
+          className="visit-btn"
           target="_blank" 
           rel="noopener noreferrer"
-          aria-label={translations.visitGitHub}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          {translations.visitGitHub}
-        </a>
+          GitHub
+        </motion.a>
       </div>
     </header>
   );
 }
 
-export default Navbar;
+export default React.memo(Navbar);
+
