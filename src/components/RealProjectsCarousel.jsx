@@ -7,13 +7,14 @@ const RealProjectsCarousel = ({
     autoPlay = true,
     autoPlayInterval = 4000
 }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(images.length);
     const [isPaused, setIsPaused] = useState(false);
     const [visibleCards, setVisibleCards] = useState(3);
     const [touchStart, setTouchStart] = useState(null);
     const [touchEnd, setTouchEnd] = useState(null);
     const carouselRef = useRef(null);
     const intervalRef = useRef(null);
+    const isJumpingRef = useRef(false);
     const prefersReducedMotion = useRef(
         window.matchMedia('(prefers-reduced-motion: reduce)').matches
     );
@@ -49,35 +50,49 @@ const RealProjectsCarousel = ({
     const totalItems = images.length;
     const clonedItems = totalItems > 0 ? [...images, ...images, ...images] : [];
     const clonedTitles = titles.length > 0 ? [...titles, ...titles, ...titles] : [];
-    const startIndex = totalItems; // Start from the middle set
+    const startIndex = totalItems; 
 
     // Navigation functions
     const goToNext = useCallback(() => {
         if (totalItems === 0) return;
-        setCurrentIndex((prev) => {
-            const nextIndex = prev + 1;
-            if (nextIndex >= startIndex + totalItems) {
-                return startIndex;
-            }
-            return nextIndex;
-        });
-    }, [totalItems, startIndex]);
+        setCurrentIndex((prev) => prev + 1);
+    }, [totalItems]);
 
     const goToPrevious = useCallback(() => {
         if (totalItems === 0) return;
-        setCurrentIndex((prev) => {
-            const prevIndex = prev - 1;
-            if (prevIndex < startIndex) {
-                return startIndex + totalItems - 1;
-            }
-            return prevIndex;
-        });
-    }, [totalItems, startIndex]);
+        setCurrentIndex((prev) => prev - 1);
+    }, [totalItems]);
 
     const goToSlide = useCallback((index) => {
         if (totalItems === 0) return;
         setCurrentIndex(startIndex + index);
     }, [totalItems, startIndex]);
+
+    // Handle seamless jump at boundaries
+    useEffect(() => {
+        if (totalItems === 0) return;
+
+        let jumpTimer;
+        // If we reach the end of the cloned sets, jump back to middle set
+        if (currentIndex >= startIndex + totalItems) {
+            jumpTimer = setTimeout(() => {
+                isJumpingRef.current = true;
+                setCurrentIndex(startIndex);
+            }, 600); 
+        }
+
+        // If we reach the start, jump to middle set
+        if (currentIndex < startIndex - 1) {
+            jumpTimer = setTimeout(() => {
+                isJumpingRef.current = true;
+                setCurrentIndex(startIndex + totalItems - 1);
+            }, 600);
+        }
+
+        return () => {
+            if (jumpTimer) clearTimeout(jumpTimer);
+        };
+    }, [currentIndex, totalItems, startIndex]);
 
     // Auto-play functionality
     useEffect(() => {
@@ -86,14 +101,7 @@ const RealProjectsCarousel = ({
         }
 
         intervalRef.current = setInterval(() => {
-            setCurrentIndex((prev) => {
-                const nextIndex = prev + 1;
-                // Reset to start when reaching the end of middle set
-                if (nextIndex >= startIndex + totalItems) {
-                    return startIndex;
-                }
-                return nextIndex;
-            });
+            goToNext();
         }, autoPlayInterval);
 
         return () => {
@@ -101,27 +109,37 @@ const RealProjectsCarousel = ({
                 clearInterval(intervalRef.current);
             }
         };
-    }, [autoPlay, isPaused, autoPlayInterval, totalItems, startIndex]);
+    }, [autoPlay, isPaused, autoPlayInterval, totalItems, goToNext]);
 
     // Smooth scroll to active card
     useEffect(() => {
         if (!carouselRef.current || totalItems === 0) return;
 
         const containerWidth = carouselRef.current.offsetWidth;
-        const cardGap = 24; // Match CSS --card-gap
+        const cardGap = 24; 
         const cardWidth = (containerWidth / visibleCards) - (cardGap * (visibleCards - 1) / visibleCards);
-        const scrollPosition = (currentIndex - startIndex) * (cardWidth + cardGap);
+        const scrollPosition = currentIndex * (cardWidth + cardGap);
         
-        // Use smooth scroll with CSS transition for better performance
-        if (prefersReducedMotion.current) {
+        if (prefersReducedMotion.current || isJumpingRef.current) {
+            carouselRef.current.style.scrollBehavior = 'auto';
             carouselRef.current.scrollLeft = scrollPosition;
+            if (isJumpingRef.current) {
+                isJumpingRef.current = false;
+                // Restore smooth scroll for future interactions
+                setTimeout(() => {
+                    if (carouselRef.current) {
+                        carouselRef.current.style.scrollBehavior = 'smooth';
+                    }
+                }, 50);
+            }
         } else {
+            carouselRef.current.style.scrollBehavior = 'smooth';
             carouselRef.current.scrollTo({
                 left: scrollPosition,
                 behavior: 'smooth'
             });
         }
-    }, [currentIndex, visibleCards, startIndex, totalItems]);
+    }, [currentIndex, visibleCards, totalItems]);
 
     // Keyboard navigation
     useEffect(() => {
