@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import styles from '../style/realProjects.module.css';
+import React, { useState, useEffect, useRef, useCallback, useContext } from 'react';
+import { FaExternalLinkAlt, FaGithub, FaArrowLeft } from 'react-icons/fa';
+import { BsMouse } from 'react-icons/bs';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 import { LanguageContext } from '../context/LanguageContext';
-import RealProjectsCarousel from './RealProjectsCarousel';
+import styles from '../style/reelsProjects.module.css';
 
 // Hra Images
 import img1 from '../RealProjAllimgs/hraHome.png';
@@ -29,254 +31,250 @@ import img15 from "../RealProjAllimgs/KhazAdminImages/Contact.png"
 import img16 from "../RealProjAllimgs/KhazAdminImages/blog.png"
 import img17 from "../RealProjAllimgs/KhazAdminImages/services.png"
 
-const RealProjects = () => {
-    const { translations, currentLanguage } = useContext(LanguageContext);
-    const [isVisible, setIsVisible] = useState(false);
+const projectsList = [
+    {
+        id: 'hra',
+        images: [img1, img2, img3, img4],
+        logo: "https://api.hra.edu.az/uploads/settings/newlogo.png",
+        techStack: ["React", "CSS", "Vite", "JavaScript", "Rest API"],
+        liveLink: "https://hra.edu.az/",
+        githubLink: "#",
+        titleKey: "project1Title",
+        subtitleKey: "project1Subtitle",
+        descKey: "project1Desc",
+        themeColor: "#0088ff", // Soft Blue
+        shadowColor: "rgba(0, 136, 255, 0.4)"
+    },
+    {
+        id: 'khazarsoft',
+        images: [img5, img6, img7, img8, img9],
+        logo: "https://r2.khazarsoft.az/uploads/settings/khazarsoft.png",
+        techStack: ["React.js", "Tailwind CSS", "Redux Toolkit", "Framer Motion"],
+        liveLink: "https://khazarsoft.az/",
+        githubLink: "#",
+        titleKey: "project2Title",
+        subtitleKey: "project2Subtitle",
+        descKey: "project2Desc",
+        themeColor: "#8a2be2", // Purple-ish matching Khazarsoft vibes
+        shadowColor: "rgba(138, 43, 226, 0.4)"
+    },
+    {
+        id: 'hra-admin',
+        images: [img10, img11, img12, img13],
+        logo: "https://api.hra.edu.az/uploads/settings/newlogo.png",
+        techStack: ["React", "Context API", "Axios", "Bootstrap"],
+        liveLink: "https://admin.hra.edu.az/",
+        githubLink: "#",
+        titleKey: "project3Title",
+        subtitleKey: "project3Subtitle",
+        descKey: "project3Desc",
+        themeColor: "#1e3a8a", // Darker blue
+        shadowColor: "rgba(30, 58, 138, 0.4)"
+    },
+    {
+        id: 'khazarsoft-admin',
+        images: [img14, img15, img16, img17],
+        logo: "https://r2.khazarsoft.az/uploads/settings/khazarsoft.png",
+        techStack: ["React", "CSS Modules", "Chart.js", "Express integration"],
+        liveLink: "#",
+        githubLink: "#",
+        titleKey: "project4Title",
+        subtitleKey: "project4Subtitle",
+        descKey: "project4Desc",
+        themeColor: "#10b981", // Emerald
+        shadowColor: "rgba(16, 185, 129, 0.4)"
+    }
+];
 
-    // First project - High Result Academy
-    const project1Images = [
-        {
-            id: 1,
-            title: translations.project1Image1 || "High Result Academy - Home Page",
-            image: img1
-        },
-        {
-            id: 2,
-            title: translations.project1Image2 || "High Result Academy - Services",
-            image: img2
-        },
-        {
-            id: 3,
-            title: translations.project1Image3 || "High Result Academy - Blog",
-            image: img3
-        },
-        {
-            id: 4,
-            title: translations.project1Image4 || "High Result Academy - About",
-            image: img4
-        }
-    ];
+const ProjectSection = ({ project, isActive, translations }) => {
+    const [currentImgIndex, setCurrentImgIndex] = useState(0);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-    // Second project - Khazarsoft
-    const project2Images = [
-        {
-            id: 5,
-            title: translations.project2Image1 || "Khazarsoft - Ana Səhifə",
-            image: img5
-        },
-        {
-            id: 6,
-            title: translations.project2Image2 || "Khazarsoft - Portfolio",
-            image: img6
-        },
-        {
-            id: 7,
-            title: translations.project2Image3 || "Khazarsoft - Xidmətlər",
-            image: img7
-        },
-        {
-            id: 8,
-            title: translations.project2Image4 || "Khazarsoft - Blog",
-            image: img8
-        },
-        {
-            id: 9,
-            title: translations.project2Image5 || "Khazarsoft - Haqqımızda",
-            image: img9
-        }
-    ];
-
-    // Third project - HRA Admin Panel
-    const project3Images = [
-        {
-            id: 10,
-            title: translations.project3Image1 || "HRA Admin - Ölkə idarəetməsi",
-            image: img10
-        },
-        {
-            id: 11,
-            title: translations.project3Image2 || "HRA Admin - Universitet idarəetməsi",
-            image: img11
-        },
-        {
-            id: 12,
-            title: translations.project3Image3 || "HRA Admin - Əlaqə idarəetməsi",
-            image: img12
-        },
-        {
-            id: 13,
-            title: translations.project3Image4 || "HRA Admin - Şərh idarəetməsi",
-            image: img13
-        }
-    ];
-
-    // Fourth project - Khazarsoft Admin Panel
-    const project4Images = [
-        {
-            id: 14,
-            title: translations.project4Image1 || "Khazarsoft Admin - Portfolio idarəetməsi",
-            image: img14
-        },
-        {
-            id: 15,
-            title: translations.project4Image2 || "Khazarsoft Admin - Əlaqə idarəetməsi",
-            image: img15
-        },
-        {
-            id: 16,
-            title: translations.project4Image3 || "Khazarsoft Admin - Blog idarəetməsi",
-            image: img16
-        },
-        {
-            id: 17,
-            title: translations.project4Image4 || "Khazarsoft Admin - Xidmətlər idarəetməsi",
-            image: img17
-        }
-    ];
-
+    // Auto image carousel within each project
     useEffect(() => {
-        setIsVisible(true);
-    }, []);
+        if (!isActive) return;
+        
+        const interval = setInterval(() => {
+            setCurrentImgIndex(prev => (prev + 1) % project.images.length);
+        }, 3500);
+        return () => clearInterval(interval);
+    }, [isActive, project.images.length]);
 
     return (
-        <div className={styles["real-projects-page"]}>
-            {/* Header Section */}
-            <header className={styles["real-projects-header"]}>
-                <div className={styles["real-header-content"]}>
-                    <h1 className={styles["real-page-title"]}>{translations.realProjectsTitle || "Real Layihələr"}</h1>
-                    <div className={styles["real-header-description"]}>
-                        <p>{translations.realProjectsDescription || "Həqiqi layihələr və canlı tətbiqlər. Müasir texnologiyalar və professional həllər."}</p>
-                    </div>
-                </div>
-            </header>
-
-            {/* First Project Section - E-commerce Platform */}
-            <section className={`${styles["real-project-section"]} ${styles["real-project-1"]}`}>
-                <div className={styles["real-project-container"]}>
-                    <div className={styles["real-project-header"]}>
-                        <div className={styles["real-project-logo"]}>
-                            <img 
-                                src="https://api.hra.edu.az/uploads/settings/newlogo.png" 
-                                alt="High Result Academy Logo" 
-                                className={styles["hra-logo"]}
-                            />
-                        </div>
-                        <h2 className={styles["real-project-title"]}>{translations.project1Title || "High Result Academy"}</h2>
-                        <p className={styles["real-project-subtitle"]}>{translations.project1Subtitle || "Təhsil və təlim platforması"}</p>
-                    </div>
-
-                    <RealProjectsCarousel 
-                        images={project1Images.map(item => item.image)}
-                        titles={project1Images.map(item => item.title)}
-                        autoPlay={true}
-                        autoPlayInterval={4000}
+        <section className={styles.projectSection}>
+            {/* Full Screen Image Gallery acts as the background */}
+            <motion.div 
+                className={styles.imageGallery}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 0.2 }}
+                transition={{ duration: 0.8 }}
+            >
+                <AnimatePresence mode="wait">
+                    <motion.img 
+                        key={currentImgIndex}
+                        src={project.images[currentImgIndex]}
+                        alt={translations[project.titleKey]}
+                        className={styles.carouselImage}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 1.2, ease: "easeInOut" }}
                     />
-                    
-                    {/* Action Buttons for Project 1 */}
-                    <div className={`${styles["real-action-buttons"]} action-buttons`}>
-                        <a href="https://hra.edu.az/" className={`${styles["real-action-btn"]} ${styles["real-demo-btn"]} action-btn demo-btn`} target="_blank" rel="noopener noreferrer">
-                            <FaExternalLinkAlt />
-                            <span>{translations.viewLiveDemo || "Canlı Demo"}</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+                </AnimatePresence>
+            </motion.div>
 
-            {/* Second Project Section - Khazarsoft */}
-            <section className={`${styles["real-project-section"]} ${styles["real-project-2"]}`}>
-                <div className={styles["real-project-container"]}>
-                    <div className={styles["real-project-header"]}>
-                        <div className={styles["real-project-logo"]}>
-                            <img 
-                                src="https://r2.khazarsoft.az/uploads/settings/khazarsoft.png" 
-                                alt="Khazarsoft Logo" 
-                                className={styles["khazarsoft-logo"]}
-                            />
-                        </div>
-                        <h2 className={styles["real-project-title"]}>{translations.project2Title || "Khazarsoft"}</h2>
-                        <p className={styles["real-project-subtitle"]}>{translations.project2Subtitle || "Professional IT xidmətləri"}</p>
-                    </div>
+            {/* Subtle dim overlay */}
+            <div className={styles.overlay}></div>
 
-                    <RealProjectsCarousel 
-                        images={project2Images.map(item => item.image)}
-                        titles={project2Images.map(item => item.title)}
-                        autoPlay={true}
-                        autoPlayInterval={4000}
+            {/* Tap-outside mobile backdrop */}
+            <AnimatePresence>
+                {isDrawerOpen && (
+                    <motion.div 
+                        className={styles.mobileBackdrop}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        onClick={() => setIsDrawerOpen(false)}
                     />
+                )}
+            </AnimatePresence>
+
+            {/* Left Edge Drawer */}
+            <div 
+                className={`${styles.drawerContainer} ${isDrawerOpen ? styles.open : ''}`}
+                onMouseEnter={() => setIsDrawerOpen(true)}
+                onMouseLeave={() => setIsDrawerOpen(false)}
+            >
+                {/* Protrusion Tab */}
+                <div 
+                    className={styles.drawerTab} 
+                    onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+                >
+                    <span className={styles.tabIcon}>ℹ</span>
+                    <span className={styles.tabText}>{translations.realProjectsDetailsTab}</span>
+                </div>
+
+                {/* Drawer Content */}
+                <div className={styles.drawerContent}>
+                    <div className={styles.headerRow}>
+                        {project.logo && <img src={project.logo} alt="logo" className={styles.logo} />}
+                        <h2 className={styles.title}>{translations[project.titleKey]}</h2>
+                    </div>
                     
-                    {/* Action Buttons for Project 2 */}
-                    <div className={`${styles["real-action-buttons"]} action-buttons`}>
-                        <a href="https://khazarsoft.az/" className={`${styles["real-action-btn"]} ${styles["real-demo-btn"]} action-btn demo-btn`} target="_blank" rel="noopener noreferrer">
-                            <FaExternalLinkAlt />
-                            <span>{translations.viewLiveDemo || "Canlı Demo"}</span>
-                        </a>
+                    <h3 className={styles.subtitle} style={{ color: project.themeColor }}>
+                        {translations[project.subtitleKey]}
+                    </h3>
+                    
+                    <p className={styles.description}>
+                        {translations[project.descKey]}
+                    </p>
+
+                    <div className={styles.techStack}>
+                        {project.techStack.map((tech, idx) => (
+                            <span key={idx} className={styles.techBadge}>{tech}</span>
+                        ))}
+                    </div>
+
+                    <div className={styles.actions}>
+                        {project.liveLink !== "#" && (
+                            <a 
+                                href={project.liveLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className={`${styles.btn} ${styles.primaryBtn}`}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <FaExternalLinkAlt size={14} />
+                                <span>{translations.realProjectsLiveDemo}</span>
+                            </a>
+                        )}
+                        {project.githubLink !== "#" && (
+                            <a 
+                                href={project.githubLink} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className={`${styles.btn} ${styles.secondaryBtn}`}
+                                onClick={(e) => e.stopPropagation()}
+                            >
+                                <FaGithub size={18} />
+                                <span>{translations.realProjectsRepository}</span>
+                            </a>
+                        )}
                     </div>
                 </div>
-            </section>
+            </div>
+            
+            {/* Scroll Indicator - Show only if not the last project */}
+            <div className={styles.scrollIndicator}>
+                <BsMouse className={styles.scrollIcon} />
+                <span className={styles.scrollText}>{translations.realProjectsScroll}</span>
+            </div>
+        </section>
+    );
+};
 
-            {/* Third Project Section - HRA Admin Panel */}
-            <section className={`${styles["real-project-section"]} ${styles["real-project-3"]}`}>
-                <div className={styles["real-project-container"]}>
-                    <div className={styles["real-project-header"]}>
-                        <div className={styles["real-project-logo"]}>
-                            <img 
-                                src="https://api.hra.edu.az/uploads/settings/newlogo.png" 
-                                alt="High Result Academy Logo" 
-                                className={styles["hra-logo"]}
-                            />
-                        </div>
-                        <h2 className={styles["real-project-title"]}>{translations.project3Title || "High Result Academy Admin Panel"}</h2>
-                        <p className={styles["real-project-subtitle"]}>{translations.project3Subtitle || "İdarəetmə paneli"}</p>
-                    </div>
+const RealProjects = () => {
+    const { translations } = useContext(LanguageContext);
+    const navigate = useNavigate();
+    const containerRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
-                    <RealProjectsCarousel 
-                        images={project3Images.map(item => item.image)}
-                        titles={project3Images.map(item => item.title)}
-                        autoPlay={true}
-                        autoPlayInterval={4000}
+    const handleScroll = useCallback(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        const index = Math.round(container.scrollTop / container.clientHeight);
+        setActiveIndex(prev => prev !== index ? index : prev);
+    }, []);
+
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+        container.addEventListener('scroll', handleScroll, { passive: true });
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [handleScroll]);
+
+    const scrollToProject = (index) => {
+        if (!containerRef.current) return;
+        containerRef.current.scrollTo({
+            top: index * containerRef.current.clientHeight,
+            behavior: 'smooth'
+        });
+    };
+
+    return (
+        <div className={styles.container} ref={containerRef}>
+            {/* Premium Back Button instead of just X */}
+            <button className={styles.backBtn} onClick={() => navigate('/')} aria-label={translations.realProjectsGoBack}>
+                <FaArrowLeft size={16} aria-hidden="true" />
+                <span>{translations.realProjectsGoBack}</span>
+            </button>
+
+            {/* Pagination Dots dynamically colored based on active project */}
+            <div className={styles.progressContainer}>
+                {projectsList.map((project, idx) => (
+                    <button 
+                        key={idx}
+                        className={`${styles.progressDot} ${activeIndex === idx ? styles.active : ''}`}
+                        onClick={() => scrollToProject(idx)}
+                        aria-label={`Go to project ${idx + 1}`}
+                        style={activeIndex === idx ? { 
+                            backgroundColor: project.themeColor,
+                            boxShadow: `0 0 10px ${project.shadowColor}`
+                        } : {}}
                     />
-                    
-                    {/* Action Buttons for Project 3 */}
-                    <div className={`${styles["real-action-buttons"]} action-buttons`}>
-                        <a href="https://admin.hra.edu.az/" className={`${styles["real-action-btn"]} ${styles["real-demo-btn"]} action-btn demo-btn`} target="_blank" rel="noopener noreferrer">
-                            <FaExternalLinkAlt />
-                            <span>{translations.viewLiveDemo || "Canlı Demo"}</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+                ))}
+            </div>
 
-            {/* Fourth Project Section - Khazarsoft Admin Panel */}
-            <section className={`${styles["real-project-section"]} ${styles["real-project-4"]}`}>
-                <div className={styles["real-project-container"]}>
-                    <div className={styles["real-project-header"]}>
-                        <div className={styles["real-project-logo"]}>
-                            <img 
-                                src="https://r2.khazarsoft.az/uploads/settings/khazarsoft.png" 
-                                alt="Khazarsoft Logo" 
-                                className={styles["khazarsoft-logo"]}
-                            />
-                        </div>
-                        <h2 className={styles["real-project-title"]}>{translations.project4Title || "Khazarsoft Admin Panel"}</h2>
-                        <p className={styles["real-project-subtitle"]}>{translations.project4Subtitle || "İdarəetmə paneli"}</p>
-                    </div>
-
-                    <RealProjectsCarousel 
-                        images={project4Images.map(item => item.image)}
-                        titles={project4Images.map(item => item.title)}
-                        autoPlay={true}
-                        autoPlayInterval={4000}
-                    />
-                    
-                    {/* Action Buttons for Project 4 */}
-                    <div className={`${styles["real-action-buttons"]} action-buttons`}>
-                        <a href="#" className={`${styles["real-action-btn"]} ${styles["real-demo-btn"]} action-btn demo-btn`} target="_blank" rel="noopener noreferrer">
-                            <FaExternalLinkAlt />
-                            <span>{translations.viewLiveDemo || "Canlı Demo"}</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+            {/* Render Projects */}
+            {projectsList.map((project, idx) => (
+                <ProjectSection 
+                    key={project.id} 
+                    project={project} 
+                    isActive={activeIndex === idx} 
+                    translations={translations}
+                />
+            ))}
         </div>
     );
 };
