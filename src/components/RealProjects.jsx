@@ -88,7 +88,12 @@ const projectsList = [
 
 const ProjectSection = ({ project, isActive, translations }) => {
     const [currentImgIndex, setCurrentImgIndex] = useState(0);
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const [isDrawerOpen, setIsDrawerOpen] = useState(() => {
+        if (typeof window !== 'undefined' && window.innerWidth <= 768) {
+            return true; // Open by default on mobile
+        }
+        return false;
+    });
 
     // Auto image carousel within each project
     useEffect(() => {
