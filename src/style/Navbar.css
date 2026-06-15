@@ -21,12 +21,12 @@
     font-size: 1.3rem;
     font-weight: 600;
     text-wrap: nowrap;
-    transition: all 0.3s linear;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo:hover {
     color: #009dff;
-    transition: color 0.3s ease-in-out;
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links {
@@ -42,7 +42,7 @@
     font-weight: 300;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.3s ease;
+    transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     background: none;
     border: none;
     font-size: 1.1rem;
@@ -201,7 +201,7 @@ li a:hover::before {
             height: 3px;
             background-color: rgb(176, 92, 255);
             border-radius: 4px;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         #bar2 {
@@ -263,7 +263,7 @@ li a:hover::before {
         visibility: hidden;
         pointer-events: none;
         transform: translateX(-100%);
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+        transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         max-height: calc(100vh - 4rem);
         min-height: 70vh;
         overflow-y: auto;

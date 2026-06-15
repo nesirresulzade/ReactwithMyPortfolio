@@ -16,8 +16,8 @@ function ProjectCard({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      whileHover={{ y: -8 }}
+      transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+      whileHover={{ y: -10 }}
     >
       <div className="card-image-container">
         <img 

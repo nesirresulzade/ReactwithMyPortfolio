@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense, lazy, useMemo, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Element } from 'react-scroll';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -100,29 +101,39 @@ function App() {
       <Router>
         <div className="app">
           <HashHandler />
-          <Layout>
-            <Routes>
-              <Route path="/" element={
-                <Suspense fallback={<SectionLoader />}>
-                  <Element name='section1' id="about"><About /></Element>
-                  <Element name='section2' id="experience"><Experience /></Element>
-                  <Element name='section3' id="skills"><Skills /></Element>
-                  <Element name='section4' id="projects"><RecentPro /></Element>
-                  <Element name='section5' id="contact"><Contact /></Element>
-                </Suspense>
-              } />
-              <Route path="/mobile-projects" element={
-                <Suspense fallback={<SectionLoader />}>
-                   <MobileProjects />
-                </Suspense>
-              } />
-              <Route path="/real-projects" element={
-                <Suspense fallback={<SectionLoader />}>
-                  <RealProjects />
-                </Suspense>
-              } />
-            </Routes>
-          </Layout>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentLanguage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+            >
+              <Layout>
+                <Routes>
+                  <Route path="/" element={
+                    <Suspense fallback={<SectionLoader />}>
+                      <Element name='section1' id="about"><About /></Element>
+                      <Element name='section2' id="experience"><Experience /></Element>
+                      <Element name='section3' id="skills"><Skills /></Element>
+                      <Element name='section4' id="projects"><RecentPro /></Element>
+                      <Element name='section5' id="contact"><Contact /></Element>
+                    </Suspense>
+                  } />
+                  <Route path="/mobile-projects" element={
+                    <Suspense fallback={<SectionLoader />}>
+                       <MobileProjects />
+                    </Suspense>
+                  } />
+                  <Route path="/real-projects" element={
+                    <Suspense fallback={<SectionLoader />}>
+                      <RealProjects />
+                    </Suspense>
+                  } />
+                </Routes>
+              </Layout>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </Router>
     </LanguageContext.Provider>

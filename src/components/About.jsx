@@ -64,7 +64,7 @@ function About() {
             className="main-code-card"
             initial={{ opacity: 0, scale: 0.8, x: -50 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             whileHover={{ y: -10, rotateY: 5, rotateX: -5 }}
             style={{ perspective: 1000 }}
           >
@@ -132,7 +132,7 @@ function About() {
             className="text"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           >
             <h3>{greeting}</h3>
             <h1 id="about-name">Nasir Rasulzada</h1>
@@ -146,7 +146,7 @@ function About() {
             className="btn-group"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
           >
             <Button 
               label={translations.downloadCV}

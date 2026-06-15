@@ -10,7 +10,7 @@
   font-size: var(--btn-font-size, 16px) !important;
   line-height: 1.05;
   text-wrap: nowrap;
-  transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-sizing: border-box;
   position: relative;
   overflow: hidden;

@@ -6,10 +6,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins";
+  font-family: 'Inter', system-ui, sans-serif;
   text-decoration: none;
   scroll-behavior: smooth;
   list-style: none;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Scroll bar'ı tamamilə gizlə */
@@ -54,11 +57,18 @@ section {
   z-index: 1;
 }
 
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 .section-title {
   text-align: center;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 4rem;
-  font-weight: 600;
+  font-weight: 700;
   margin-bottom: 3rem;
+  letter-spacing: -0.02em;
 }
 
 .btn a {
@@ -69,6 +79,7 @@ section {
 .btn:hover {
   background-color: black;
   color: white;
+  transform: translateY(-2px);
 }
 
 /* a tagının hover vəziyyəti */
@@ -311,14 +322,14 @@ section {
 }
 
 .floating-image-effect {
-  animation: softFloat 4s ease-in-out infinite;
+  animation: softFloat 6s ease-in-out infinite;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
 
 .floating-image-effect:hover {
-  transform: translateY(-5px) scale(1.02);
+  transform: translateY(-8px) scale(1.02);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
   animation-play-state: paused;
 }

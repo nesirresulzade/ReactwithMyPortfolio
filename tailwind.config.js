@@ -5,6 +5,10 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'system-ui', 'sans-serif'],
+      display: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+    },
     extend: {
       colors: {
         primary: {
@@ -33,7 +37,7 @@ export default {
         }
       },
       animation: {
-        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'fade-in': 'fadeIn 0.5s ease-out',
         'slide-in-right': 'slideInRight 0.5s ease-out',
         'scale-up': 'scaleUp 0.3s ease-out',
       },
