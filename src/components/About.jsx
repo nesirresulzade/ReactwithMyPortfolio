@@ -85,7 +85,7 @@ function About() {
                 &nbsp;&nbsp;&nbsp;&nbsp;<span className="orange">'React Native'</span>, <span className="orange">'Bootstrap'</span>, <span className="orange">'Tailwind'</span><br />
                 &nbsp;&nbsp;],<br />
                 &nbsp;&nbsp;learning: <span className="orange">'Advanced React & Next.js'</span>,<br />
-                &nbsp;&nbsp;experience: <span className="orange">'1+ Years'</span>,<br />
+                &nbsp;&nbsp;experience: <span className="orange">'2+ Years'</span>,<br />
                 &nbsp;&nbsp;status: <span className="orange">'Open to Work'</span>,<br />
                 &nbsp;&nbsp;passion: <span className="orange">'Building interactive UI'</span><br />
                 {"}"};

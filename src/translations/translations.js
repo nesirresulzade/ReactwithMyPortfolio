@@ -198,13 +198,13 @@ export const translations = {
         // About Section
         aboutTitle: "About",
         aboutSubtitle: "Frontend Developer.",
-        aboutDescription: "I have been working in web development for 5 years. I am experienced in React, JavaScript and modern web technologies. I create beautiful and functional websites by paying attention to user experience.",
+        aboutDescription: "I have been working in web development for 3 years. I am experienced in React, JavaScript and modern web technologies. I create beautiful and functional websites by paying attention to user experience.",
         downloadCV: "Download CV",
         
         // Experience Section
         experienceTitle: "Experience",
         frontendDev: "Frontend (Beginner)",
-        frontendYears: "0–1 year",
+        frontendYears: "0–3 year",
         frontendDesc: "Learning HTML, CSS, JavaScript and React fundamentals. Building small projects and responsive pages.",
         
         graphicDesign: "UI/UX Basics",
