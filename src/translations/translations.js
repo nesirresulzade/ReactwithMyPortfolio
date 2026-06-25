@@ -17,7 +17,7 @@ export const translations = {
         // Experience Section
         experienceTitle: "Təcrübə",
         frontendDev: "Frontend (Başlanğıc səviyyə)",
-        frontendYears: "0–1 il",
+        frontendYears: "0–3 il",
         frontendDesc: "HTML, CSS, JavaScript və React əsaslarını öyrənir, kiçik layihələr və responsiv səhifələr qururam.",
         
         graphicDesign: "UI/UX əsasları",
